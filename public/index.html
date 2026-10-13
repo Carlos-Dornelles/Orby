@@ -850,10 +850,16 @@
               </button>
               <header class="orb-ia-header">
                 <h2><i class="bi bi-stars" aria-hidden="true"></i> Orb.IA</h2>
-                <button id="orbIaConfigToggle" class="orb-ia-config-toggle" type="button"
-                  aria-label="Configurar chave Gemini" title="Configurar chave Gemini" aria-expanded="false">
-                  <i class="bi bi-gear" aria-hidden="true"></i>
-                </button>
+                <div class="orb-ia-header-actions">
+                  <button id="orbIaReset" class="orb-ia-reset-button" type="button"
+                    aria-label="Resetar conversa" title="Resetar conversa">
+                    <i class="bi bi-arrow-clockwise" aria-hidden="true"></i>
+                  </button>
+                  <button id="orbIaConfigToggle" class="orb-ia-config-toggle" type="button"
+                    aria-label="Configurar chave Gemini" title="Configurar chave Gemini" aria-expanded="false">
+                    <i class="bi bi-gear" aria-hidden="true"></i>
+                  </button>
+                </div>
               </header>
               <form id="orbIaConfig" class="orb-ia-config" hidden>
                 <label for="orbIaApiKey">Chave API do Gemini</label>

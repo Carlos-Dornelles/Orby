@@ -109,6 +109,7 @@ const userSchema = new mongoose.Schema({
   emailNormalizado: { type: String, unique: true, sparse: true },
   senha: { type: String, select: false },
   orbIaApiKeyCriptografada: { type: String, select: false },
+  orbIaModeloAtual: { type: String, default: "" },
   tarefasDiarias: [tarefaSchema],
   tarefasImportantes: [tarefaSchema],
   habitos: [habitoSchema],
@@ -893,7 +894,7 @@ app.post("/orb-ia/conversar", async (req, res) => {
   }
 
   const user = await User.findById(userId).select(
-    "+orbIaApiKeyCriptografada nome tarefasDiarias tarefasImportantes habitos posts folhasCaderno listas preferencias"
+    "+orbIaApiKeyCriptografada orbIaModeloAtual nome tarefasDiarias tarefasImportantes habitos posts folhasCaderno listas preferencias"
   );
   if (!user) return res.status(404).json({ erro: "Usuário não encontrado." });
   if (!user.orbIaApiKeyCriptografada) {
@@ -917,8 +918,9 @@ app.post("/orb-ia/conversar", async (req, res) => {
       user.preferencias?.visibilidadeWidgets?.weather !== false,
       req.body?.coordenadasClima
     );
-    const resposta = await gerarRespostaGemini({
+    const { texto, modeloUtilizado } = await gerarRespostaGemini({
       chaveApi: descriptografarChaveGemini(user.orbIaApiKeyCriptografada),
+      modeloPreferencial: user.orbIaModeloAtual,
       instrucao: criarInstrucaoOrbIA({
         nomeUsuario: user.nome,
         tarefas,
@@ -947,7 +949,12 @@ app.post("/orb-ia/conversar", async (req, res) => {
         text: mensagem.text.trim()
       }))
     });
-    return res.json({ resposta });
+
+    if (modeloUtilizado && modeloUtilizado !== user.orbIaModeloAtual) {
+      await User.updateOne({ _id: user._id }, { $set: { orbIaModeloAtual: modeloUtilizado } });
+    }
+
+    return res.json({ resposta: texto, modelo: modeloUtilizado });
   } catch (error) {
     if (error instanceof OrbAiError) {
       return res.status(error.status).json({ erro: error.message });

@@ -12,13 +12,15 @@ const GEMINI_MODELS_GRATUITOS = [
   "gemini-3.1-flash-lite",
   "gemini-3.6-flash",
   "gemini-3.8-flash",
-  "gemini-2.5-flash"
+  "gemini-2.5-flash",
+  "gemini-2.0-flash",
+  "gemini-1.5-flash"
 ];
-const GEMINI_MAX_RETRIES = 2;
-const GEMINI_TIMEOUT_MS = 20000;
+const GEMINI_REQUEST_TIMEOUT_MS = 12000;
+const GEMINI_PROCESS_TIMEOUT_MS = 38000;
 
-function atrasoRetentativaGemini(resposta, tentativa) {
-  const retryAfter = resposta.headers?.get?.("retry-after");
+function atrasoRetentativaGemini(resposta) {
+  const retryAfter = resposta?.headers?.get?.("retry-after");
   if (retryAfter) {
     const segundos = Number(retryAfter);
     const instante = Number.isFinite(segundos)
@@ -26,11 +28,10 @@ function atrasoRetentativaGemini(resposta, tentativa) {
       : Date.parse(retryAfter);
     if (Number.isFinite(instante)) {
       const atraso = Math.max(0, instante - Date.now());
-      return atraso <= 5000 ? atraso : null;
+      return atraso <= 1500 ? atraso : null;
     }
   }
-
-  return 500 * (2 ** tentativa) + Math.random() * 250;
+  return 250 + Math.random() * 200;
 }
 
 export class OrbAiError extends Error {
@@ -141,115 +142,109 @@ export function descriptografarChaveGemini(valorCriptografado) {
   }
 }
 
-export async function gerarRespostaGemini({ chaveApi, instrucao, mensagens }) {
+function ordenarModelosParaTentativa(modeloPreferencial) {
+  if (modeloPreferencial && GEMINI_MODELS_GRATUITOS.includes(modeloPreferencial)) {
+    return [
+      modeloPreferencial,
+      ...GEMINI_MODELS_GRATUITOS.filter(m => m !== modeloPreferencial)
+    ];
+  }
+  return [...GEMINI_MODELS_GRATUITOS];
+}
+
+export async function gerarRespostaGemini({ chaveApi, instrucao, mensagens, modeloPreferencial }) {
   const input = mensagens.map(mensagem =>
     `${mensagem.role === "user" ? "Usuário" : "Orb.IA"}: ${mensagem.text}`
   ).join("\n\n");
-  let resposta;
-  let dados;
-  let respostaFinalizada = false;
-  for (let indiceModelo = 0; indiceModelo < GEMINI_MODELS_GRATUITOS.length; indiceModelo += 1) {
-    const modelo = GEMINI_MODELS_GRATUITOS[indiceModelo];
-    let trocarModelo = false;
+  const filaModelos = ordenarModelosParaTentativa(modeloPreferencial);
+  const inicioProcesso = Date.now();
 
-    for (let tentativa = 0; tentativa <= GEMINI_MAX_RETRIES; tentativa += 1) {
-      try {
-        resposta = await fetch(
-          "https://generativelanguage.googleapis.com/v1beta/interactions",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "x-goog-api-key": chaveApi
-            },
-            body: JSON.stringify({
-              model: modelo,
-              input,
-              system_instruction: instrucao,
-              generation_config: {
-                temperature: 0.7,
-                ...(modelo.startsWith("gemini-3.")
-                  ? { thinking_level: modelo.includes("flash-lite") ? "minimal" : "low" }
-                  : {})
-              },
-              store: false
-            }),
-            signal: AbortSignal.timeout(GEMINI_TIMEOUT_MS)
-          }
-        );
-      } catch (error) {
-        if (error.name === "TimeoutError" && indiceModelo < GEMINI_MODELS_GRATUITOS.length - 1) {
-          const proximoModelo = GEMINI_MODELS_GRATUITOS[indiceModelo + 1];
-          console.warn("Orb.IA alternando após tempo limite do Gemini.", {
-            modeloAnterior: modelo,
-            proximoModelo,
-            timeoutMs: GEMINI_TIMEOUT_MS
-          });
-          trocarModelo = true;
-          break;
+  let resposta = null;
+  let dados = null;
+  let modeloUsadoComSucesso = null;
+  let ultimoErroFatal = null;
+
+  let indiceModelo = 0;
+  while (Date.now() - inicioProcesso < GEMINI_PROCESS_TIMEOUT_MS) {
+    const modelo = filaModelos[indiceModelo % filaModelos.length];
+    const tempoRestante = GEMINI_PROCESS_TIMEOUT_MS - (Date.now() - inicioProcesso);
+    if (tempoRestante < 1500) break;
+
+    const timeoutRequisicao = Math.min(GEMINI_REQUEST_TIMEOUT_MS, tempoRestante);
+
+    try {
+      const contentsPayload = mensagens.map(msg => ({
+        role: msg.role === "user" ? "user" : "model",
+        parts: [{ text: msg.text }]
+      }));
+
+      resposta = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(modelo)}:generateContent`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-goog-api-key": chaveApi
+          },
+          body: JSON.stringify({
+            systemInstruction: instrucao ? { parts: [{ text: instrucao }] } : undefined,
+            contents: contentsPayload,
+            generationConfig: {
+              temperature: 0.7
+            }
+          }),
+          signal: AbortSignal.timeout(timeoutRequisicao)
         }
-        throw new OrbAiError(
-          error.name === "TimeoutError"
-            ? "O Gemini demorou demais para responder. Tente novamente."
-            : "Não foi possível conectar ao Gemini. Verifique a conexão e tente novamente.",
-          502
-        );
-      }
+      );
+    } catch (error) {
+      console.warn(`Orb.IA tempo limite ou erro de rede no modelo ${modelo}. Continuando para o próximo...`);
+      indiceModelo += 1;
+      continue;
+    }
 
-      try {
-        dados = await resposta.json();
-      } catch (error) {
-        if (error instanceof SyntaxError) {
-          if ([503, 504].includes(resposta.status)) {
-            throw new OrbAiError(
-              "O Gemini está temporariamente indisponível ou sobrecarregado. Tente novamente em alguns instantes.",
-              502
-            );
-          }
-          throw new OrbAiError("O Gemini retornou uma resposta inválida. Tente novamente.", 502);
-        }
-        throw error;
-      }
+    try {
+      dados = await resposta.json();
+    } catch {
+      dados = null;
+    }
 
-      if (resposta.ok) {
-        respostaFinalizada = true;
-        break;
-      }
-
-      const codigoApi = typeof dados?.error?.status === "string" ? dados.error.status : "";
-      const indisponivelTemporariamente = [503, 504].includes(resposta.status);
-      const semCota = resposta.status === 429 || codigoApi === "RESOURCE_EXHAUSTED";
-      const modeloIndisponivel = resposta.status === 404;
-
-      if (indisponivelTemporariamente && tentativa < GEMINI_MAX_RETRIES) {
-        const atraso = atrasoRetentativaGemini(resposta, tentativa);
-        if (atraso !== null) {
-          await new Promise(resolve => setTimeout(resolve, atraso));
-          continue;
-        }
-      }
-
-      if ((semCota || indisponivelTemporariamente || modeloIndisponivel) &&
-          indiceModelo < GEMINI_MODELS_GRATUITOS.length - 1) {
-        const proximoModelo = GEMINI_MODELS_GRATUITOS[indiceModelo + 1];
-        console.warn("Orb.IA alternando para outro modelo Gemini gratuito.", {
-          modeloAnterior: modelo,
-          proximoModelo,
-          httpStatus: resposta.status,
-          apiStatus: codigoApi || "desconhecido"
-        });
-        trocarModelo = true;
-        break;
-      }
-
-      respostaFinalizada = true;
+    if (resposta && resposta.ok) {
+      modeloUsadoComSucesso = modelo;
       break;
     }
 
-    if (respostaFinalizada || !trocarModelo) break;
+    const codigoApi = typeof dados?.error?.status === "string" ? dados.error.status : "";
+    const detalheApi = typeof dados?.error?.message === "string" ? dados.error.message : "";
+
+    // Se for chave inválida ou problema na requisição do usuário (400, 401, 403), não adianta tentar outros modelos
+    if (resposta.status === 401 || resposta.status === 403) {
+      ultimoErroFatal = { resposta, dados };
+      break;
+    }
+
+    console.warn(`Orb.IA modelo ${modelo} indisponível (HTTP ${resposta.status}${codigoApi ? ` - ${codigoApi}` : ""}: ${detalheApi}). Continuando para o próximo modelo...`);
+
+    const atraso = atrasoRetentativaGemini(resposta);
+    if (atraso && Date.now() - inicioProcesso + atraso < GEMINI_PROCESS_TIMEOUT_MS) {
+      await new Promise(resolve => setTimeout(resolve, atraso));
+    }
+
+    indiceModelo += 1;
   }
 
-  if (!resposta.ok) {
+  if (ultimoErroFatal) {
+    resposta = ultimoErroFatal.resposta;
+    dados = ultimoErroFatal.dados;
+  }
+
+  if (!resposta || !resposta.ok) {
+    if (!resposta) {
+      throw new OrbAiError(
+        "O Gemini demorou demais para responder ou está temporariamente sobrecarregado em todos os modelos. Tente novamente em alguns instantes.",
+        502
+      );
+    }
+
     const codigoApi = typeof dados?.error?.status === "string" ? dados.error.status : "";
     const detalheApi = typeof dados?.error?.message === "string"
       ? dados.error.message
@@ -308,14 +303,21 @@ export async function gerarRespostaGemini({ chaveApi, instrucao, mensagens }) {
     );
   }
 
-  const texto = dados?.steps
+  const textoCandidates = dados?.candidates?.[0]?.content?.parts
+    ?.map(parte => (typeof parte?.text === "string" ? parte.text : ""))
+    .join("")
+    .trim();
+
+  const textoSteps = dados?.steps
     ?.filter(etapa => etapa.type === "model_output")
     .flatMap(etapa => Array.isArray(etapa.content) ? etapa.content : [])
     .map(parte => parte.type === "text" && typeof parte.text === "string" ? parte.text : "")
     .join("")
     .trim();
+
+  const texto = textoCandidates || textoSteps;
   if (!texto) {
     throw new OrbAiError("O Gemini não conseguiu gerar uma resposta para essa mensagem.", 502);
   }
-  return texto;
+  return { texto, modeloUtilizado: modeloUsadoComSucesso };
 }

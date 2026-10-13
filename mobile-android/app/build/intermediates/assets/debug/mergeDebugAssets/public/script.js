@@ -1554,6 +1554,24 @@ function inicializarWidgetOrbIa() {
     status.hidden = false;
     status.classList.add("erro");
   };
+  const lerRespostaOrb = async (response, mensagemPadrao) => {
+    const corpo = await response.text();
+    if (!corpo.trim()) return {};
+
+    try {
+      return JSON.parse(corpo);
+    } catch {
+      const pareceHtml = /^\s*<!doctype html|^\s*<html[\s>]/i.test(corpo);
+      const statusHttp = response.status ? ` (HTTP ${response.status})` : "";
+      if (pareceHtml) {
+        throw new Error(
+          `O servidor retornou uma página HTML, e não a resposta da Orb.IA${statusHttp}. ` +
+          "Isso não indica indisponibilidade do Gemini; atualize/reinicie o servidor e confira a rota /orb-ia/conversar."
+        );
+      }
+      throw new Error(`${mensagemPadrao}${statusHttp}`);
+    }
+  };
   const animarResposta = (mensagem, texto) => new Promise(resolve => {
     mensagem.classList.remove("orb-ia-message-loading");
     mensagem.classList.add("orb-ia-message-reveal");
@@ -1581,7 +1599,7 @@ function inicializarWidgetOrbIa() {
   });
   const carregarConfiguracaoChave = async () => {
     const response = await fetch("/orb-ia/config");
-    const resultado = await response.json();
+    const resultado = await lerRespostaOrb(response, "O servidor retornou uma resposta inválida ao verificar a chave Gemini.");
     if (!response.ok) throw new Error(resultado.erro || "Não foi possível verificar a chave Gemini.");
     chaveConfigurada = resultado.chaveConfigurada === true;
     botaoRemoverChave.hidden = !chaveConfigurada;
@@ -1612,7 +1630,7 @@ function inicializarWidgetOrbIa() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ chaveApi })
       });
-      const resultado = await response.json();
+      const resultado = await lerRespostaOrb(response, "O servidor retornou uma resposta inválida ao salvar a chave Gemini.");
       if (!response.ok) throw new Error(resultado.erro || "Não foi possível salvar a chave Gemini.");
       campoChave.value = "";
       chaveConfigurada = true;
@@ -1631,7 +1649,7 @@ function inicializarWidgetOrbIa() {
     botaoRemoverChave.disabled = true;
     try {
       const response = await fetch("/orb-ia/chave", { method: "DELETE" });
-      const resultado = await response.json();
+      const resultado = await lerRespostaOrb(response, "O servidor retornou uma resposta inválida ao remover a chave Gemini.");
       if (!response.ok) throw new Error(resultado.erro || "Não foi possível remover a chave Gemini.");
       chaveConfigurada = false;
       botaoRemoverChave.hidden = true;
@@ -1686,7 +1704,7 @@ function inicializarWidgetOrbIa() {
           coordenadasClima: coordenadasContextoClima
         })
       });
-      const resultado = await response.json();
+      const resultado = await lerRespostaOrb(response, "O servidor retornou uma resposta inválida ao conversar com a Orb.IA.");
       if (!response.ok) throw new Error(resultado.erro || "Não foi possível obter uma resposta.");
       await animarResposta(carregando, resultado.resposta);
       conversacao.push({ role: "user", text: texto }, { role: "model", text: resultado.resposta });

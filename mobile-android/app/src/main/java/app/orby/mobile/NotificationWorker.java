@@ -99,7 +99,7 @@ public final class NotificationWorker extends Worker {
 
         HttpURLConnection connection = null;
         try {
-            URL url = new URL("https://orbyapp.discloud.app/notificacoes/" + userId);
+            URL url = new URL("https://orbyapp.discloud.dev/notificacoes/" + userId);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(10000);
@@ -183,7 +183,7 @@ public final class NotificationWorker extends Worker {
     private void syncTaskAlarms(String userId) throws Exception {
         HttpURLConnection connection = null;
         try {
-            URL url = new URL("https://orbyapp.discloud.app/tarefas/" + userId + "/notificacoes?includeRecent=true");
+            URL url = new URL("https://orbyapp.discloud.dev/tarefas/" + userId + "/notificacoes?includeRecent=true");
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(10000);

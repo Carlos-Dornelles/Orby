@@ -7454,6 +7454,13 @@ html[data-special-theme="natal"] .natal-gorro {
   color: var(--ui-primary);
 }
 
+.orb-ia-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.orb-ia-reset-button,
 .orb-ia-config-toggle,
 .orb-ia-config-actions button {
   display: grid;
@@ -7465,12 +7472,18 @@ html[data-special-theme="natal"] .natal-gorro {
   color: var(--ui-text);
   background: var(--ui-bg);
   cursor: pointer;
+  transition: border-color .15s ease, color .15s ease, transform .15s ease;
 }
 
+.orb-ia-reset-button:hover,
 .orb-ia-config-toggle:hover,
 .orb-ia-config-actions button:hover {
   border-color: var(--ui-primary);
   color: var(--ui-primary);
+}
+
+.orb-ia-reset-button:active {
+  transform: rotate(-45deg);
 }
 
 .orb-ia-config {

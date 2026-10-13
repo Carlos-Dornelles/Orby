@@ -1,6 +1,6 @@
 # Orby para Android
 
-O APK usa Capacitor e `@capacitor/local-notifications` para agendar notificações locais de tarefas pendentes. Os alarmes são registrados no Android, podem tocar com o app fechado e não são notificações permanentes. O ícone de status usa a arte do Orby configurada em `capacitor.config.json`. O site continua sendo carregado de `https://orbyapp.discloud.app/`.
+O APK usa Capacitor e `@capacitor/local-notifications` para agendar notificações locais de tarefas pendentes. Os alarmes são registrados no Android, podem tocar com o app fechado e não são notificações permanentes. O ícone de status usa a arte do Orby configurada em `capacitor.config.json`. O site continua sendo carregado de `https://orbyapp.discloud.dev/`.
 
 ## Sincronizar e compilar
 

@@ -6,10 +6,10 @@
 		"path": "mobile-android"
 	},
 	"server": {
-		"url": "https://orbyapp.discloud.app",
+		"url": "https://orbyapp.discloud.dev",
 		"cleartext": false,
 		"allowNavigation": [
-			"orbyapp.discloud.app"
+			"orbyapp.discloud.dev"
 		]
 	},
 	"plugins": {

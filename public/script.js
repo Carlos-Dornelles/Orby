@@ -1607,6 +1607,17 @@ function inicializarWidgetOrbIa() {
     limparStatus();
   };
 
+  document.getElementById("orbIaReset")?.addEventListener("click", () => {
+    conversacao.length = 0;
+    mensagensElemento.replaceChildren();
+    document.getElementById("orbIaEmpty").hidden = false;
+    limparStatus();
+    enviando = false;
+    atualizarDisponibilidadeChat();
+    campoMensagem.value = "";
+    campoMensagem.focus();
+  });
+
   document.getElementById("orbIaConfigToggle").addEventListener("click", event => {
     const botao = event.currentTarget;
     formularioConfiguracao.hidden = !formularioConfiguracao.hidden;
