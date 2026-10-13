@@ -243,7 +243,18 @@ app.use("/vendor/chess.js", express.static(path.join(__dirname, "node_modules", 
 app.use("/vendor/stockfish.js", express.static(path.join(__dirname, "node_modules", "stockfish.js")));
 app.use("/vendor/capacitor", express.static(path.join(__dirname, "node_modules", "@capacitor", "core", "dist")));
 app.use("/vendor/local-notifications", express.static(path.join(__dirname, "node_modules", "@capacitor", "local-notifications", "dist")));
-app.use(express.static(path.join(__dirname, "public")));
+const arquivosDoAppSemCache = new Set([".css", ".html", ".js"]);
+app.use(express.static(path.join(__dirname, "public"), {
+  // Alguns provedores preservam a data do arquivo ao publicar. Sem ETag e
+  // Last-Modified, eles não conseguem confirmar incorretamente um JS antigo com 304.
+  etag: false,
+  lastModified: false,
+  setHeaders(res, arquivo) {
+    if (arquivosDoAppSemCache.has(path.extname(arquivo).toLowerCase())) {
+      res.setHeader("Cache-Control", "no-store, max-age=0");
+    }
+  }
+}));
 app.use("/sons", express.static(path.join(__dirname, "sons")));
 
 function cloudinaryConfigurado() {
