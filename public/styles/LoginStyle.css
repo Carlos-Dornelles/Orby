@@ -1,0 +1,195 @@
+:root {
+  --login-primary: #ef4444;
+  --login-primary-dark: #dc2626;
+  --login-primary-soft: #fff1f2;
+  --login-text: #172033;
+  --login-muted: #7b8495;
+  --login-border: #e7eaf0;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 24px;
+  display: grid;
+  place-items: center;
+  color: var(--login-text);
+  background:
+    radial-gradient(ellipse at 12% 12%, rgba(239, 68, 68, .12), transparent 34%),
+    radial-gradient(ellipse at 90% 88%, rgba(251, 113, 133, .13), transparent 32%),
+    #f5f7fb;
+}
+
+#loginDIV {
+  width: min(100%, 420px);
+  padding: 38px 36px 30px;
+  border: 1px solid rgba(231, 234, 240, .9);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 24px 70px rgba(23, 32, 51, .12);
+  animation: fadeUp .45s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#loginDIV h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  margin: 0;
+  color: var(--login-text);
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -.7px;
+}
+
+.imgLogo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+hr {
+  height: 1px;
+  margin: 22px 0 26px;
+  border: 0;
+  background: var(--login-border);
+}
+
+.divInputArea {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  margin-bottom: 15px;
+  padding: 0 15px;
+  border: 1px solid var(--login-border);
+  border-radius: 12px;
+  background: #f8fafc;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.divInputArea i {
+  color: #929bad !important;
+  font-size: 16px;
+  transition: color 180ms ease;
+}
+
+.divInputArea:focus-within {
+  border-color: var(--login-primary);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, .11);
+}
+
+.divInputArea:focus-within i { color: var(--login-primary) !important; }
+
+.inputs {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  color: var(--login-text);
+  background: transparent;
+  font-size: 14px;
+}
+
+.inputs::placeholder { color: #9aa3b2; }
+
+.lembrarAcesso {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+  margin: 0 2px 8px;
+  color: var(--login-muted);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.lembrarAcesso input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--login-primary);
+  cursor: pointer;
+}
+
+.btnStyle {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 13px;
+  border: 0;
+  border-radius: 12px;
+  color: #fff;
+  background: linear-gradient(135deg, #ef4444, #f87171);
+  box-shadow: 0 8px 18px rgba(239, 68, 68, .2);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+.btnStyle:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: saturate(1.08);
+  box-shadow: 0 11px 24px rgba(239, 68, 68, .27);
+}
+
+.btnStyle:active:not(:disabled) { transform: translateY(0); }
+.btnStyle:disabled { cursor: wait; opacity: .72; }
+.btnStyle:focus-visible, .alternarAcesso button:focus-visible { outline: 3px solid rgba(239, 68, 68, .3); outline-offset: 3px; }
+
+.dicaSenhaCadastro {
+  display: block;
+  margin: -3px 2px 8px;
+  color: var(--login-muted);
+  font-size: 12px;
+}
+
+.statusAcesso {
+  min-height: 18px;
+  margin: 5px 2px 0;
+  color: #647084;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.statusAcesso.erro { color: #b42318; }
+
+.alternarAcesso {
+  margin: 21px 0 0;
+  color: var(--login-muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+.alternarAcesso button {
+  padding: 3px;
+  border: 0;
+  border-radius: 4px;
+  color: var(--login-primary-dark);
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.alternarAcesso button:hover { text-decoration: underline; }
+
+@media (max-width: 480px) {
+  body { padding: 16px; }
+  #loginDIV { padding: 32px 24px 26px; border-radius: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

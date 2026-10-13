@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "866469993978",
+    "firebase_url": "https://orby-47574-default-rtdb.firebaseio.com",
+    "project_id": "orby-47574",
+    "storage_bucket": "orby-47574.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866469993978:android:d9c7e6327c91c208f6d843",
+        "android_client_info": {
+          "package_name": "app.orby.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "866469993978-annlped88dr0au5h58r0npoepgithl5l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoSaOBDiqH7TlNWR9_tJEF9nfRHe3V450"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "866469993978-annlped88dr0au5h58r0npoepgithl5l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

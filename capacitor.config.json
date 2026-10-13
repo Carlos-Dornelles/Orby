@@ -1,0 +1,24 @@
+{
+  "appId": "app.orby.mobile",
+  "appName": "Orby",
+  "webDir": "public",
+  "android": {
+    "path": "mobile-android"
+  },
+  "server": {
+    "url": "https://orbyapp.discloud.app",
+    "cleartext": false,
+    "allowNavigation": [
+      "orbyapp.discloud.app"
+    ]
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "orby_logo",
+      "iconColor": "#3598F5"
+    },
+    "PushNotifications": {
+      "presentationOptions": ["alert", "sound"]
+    }
+  }
+}
