@@ -1,0 +1,240 @@
+.party-basketball-controls {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.party-basketball-shell {
+  display: grid;
+  width: min(1500px, 100%);
+  height: 100%;
+  min-height: 0;
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  gap: 8px;
+  overflow: hidden;
+  margin: 0 auto;
+  color: #24445b;
+  background:
+    radial-gradient(ellipse at 12% 0, rgba(102, 207, 246, .2), transparent 32%),
+    linear-gradient(145deg, #f8fcff, #eaf6ff);
+  font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+.party-basketball-header {
+  display: flex;
+  min-height: 62px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 5px clamp(12px, 2vw, 26px);
+}
+
+.party-basketball-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.party-basketball-title strong,
+.party-basketball-title small {
+  display: block;
+}
+
+.party-basketball-title strong {
+  color: #246f9b;
+  font-size: clamp(20px, 2.2vw, 28px);
+}
+
+.party-basketball-title small {
+  color: #64869b;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+.party-basketball-logo {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 15px;
+  background: linear-gradient(145deg, #ffc76f, #f68c35);
+  box-shadow: inset 0 2px 3px #fff8, 0 5px 12px #b96c3440;
+  font-size: 27px;
+}
+
+.party-basketball-status {
+  min-width: 92px;
+  padding: 6px 15px;
+  border: 1px solid #d5e9f4;
+  border-radius: 14px;
+  background: rgba(255,255,255,.88);
+  box-shadow: 0 4px 12px #5283a313;
+  text-align: center;
+}
+
+.party-basketball-status span,
+.party-basketball-time {
+  display: block;
+}
+
+.party-basketball-status span {
+  color: #7d9bad;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.party-basketball-time {
+  color: #247db5;
+  font-size: 25px;
+}
+
+.party-basketball-court {
+  position: relative;
+  min-height: 0;
+  margin: 0 clamp(8px, 1.5vw, 20px);
+  overflow: hidden;
+  border: 4px solid #fff;
+  border-radius: 22px;
+  background: #8fdcf9;
+  box-shadow: 0 8px 24px #356b8b28, inset 0 0 0 1px #a5d9ee;
+}
+
+.party-basketball-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  touch-action: none;
+}
+
+.party-basketball-message {
+  min-height: 16px;
+  margin: 0;
+  color: #547a91;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.party-basketball-board {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 clamp(8px, 1.5vw, 20px) 7px;
+  overflow-x: auto;
+}
+
+.party-basketball-board > strong {
+  flex: 0 0 auto;
+  color: #64869b;
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+
+.party-basketball-score {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 110px;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid #d6e8f1;
+  border-radius: 12px;
+  background: rgba(255,255,255,.85);
+  box-shadow: 0 3px 8px #47799a12;
+  color: #54768b;
+  font-size: 12px;
+}
+
+.party-basketball-score.is-you {
+  border-color: #80c4e7;
+  background: #e9f7ff;
+  box-shadow: inset 0 0 0 1px #80c4e733;
+  color: #226e9a;
+}
+
+.party-basketball-loading {
+  padding: 16px;
+  color: #547a91;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .party-basketball-header {
+    min-height: 52px;
+    padding: 3px 8px;
+  }
+
+  .party-basketball-court {
+    margin: 0 5px;
+    border-radius: 14px;
+  }
+
+  .party-basketball-logo {
+    width: 39px;
+    height: 39px;
+    font-size: 22px;
+  }
+
+  .party-basketball-status {
+    min-width: 76px;
+    padding: 4px 8px;
+  }
+
+  .party-basketball-time {
+    font-size: 21px;
+  }
+
+  .party-basketball-board {
+    gap: 5px;
+    padding: 0 5px 5px;
+  }
+
+  .party-basketball-score {
+    min-width: 100px;
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+}
+
+.orby-party-app.basketball-game-active .party-stage-screen {
+  inset: 0;
+  padding: 0;
+}
+
+.orby-party-app.basketball-game-active .party-stage-card {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.orby-party-app.basketball-game-active .party-stage-eyebrow,
+.orby-party-app.basketball-game-active .party-stage-card > h2,
+.orby-party-app.basketball-game-active .party-stage-card > p,
+.orby-party-app.basketball-game-active .party-stage-ranking,
+.orby-party-app.basketball-game-active .party-stage-games,
+.orby-party-app.basketball-game-active #partyFinishGame {
+  display: none;
+}
+
+.orby-party-app.basketball-game-active .party-basketball-controls {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+}

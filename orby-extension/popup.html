@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orby Compacto</title>
+  <link rel="stylesheet" href="popup.css">
+  <link rel="stylesheet" href="icons.css">
+  <link rel="stylesheet" href="popup-themes.css">
+  <link rel="stylesheet" href="popup-interactions.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><img src="circle.png" alt=""><div><strong>Orby</strong></div></div>
+    <div class="topbar-actions">
+      <button id="notificationsButton" class="icon-button notification-button" type="button" title="Notificações" aria-label="Notificações" aria-pressed="false" hidden>
+        <i class="bi bi-bell" aria-hidden="true"></i>
+        <span id="notificationBadge" class="notification-badge" hidden></span>
+      </button>
+      <button id="settingsButton" class="icon-button" type="button" title="Configurações" aria-label="Configurações"><i class="bi bi-gear" aria-hidden="true"></i></button>
+    </div>
+  </header>
+
+  <section id="setup" class="setup" hidden>
+    <h1>Entre no Orby</h1>
+    <p>Entre com sua conta para acessar suas informações rapidamente.</p>
+    <form id="loginForm">
+      <label>E-mail<input id="email" type="email" autocomplete="username" required></label>
+      <label>Senha<input id="password" type="password" autocomplete="current-password" required></label>
+      <button class="primary" type="submit">Entrar</button>
+      <div id="loginStatus" class="status" role="status"></div>
+    </form>
+  </section>
+
+  <main id="app" hidden>
+    <div class="account"><span id="welcome"></span><button id="logoutButton" class="text-button">Sair</button></div>
+    <nav class="tabs" aria-label="Seções do Orby">
+      <button data-tab="tarefas" class="active"><i class="bi bi-calendar2-check" aria-hidden="true"></i><span>Tarefas</span></button>
+      <button data-tab="posts"><i class="bi bi-sticky-fill" aria-hidden="true"></i><span>Posts</span></button>
+      <button data-tab="caderno"><i class="bi bi-journal-richtext" aria-hidden="true"></i><span>Caderno</span></button>
+      <button data-tab="habitos"><i class="bi bi-fire" aria-hidden="true"></i><span>Hábitos</span></button>
+      <button data-tab="listas"><i class="bi bi-list-check" aria-hidden="true"></i><span>Listas</span></button>
+    </nav>
+    <div id="status" class="status" role="status"></div>
+    <section id="content" class="content"></section>
+  </main>
+
+  <section id="settings" class="settings" hidden>
+    <div class="settings-heading"><button id="backButton" class="text-button" type="button"><i class="bi bi-arrow-left" aria-hidden="true"></i> Voltar</button><h2><i class="bi bi-gear" aria-hidden="true"></i> Configurações</h2></div>
+    <section id="appearanceSettings">
+      <h2><i class="bi bi-palette" aria-hidden="true"></i> Aparência do Orby</h2>
+      <p class="settings-description">Escolha um tema. A alteração vale para esta extensão.</p>
+      <div id="themeOptions" class="theme-options"></div>
+      <div id="customThemeControls" class="custom-theme-controls" hidden>
+        <label>Cor principal <input id="customThemeColor" type="color" value="#174c32"></label>
+        <label>Modo <select id="customThemeMode" class="field"><option value="light">Claro</option><option value="dark">Escuro</option></select></label>
+      </div>
+    </section>
+    <section class="server-permissions">
+      <h2><i class="bi bi-shield-lock" aria-hidden="true"></i> Acesso aos servidores</h2>
+      <p class="settings-description">Autorize a extensão a conectar aos endereços do Orby:</p>
+      <ul class="server-list">
+        <li><code>https://orbyapp.discloud.dev/</code></li>
+        <li><code>https://orbyapp.discloud.app/</code></li>
+      </ul>
+      <button id="authorizeServersButton" class="primary" type="button">Autorizar os dois endereços</button>
+      <p id="permissionStatus" class="permission-status" role="status"></p>
+    </section>
+  </section>
+  <dialog id="editModal" class="edit-modal" aria-labelledby="editModalTitle">
+    <form id="editModalForm">
+      <div class="edit-modal-heading">
+        <h2 id="editModalTitle"></h2>
+        <button class="action-icon modal-close" type="button" data-modal-close aria-label="Fechar"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+      </div>
+      <div id="editModalContent" class="edit-modal-content"></div>
+      <p id="editModalStatus" class="edit-modal-status" role="alert"></p>
+      <div class="edit-modal-actions">
+        <button class="text-button" type="button" data-modal-close>Cancelar</button>
+        <button id="editModalSubmit" class="small-button" type="submit">Salvar alterações</button>
+      </div>
+    </form>
+  </dialog>
+  <script src="popup.js"></script>
+</body>
+</html>

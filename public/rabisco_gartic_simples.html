@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rabisco — jogo de desenho</title>
+<style>
+:root{--blue:#2388f5;--blue-dark:#1555b8;--ink:#183153;--muted:#71839b;--panel:#fff;--bg:#eef6ff;--line:#dce9f8;--green:#1ca66b}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#eaf5ff,#f6f8ff 55%,#e9f4ff);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);min-height:100vh}
+button,input{font:inherit}button{cursor:pointer;border:0}button:focus-visible,input:focus-visible{outline:3px solid #8cc7ff;outline-offset:2px}
+.app{max-width:1400px;margin:auto;padding:22px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-size:27px;font-weight:900;letter-spacing:-1px;color:#174d9e}.brand-mark{display:grid;place-items:center;width:46px;height:46px;border-radius:15px;background:linear-gradient(145deg,#ffd84c,#ffac19);box-shadow:0 4px 0 #e39b16;font-size:25px}
+.top-info{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.pill{padding:10px 15px;background:#fff;border:1px solid var(--line);border-radius:14px;font-weight:750;box-shadow:0 3px 10px #174d9e0b}.timer{font-variant-numeric:tabular-nums;font-size:20px;min-width:105px;text-align:center}.timer.urgent{color:#d83b45;background:#fff0f0}
+.layout{display:grid;grid-template-columns:205px minmax(300px,1fr) 260px;gap:16px;align-items:stretch}
+.panel{background:var(--panel);border:1px solid #dce9f8;border-radius:20px;box-shadow:0 8px 24px #174d9e0c;overflow:hidden}
+.side-title{padding:17px 17px 10px;font-size:13px;text-transform:uppercase;letter-spacing:1px;font-weight:850;color:#8192a9}
+.players{padding:0 10px 12px;display:grid;gap:8px}.player{display:flex;align-items:center;gap:10px;padding:11px 9px;border:1px solid transparent;border-radius:14px;background:#f6f9ff}.player.active{background:#eaf5ff;border-color:#93ceff}.avatar{width:38px;height:38px;border-radius:12px;background:#dcecff;display:grid;place-items:center;font-size:22px;flex-shrink:0}.player-name{font-size:13px;font-weight:800}.player-sub{font-size:11px;color:var(--muted);margin-top:3px}.score{margin-left:auto;font-weight:900;font-size:12px;color:#1b6dd0}
+.center{min-width:0}.promptbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 18px;background:#fff;border:1px solid var(--line);border-radius:18px;margin-bottom:12px}.prompt-label{font-size:12px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.7px}.word{font-size:22px;font-weight:900;letter-spacing:.5px}.word.hidden{letter-spacing:5px;color:#2769bd}.round{font-size:12px;font-weight:800;color:#5c7da4;white-space:nowrap}
+.canvas-wrap{position:relative;background:white;border:1px solid #d9e7f8;border-radius:18px;padding:8px;box-shadow:0 8px 22px #174d9e0a}.canvas-wrap canvas{display:block;width:100%;height:auto;aspect-ratio: 4 / 3;touch-action:none;cursor:crosshair;border-radius:12px;background:#fff}.canvas-hint{position:absolute;bottom:17px;right:17px;font-size:10px;color:#a4b1c2;background:#ffffffd9;padding:5px 8px;border-radius:8px;pointer-events:none}
+.toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px;margin-top:12px}.colors{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.swatch{width:27px;height:27px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px #d8e2ef}.swatch.selected{box-shadow:0 0 0 3px #8cc7ff}.toolbtn{padding:9px 12px;background:#f2f7ff;border:1px solid #dce9f8;border-radius:11px;color:#31577f;font-weight:800;font-size:12px}.toolbtn.selected{background:#e2f2ff;border-color:#56b2ff;color:#1264b9}.toolbtn.danger{color:#c54848}.size-control{display:flex;align-items:center;gap:7px;margin-left:auto;font-size:12px;color:var(--muted);font-weight:700}.size-control input{width:80px;accent-color:var(--blue)}
+.right{display:flex;flex-direction:column;min-height:0}.chatlog{padding:5px 13px 14px;display:flex;flex-direction:column;gap:10px;flex:1;min-height:250px;max-height:470px;overflow-y:auto}.message{font-size:13px;line-height:1.4;overflow-wrap:anywhere}.message strong{color:#1555b8}.message.system{color:#7890ab;font-size:12px;text-align:center;background:#f4f8ff;padding:8px;border-radius:10px}.message.correct{background:#e9fbf2;color:#14794d;padding:9px 10px;border-radius:10px;font-weight:800}.chatform{display:flex;gap:7px;padding:12px;border-top:1px solid #eaf0f8}.chatform input{min-width:0;flex:1;border:1px solid #dce7f5;background:#f9fbff;border-radius:12px;padding:11px 12px;color:var(--ink)}.send{background:var(--blue);color:white;border-radius:12px;padding:0 15px;font-weight:900}.send:hover,.primary:hover{background:var(--blue-dark)}
+.bottomrow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}.status{color:#71839b;font-size:12px}.actions{display:flex;gap:8px;flex-wrap:wrap}.primary{background:var(--blue);color:white;border-radius:12px;padding:11px 16px;font-weight:850}.secondary{background:#fff;border:1px solid var(--line);color:#31577f;border-radius:12px;padding:11px 14px;font-weight:800}
+.overlay{position:fixed;inset:0;background:#10284688;display:none;align-items:center;justify-content:center;padding:20px;z-index:5}.overlay.show{display:flex}.modal{width:min(440px,100%);background:white;border-radius:24px;padding:28px;text-align:center;box-shadow:0 20px 70px #10284644}.modal-icon{font-size:44px}.modal h2{margin:8px 0}.modal p{color:var(--muted);line-height:1.5}.modal-actions{display:flex;justify-content:center;gap:8px;margin-top:18px}
+@media(max-width:1000px){.layout{grid-template-columns:180px minmax(280px,1fr)}.right{grid-column:1/-1}.chatlog{max-height:200px;min-height:140px}.right .side-title{padding-bottom:6px}}
+@media(max-width:620px){.app{padding:12px}.layout{grid-template-columns:1fr}.players{grid-template-columns:repeat(2,minmax(0,1fr))}.side-title{padding-top:13px}.right{grid-column:auto}.topbar{align-items:flex-start}.brand{font-size:23px}.promptbar{padding:12px}.word{font-size:18px}.size-control{margin-left:0}.chatlog{min-height:120px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><div class="brand-mark">✏️</div> rabisco<span style="color:#f3b82d">.</span></div>
+    <div class="top-info"><div class="pill" id="roundPill">Rodada 1 / 5</div><div class="pill timer" id="timer">01:30</div></div>
+  </header>
+  <main class="layout">
+    <aside class="panel">
+      <div class="side-title">Jogadores</div>
+      <div class="players" id="players"></div>
+    </aside>
+    <section class="center">
+      <div class="promptbar">
+        <div><div class="prompt-label" id="promptLabel">Sua vez de desenhar</div><div class="word" id="word">CASA</div></div>
+        <div class="round" id="wordHint">Escolha uma palavra</div>
+      </div>
+      <div class="canvas-wrap">
+        <canvas id="canvas" width="960" height="720" aria-label="Área para desenhar"></canvas>
+        <div class="canvas-hint">Desenhe com o mouse</div>
+      </div>
+      <div class="panel toolbar">
+        <div class="colors" id="colors"></div>
+        <button class="toolbtn selected" id="penBtn">✏️ Lápis</button>
+        <button class="toolbtn" id="eraserBtn">🧽 Borracha</button>
+        <button class="toolbtn danger" id="clearBtn">⌫ Limpar</button>
+        <label class="size-control">Tamanho <input id="size" type="range" min="2" max="32" value="7"></label>
+      </div>
+      <div class="bottomrow"><div class="status" id="status">Acerte a palavra no chat para ganhar pontos.</div><div class="actions"><button class="secondary" id="revealBtn">Mostrar palavra</button><button class="primary" id="nextBtn">Próxima rodada →</button></div></div>
+    </section>
+    <aside class="panel right">
+      <div class="side-title">Palpites e conversa</div>
+      <div class="chatlog" id="chatlog">
+        <div class="message system">Bem-vindo ao Rabisco! Digite um palpite abaixo.</div>
+      </div>
+      <form class="chatform" id="chatform"><input id="guess" maxlength="100" placeholder="Digite seu palpite..." autocomplete="off"><button class="send" type="submit">Enviar</button></form>
+    </aside>
+  </main>
+</div>
+<div class="overlay" id="overlay"><div class="modal"><div class="modal-icon">🎉</div><h2 id="modalTitle">Rodada concluída!</h2><p id="modalText"></p><div class="modal-actions"><button class="secondary" id="closeModal">Continuar</button><button class="primary" id="modalNext">Próxima rodada →</button></div></div></div>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const canvas = $('canvas'), ctx = canvas.getContext('2d');
+  const palette = ['#172033','#e5484d','#2585f5','#20a66a','#f4b629','#9348d8','#ff8b35','#ffffff'];
+  const words = ['CASA','GATO','ÁRVORE','PIZZA','CARRO','SOL','PEIXE','AVIÃO','SORVETE','BICICLETA','CHUVA','FUTEBOL','CELULAR','BOLO','FLOR','ÓCULOS','GUITARRA','TARTARUGA','COMPUTADOR','GUARDA-CHUVA'];
+  const players = [
+    {name:'Você',emoji:'😎',score:0,active:true},
+    {name:'Luna',emoji:'🧑🏻‍🎨',score:0},
+    {name:'Theo',emoji:'🧑🏽‍🚀',score:0},
+    {name:'Bia',emoji:'👩🏻‍🎤',score:0}
+  ];
+  let color = palette[0], erasing = false, drawing = false, last = null;
+  let round = 1, seconds = 90, timerId = null, currentWord = 'CASA', guessed = false, finished = false;
+  let usedWords = [];
+  function renderPlayers(){
+    $('players').innerHTML = players.map((p,i)=>`<div class="player ${i===0?'active':''}"><div class="avatar">${p.emoji}</div><div><div class="player-name">${p.name}</div><div class="player-sub">${i===0?'Desenhando':'Adivinhando'}</div></div><div class="score">${p.score}</div></div>`).join('');
+  }
+  function addMessage(html, cls=''){
+    const el = document.createElement('div'); el.className = 'message '+cls; el.innerHTML = html;
+    $('chatlog').appendChild(el); $('chatlog').scrollTop = $('chatlog').scrollHeight;
+  }
+  function addSystem(text){ addMessage(text,'system'); }
+  function drawPalette(){
+    $('colors').innerHTML = '';
+    palette.forEach(c=>{
+      const b=document.createElement('button'); b.className='swatch'+(c===color&&!erasing?' selected':'');
+      b.style.background=c; b.title=c; b.setAttribute('aria-label','Cor '+c);
+      b.addEventListener('click',()=>{color=c;erasing=false;updateTools();}); $('colors').appendChild(b);
+    });
+  }
+  function updateTools(){
+    $('penBtn').classList.toggle('selected',!erasing); $('eraserBtn').classList.toggle('selected',erasing);
+    $('canvas').style.cursor=erasing?'cell':'crosshair'; drawPalette();
+  }
+  function clearCanvas(){ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);}
+  function point(e){
+    const r=canvas.getBoundingClientRect();
+    return {x:(e.clientX-r.left)*canvas.width/r.width,y:(e.clientY-r.top)*canvas.height/r.height};
+  }
+  canvas.addEventListener('pointerdown',e=>{if(finished)return; drawing=true;canvas.setPointerCapture(e.pointerId);last=point(e);ctx.beginPath();ctx.moveTo(last.x,last.y);ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=Number($('size').value);ctx.strokeStyle=erasing?'#ffffff':color;ctx.lineTo(last.x+.1,last.y+.1);ctx.stroke();});
+  canvas.addEventListener('pointermove',e=>{if(!drawing)return;const p=point(e);ctx.beginPath();ctx.moveTo(last.x,last.y);ctx.lineTo(p.x,p.y);ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=Number($('size').value);ctx.strokeStyle=erasing?'#ffffff':color;ctx.stroke();last=p;});
+  function stopDraw(){drawing=false;last=null;}
+  canvas.addEventListener('pointerup',stopDraw);canvas.addEventListener('pointercancel',stopDraw);
+  $('penBtn').onclick=()=>{erasing=false;updateTools();};
+  $('eraserBtn').onclick=()=>{erasing=true;updateTools();};
+  $('clearBtn').onclick=clearCanvas;
+  $('size').addEventListener('input',()=>{});
+  function normalize(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');}
+  function chooseWord(){
+    const available=words.filter(w=>!usedWords.includes(w));
+    if(!available.length)usedWords=[];
+    const list=words.filter(w=>!usedWords.includes(w));
+    currentWord=list[Math.floor(Math.random()*list.length)];usedWords.push(currentWord);
+    $('word').textContent=currentWord; $('word').classList.remove('hidden'); $('wordHint').textContent='Desenhe a palavra';
+    guessed=false;
+  }
+  function updateTimerDisplay(){
+    const m=String(Math.floor(seconds/60)).padStart(2,'0'),s=String(seconds%60).padStart(2,'0');
+    $('timer').textContent=`${m}:${s}`;$('timer').classList.toggle('urgent',seconds<=15);
+  }
+  function stopTimer(){if(timerId){clearInterval(timerId);timerId=null;}}
+  function startTimer(){
+    stopTimer();seconds=90;updateTimerDisplay();
+    timerId=setInterval(()=>{seconds--;updateTimerDisplay();if(seconds<=0)endRound('O tempo acabou! A palavra era '+currentWord+'.');},1000);
+  }
+  function endRound(message){
+    if(finished)return;finished=true;stopTimer();
+    $('modalTitle').textContent=round>=5?'Fim de jogo!':'Rodada concluída!';
+    $('modalText').textContent=message+' Pontuação: '+players[0].score+' pontos.';
+    $('overlay').classList.add('show');$('status').textContent='Rodada encerrada. Veja a pontuação.';
+  }
+  function nextRound(){
+    $('overlay').classList.remove('show');
+    if(round>=5){showFinal();return;}
+    round++;finished=false;$('roundPill').textContent=`Rodada ${round} / 5`;
+    $('chatlog').innerHTML='';addSystem('Nova rodada! Faça seus palpites no chat.');
+    clearCanvas();chooseWord();$('status').textContent='Acerte a palavra no chat para ganhar pontos.';
+    $('revealBtn').textContent='Mostrar palavra';startTimer();
+  }
+  function showFinal(){
+    const sorted=[...players].sort((a,b)=>b.score-a.score);
+    $('modalTitle').textContent='🏆 Resultado final';
+    $('modalText').textContent='Classificação: '+sorted.map((p,i)=>`${i+1}º ${p.name} (${p.score} pts)`).join(' • ');
+    $('modalNext').textContent='Jogar novamente';$('overlay').classList.add('show');
+    $('modalNext').onclick=()=>{players.forEach(p=>p.score=0);round=0;usedWords=[];$('modalNext').textContent='Próxima rodada →';$('modalNext').onclick=nextRound;renderPlayers();nextRound();};
+  }
+  $('nextBtn').onclick=()=>endRound('Você encerrou a rodada. A palavra era '+currentWord+'.');
+  $('modalNext').onclick=nextRound;$('closeModal').onclick=()=>$('overlay').classList.remove('show');
+  $('revealBtn').onclick=()=>{if($('word').classList.contains('hidden')){$('word').textContent=currentWord;$('word').classList.remove('hidden');$('revealBtn').textContent='Esconder palavra';}else{$('word').textContent='••••••';$('word').classList.add('hidden');$('revealBtn').textContent='Mostrar palavra';}};
+  $('chatform').addEventListener('submit',e=>{
+    e.preventDefault();const input=$('guess'),guess=input.value.trim();if(!guess||finished)return;input.value='';
+    if(normalize(guess)===normalize(currentWord)){
+      if(guessed){addMessage(`<strong>Você:</strong> ${escapeHtml(guess)} (já acertou)`);return;}
+      guessed=true;players[0].score+=100+Math.max(0,seconds);renderPlayers();
+      addMessage('🎉 Você acertou! +'+(100+Math.max(0,seconds))+' pontos.','correct');
+      endRound('Você acertou '+currentWord+'!');return;
+    }
+    addMessage(`<strong>Você:</strong> ${escapeHtml(guess)}`);
+    // Small local demo: simulated guesses from other players.
+    if(Math.random()<.42&&!guessed&&!finished){
+      const bot=players[1+Math.floor(Math.random()*3)];bot.score+=50;renderPlayers();
+      addMessage(`<strong>${bot.name}:</strong> Acho que é ${escapeHtml(currentWord.toLowerCase())}!`,'correct');
+      addSystem(`${bot.name} acertou e ganhou 50 pontos.`);
+    }
+  });
+  function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  renderPlayers();drawPalette();clearCanvas();chooseWord();startTimer();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Orby Compacto",
+  "version": "1.0.0",
+  "description": "Acesse tarefas, posts, caderno, hábitos e listas do Orby em um popup.",
+  "action": {
+    "default_title": "Orby Compacto",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "circle.png",
+      "32": "circle.png",
+      "48": "circle.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "circle.png",
+    "48": "circle.png",
+    "128": "circle.png"
+  },
+  "permissions": ["storage", "alarms"],
+  "optional_host_permissions": ["https://orbyapp.discloud.app/*", "https://orbyapp.discloud.dev/*"]
+}

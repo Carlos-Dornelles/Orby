@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Administração | Orby</title>
+  <link rel="stylesheet" href="/admin.css">
+  <script src="/admin.js" defer></script>
+</head>
+<body>
+  <main class="admin-shell">
+    <header class="admin-header">
+      <a class="admin-brand" href="/" aria-label="Voltar ao Orby">
+        <span class="admin-brand-mark">O</span>
+        <span>Orby <small>Administração</small></span>
+      </a>
+    </header>
+
+    <section id="adminLoginSection" class="admin-card admin-login">
+      <span class="admin-eyebrow">ÁREA RESTRITA</span>
+      <h1>Acessar painel</h1>
+      <p>Entre com as credenciais de administrador.</p>
+      <form id="adminLoginForm">
+        <label for="adminLogin">Login</label>
+        <input id="adminLogin" name="login" autocomplete="username" required maxlength="256">
+        <label for="adminPassword">Senha</label>
+        <input id="adminPassword" name="senha" type="password" autocomplete="current-password" required maxlength="256">
+        <button type="submit">Entrar</button>
+      </form>
+      <p id="adminLoginStatus" class="admin-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="adminPanelSection" class="admin-card" hidden>
+      <div class="admin-panel-heading">
+        <div>
+          <span class="admin-eyebrow">COMUNICAÇÃO</span>
+          <h1>Avisos para os usuários</h1>
+          <p>Os avisos publicados aparecem sempre que alguém entra no Orby.</p>
+        </div>
+        <button id="adminLogout" class="admin-secondary-button" type="button">Sair</button>
+      </div>
+
+      <form id="announcementForm" class="announcement-form">
+        <label for="announcementTitle">Título</label>
+        <input id="announcementTitle" name="titulo" maxlength="120" required placeholder="Ex.: Novidade no Orby">
+        <label for="announcementMessage">Mensagem</label>
+        <textarea id="announcementMessage" name="mensagem" rows="5" maxlength="2000" required placeholder="Escreva o aviso que todos os usuários verão..."></textarea>
+        <label for="announcementVideoUrl">Link do vídeo no YouTube (opcional)</label>
+        <input id="announcementVideoUrl" name="videoUrl" type="url" maxlength="2048" placeholder="https://www.youtube.com/watch?v=...">
+        <small class="announcement-video-help">O vídeo será exibido no aviso. Aceitamos links youtube.com e youtu.be.</small>
+        <div class="announcement-form-footer">
+          <span>Até 2.000 caracteres</span>
+          <button type="submit">Publicar aviso</button>
+        </div>
+      </form>
+      <p id="announcementStatus" class="admin-status" role="status" aria-live="polite"></p>
+
+      <div class="announcement-list-heading">
+        <h2>Avisos publicados</h2>
+        <span id="announcementCount">0</span>
+      </div>
+      <div id="announcementList" class="announcement-list" aria-live="polite"></div>
+
+      <div class="feedback-admin-heading">
+        <div>
+          <span class="admin-eyebrow">RETORNO DOS USUÁRIOS</span>
+          <h2>Sugestões e relatos</h2>
+        </div>
+        <button id="refreshFeedback" class="admin-secondary-button" type="button">Atualizar</button>
+      </div>
+      <p id="feedbackAdminStatus" class="admin-status" role="status" aria-live="polite"></p>
+      <div class="feedback-admin-list-heading">
+        <h3>Feedback recebido</h3>
+        <span id="feedbackAdminCount">0</span>
+      </div>
+      <div id="feedbackAdminList" class="feedback-admin-list" aria-live="polite"></div>
+    </section>
+  </main>
+</body>
+</html>
