@@ -10,24 +10,37 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<<<<<<< HEAD
   <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
   <script src="/theme.js"></script>
   <!-- CSS externo -->
   <link rel="stylesheet" href="/styles/style.css">
+<<<<<<< HEAD
   <link rel="stylesheet" href="/styles/announcements.css">
   <link rel="stylesheet" href="/styles/feedback.css">
   <link rel="stylesheet" href="/party/basketball-ui.css">
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 </head>
 
 <body>
 
   <div id="all">
     <header>
+<<<<<<< HEAD
       <a class="logo" href="https://orbyfinance.discloud.dev/" aria-label="Ir para Orby Finance">
         <img class="imgLogo" src="circle.png" alt="Orby Logo">
         <h1>Orby</h1>
       </a>
+=======
+      <div class="logo">
+        <img class="imgLogo" src="circle.png" alt="Orby Logo">
+        <h1>Orby</h1>
+      </div>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
       <div class="informacoes">
         <div id="horaAtual">00:00</div>
@@ -35,9 +48,12 @@
           <i class="bi bi-bell" aria-hidden="true"></i>
           <span id="contadorNotificacoes" class="contadorNotificacoes hidden">0</span>
         </button>
+<<<<<<< HEAD
         <button id="orbIaHeaderButton" class="iconeModal orb-ia-header-button" type="button" aria-label="Abrir conversa com Orb.IA" title="Orb.IA" aria-controls="orbIaHeaderPanel" aria-expanded="false" hidden>
           <i class="bi bi-stars" aria-hidden="true"></i>
         </button>
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
         <button class="iconeModal" type="button" aria-label="Configurações" onclick="abrirModalIcone(this, 'config')">
           <i class="bi bi-gear" aria-hidden="true"></i>
           <svg class="halloween-icone-lua" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -50,21 +66,29 @@
         </button>
       </div>
     </header>
+<<<<<<< HEAD
     <div id="orbIaHeaderPanel" class="orb-ia-header-panel" role="dialog" aria-labelledby="orbIaHeaderPanelTitle" hidden>
       <div id="orbIaHeaderPanelContent"></div>
     </div>
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
     <div class="mini-modal painelNotificacoes" id="notificacao">
       <div class="cabecalhoNotificacoes">
         <strong>Notificações</strong>
+<<<<<<< HEAD
         <div class="acoesCabecalhoNotificacoes">
           <button id="enviarNotificacao" type="button">Enviar</button>
           <button id="limparNotificacoes" type="button">Limpar</button>
         </div>
+=======
+        <button id="limparNotificacoes" type="button">Limpar</button>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       </div>
       <div id="listaNotificacoes"></div>
     </div>
 
+<<<<<<< HEAD
     <dialog id="dialogEnviarNotificacao" class="dialog-enviar-notificacao" aria-labelledby="tituloEnviarNotificacao">
       <form id="formEnviarNotificacao">
         <div class="dialog-enviar-notificacao-cabecalho">
@@ -94,6 +118,8 @@
       </form>
     </dialog>
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     <div class="mini-modal painelConfiguracoes" id="config">
       <strong>Configurações</strong>
       <p id="statusPermissaoNotificacoes"></p>
@@ -142,6 +168,7 @@
           </button>
         </div>
       </section>
+<<<<<<< HEAD
       <section class="dialog-temas-secao dialog-temas-personalizado" aria-label="Tema personalizado">
         <h3 class="dialog-temas-secao-titulo">Tema personalizado</h3>
         <div class="dialog-temas-opcoes" role="group" aria-label="Tema personalizado">
@@ -169,6 +196,8 @@
       </section>
       <details class="dialog-temas-mais">
         <summary><i class="bi bi-chevron-down" aria-hidden="true"></i> Mais temas</summary>
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       <section class="dialog-temas-secao" aria-label="Temas especiais">
         <h3 class="dialog-temas-secao-titulo">Temas especiais</h3>
         <div class="dialog-temas-opcoes" role="group" aria-label="Temas especiais">
@@ -195,6 +224,7 @@
           </button>
         </div>
       </section>
+<<<<<<< HEAD
       <section class="dialog-temas-secao" aria-label="Temas especiais">
         <h3 class="dialog-temas-secao-titulo">Inspirados</h3>
         <div class="dialog-temas-opcoes" role="group" aria-label="Temas inspirados">
@@ -247,6 +277,33 @@
         </div>
       </section>
       </details>
+=======
+      <section class="dialog-temas-secao dialog-temas-personalizado" aria-label="Tema personalizado">
+        <h3 class="dialog-temas-secao-titulo">Tema personalizado</h3>
+        <div class="dialog-temas-opcoes" role="group" aria-label="Tema personalizado">
+          <button class="dialog-tema-opcao" type="button" data-theme-option="custom" aria-pressed="false">
+            <span class="dialog-tema-amostra dialog-tema-amostra-personalizado" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+            <span>Personalizado</span>
+            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div id="editorTemaPersonalizado" class="dialog-tema-personalizado-editor" hidden>
+          <label class="dialog-tema-controle" for="corTemaPersonalizado">
+            <span>Cor primária</span>
+            <input id="corTemaPersonalizado" type="color" value="#174c32">
+          </label>
+          <label class="dialog-tema-controle" for="modoTemaPersonalizado">
+            <span>Aparência</span>
+            <select id="modoTemaPersonalizado">
+              <option value="light">Claro</option>
+              <option value="dark">Escuro</option>
+            </select>
+          </label>
+        </div>
+      </section>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       <p id="statusTemas" class="dialog-temas-status" role="status" aria-live="polite" hidden></p>
     </dialog>
 
@@ -262,6 +319,7 @@
           </button>
         </div>
         <section class="gerenciador-widgets-secao" aria-label="Widgets disponíveis">
+<<<<<<< HEAD
           <div class="gerenciador-widget-configuravel">
             <label class="gerenciador-widget-opcao" for="widgetCalendarioAtivo">
               <span><i class="bi bi-calendar3" aria-hidden="true"></i> Calendário</span>
@@ -294,6 +352,16 @@
               </div>
             </details>
           </div>
+=======
+          <label class="gerenciador-widget-opcao" for="widgetCalendarioAtivo">
+            <span><i class="bi bi-calendar3" aria-hidden="true"></i> Calendário</span>
+            <input id="widgetCalendarioAtivo" type="checkbox" checked>
+          </label>
+          <label class="gerenciador-widget-opcao" for="widgetTempoAtivo">
+            <span><i class="bi bi-cloud-sun" aria-hidden="true"></i> Tempo</span>
+            <input id="widgetTempoAtivo" type="checkbox" checked>
+          </label>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
           <label class="gerenciador-widget-opcao" for="widgetMensagemAtivo">
             <span><i class="bi bi-chat-square-text" aria-hidden="true"></i> Mensagem</span>
             <input id="widgetMensagemAtivo" type="checkbox" checked>
@@ -330,10 +398,13 @@
                 <select id="widgetHabitoSelect" aria-describedby="widgetHabitoStatus">
                   <option value="">Carregando hábitos...</option>
                 </select>
+<<<<<<< HEAD
                 <div id="habitoWidgetsExtras" class="habit-widget-extra-rows"></div>
                 <button id="adicionarWidgetHabito" class="habit-widget-add-config" type="button">
                   <i class="bi bi-plus-lg" aria-hidden="true"></i> Adicionar hábito
                 </button>
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
                 <small id="widgetHabitoStatus" role="status" aria-live="polite"></small>
               </div>
             </details>
@@ -352,7 +423,10 @@
                   <option value="analogico">Analógico</option>
                   <option value="minimalista">Minimalista</option>
                   <option value="flip">Digital flip</option>
+<<<<<<< HEAD
                   <option value="windows7">Windows 7</option>
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
                 </select>
               </div>
             </details>
@@ -409,6 +483,7 @@
             <span><i class="bi bi-grid-3x3" aria-hidden="true"></i> Xadrez</span>
             <input id="widgetXadrezAtivo" type="checkbox">
           </label>
+<<<<<<< HEAD
           <label class="gerenciador-widget-opcao" for="widgetFazendaAtivo">
             <span><i class="bi bi-flower1" aria-hidden="true"></i> Orby Farm</span>
             <input id="widgetFazendaAtivo" type="checkbox">
@@ -434,6 +509,12 @@
               </div>
             </details>
           </div>
+=======
+          <label class="gerenciador-widget-opcao" for="widgetOrbIaAtivo">
+            <span><i class="bi bi-stars" aria-hidden="true"></i> Orb.IA</span>
+            <input id="widgetOrbIaAtivo" type="checkbox">
+          </label>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
           <button id="reorganizarWidgets" class="painelConfiguracoes-add-image reorganizar-widgets" type="button">
             <i class="bi bi-grid" aria-hidden="true"></i> Reorganizar widgets
           </button>
@@ -454,6 +535,7 @@
           <div id="listaWidgetsImagem" class="lista-widgets-imagem" aria-live="polite"></div>
           <p id="statusWidgetImagem" class="statusWidgetImagem" role="status" aria-live="polite" hidden></p>
         </section>
+<<<<<<< HEAD
         <section class="gerenciador-widgets-secao gerenciador-extensao-secao" aria-labelledby="tituloOrbyMini">
           <div class="gerenciador-widgets-titulo-secao gerenciador-extensao-cabecalho">
             <h3 id="tituloOrbyMini"><i class="bi bi-puzzle" aria-hidden="true"></i> Orby Mini para Chrome</h3>
@@ -487,16 +569,21 @@
             </div>
           </div>
         </section>
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       </div>
     </dialog>
     <input id="arquivoWidgetImagem" type="file" accept="image/*" hidden>
 
     <div id="containerTasks">
       <div id="containerOptions">
+<<<<<<< HEAD
         <button id="alternarMenuCompacto" class="menu-compacto-toggle" type="button" aria-controls="containerOptions" aria-expanded="true" aria-label="Recolher menu lateral" title="Recolher menu lateral">
           <i class="bi bi-chevron-left" aria-hidden="true"></i>
         </button>
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
         <button class="option active" data-section="containerTarefas" onclick="setActive(this)" title="Tarefas">
           <i class="iconeSecao bi bi-calendar2-check" aria-hidden="true"></i>
         <h1 class="h1Container">Tarefas</h1>
@@ -528,6 +615,7 @@
           <h1 class="h1Container">Listas</h1>
         </button>
 
+<<<<<<< HEAD
         <div style="margin-top: auto; width: 100%; display: flex; flex-direction: column; align-items: center;">
           <button class="option" data-section="containerOrbyParty" onclick="setActive(this)" title="Orby Party" style="all: unset; cursor: pointer; display: block; width: 100%; text-align: center; margin-bottom: 12px; padding: 4px 0;">
             <img class="orby-party-logo" src="/party/orbypartylogo.png" alt="Orby Party" style="width: 100%; max-width: 115px; height: auto; object-fit: contain; display: block; margin: 0 auto;">
@@ -560,17 +648,47 @@
             </div>
             <input id="arquivoFotoPerfil" type="file" accept="image/jpeg,image/png,image/webp" hidden>
           </div>
+=======
+        <div class="perfil-usuario">
+          <div class="perfil-usuario-foto" aria-hidden="true">
+            <img id="fotoPerfilUsuario" alt="" hidden>
+            <i class="bi bi-person-fill"></i>
+            <svg class="halloween-chapeu-bruxa" viewBox="0 0 48 32" focusable="false">
+              <path class="halloween-chapeu-aba" d="M2 27c7-4 35-4 44 0-9 5-35 5-44 0Z" />
+              <path class="halloween-chapeu-cone" d="M13 24 27 2l9 22c-7-2-15-2-23 0Z" />
+              <path class="halloween-chapeu-faixa" d="m18 16 14 1 2 5-20 0Z" />
+            </svg>
+            <svg class="natal-gorro" viewBox="0 0 48 34" focusable="false">
+              <path class="natal-gorro-corpo" d="M5 27C11 13 20 4 35 4c-3 7 1 15 9 23Z" />
+              <path class="natal-gorro-pom-pom" d="M35 4c0-3 3-4 5-2 2 2 1 5-2 6-2 0-3-2-3-4Z" />
+              <path class="natal-gorro-borda" d="M4 25c12-4 30-4 42 0l-1 6c-12-4-28-4-40 1Z" />
+            </svg>
+          </div>
+          <div class="perfil-usuario-dados">
+            <span id="nomeUsuario">Carregando perfil...</span>
+            <button id="abrirConfiguracoesPerfil" class="perfil-usuario-configuracoes" type="button" aria-haspopup="dialog">
+              Configurações
+            </button>
+          </div>
+          <input id="arquivoFotoPerfil" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
         </div>
       </div>
 
       <dialog id="dialogConfiguracoesPerfil" class="dialog-configuracoes-perfil" aria-labelledby="tituloConfiguracoesPerfil">
         <div class="dialog-configuracoes-perfil-cabecalho">
           <h2 id="tituloConfiguracoesPerfil">Configurações do perfil</h2>
+<<<<<<< HEAD
           <div class="configuracoes-perfil-acoes-cabecalho">
             <button id="fecharConfiguracoesPerfil" type="button" aria-label="Fechar configurações">
               <i class="bi bi-x-lg" aria-hidden="true"></i>
             </button>
           </div>
+=======
+          <button id="fecharConfiguracoesPerfil" type="button" aria-label="Fechar configurações">
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+          </button>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
         </div>
         <form id="formNomePerfil">
           <label for="inputNomePerfil">Nome</label>
@@ -587,6 +705,7 @@
           <input id="novaSenhaPerfil" name="novaSenha" type="password" minlength="6" autocomplete="new-password" required>
           <button type="submit">Salvar nova senha</button>
         </form>
+<<<<<<< HEAD
         <div class="preferencia-foto-perfil">
           <button id="abrirConfiguracoesSecoes" class="acao-configuracao-perfil botao-icone-foto-perfil" type="button" aria-label="Configurar seções exibidas" title="Configurar seções exibidas" aria-haspopup="dialog">
             <i class="bi bi-layout-sidebar-inset" aria-hidden="true"></i>
@@ -644,10 +763,16 @@
           <p class="aderecos-dialog-descricao">Escolha um chapéu para o seu perfil.</p>
           <div id="gradeChapeusAderecos" class="grade-aderecos-chapeus" role="radiogroup" aria-label="Selecione um chapéu"></div>
         </dialog>
+=======
+        <button id="escolherFotoPerfil" class="acao-configuracao-perfil" type="button">
+          <i class="bi bi-camera" aria-hidden="true"></i> Trocar foto
+        </button>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
         <button id="botaoLogoutPerfil" class="acao-configuracao-perfil acao-sair-perfil" type="button">
           <i class="bi bi-box-arrow-right" aria-hidden="true"></i> Deslogar
         </button>
         <p id="statusConfiguracoesPerfil" role="status" aria-live="polite" hidden></p>
+<<<<<<< HEAD
         <div id="dialogFeedbackAtalho" class="feedback-atalho-popover" popover="manual" hidden>
           <button id="abrirFeedback" class="feedback-atalho" type="button" aria-label="Enviar sugestão, melhoria ou bug" title="Enviar feedback" aria-haspopup="dialog">
             <i class="bi bi-star" aria-hidden="true"></i>
@@ -671,6 +796,8 @@
           <label><input type="checkbox" data-section-preference="containerHabitos"> Hábitos</label>
           <label><input type="checkbox" data-section-preference="containerListas"> Listas</label>
         </fieldset>
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       </dialog>
 
       <section id="containerTarefas">
@@ -678,7 +805,11 @@
           <div class="tarefasContainer">
             <div class="tituloDiv">
               <h2 id="tituloData">
+<<<<<<< HEAD
                 <i class="iconeTituloSecao bi bi-calendar2-check" aria-hidden="true"></i>
+=======
+                <i class="bi bi-calendar" style="color: rgb(73, 199, 47); font-size: 30px; margin-right: 10px;"></i>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
                 <span id="textoData">Hoje</span>
               </h2>
               <div class="filtros">
@@ -727,8 +858,13 @@
           <div class="divBoxMensagem" id="mensagemWidget"></div>
         </div>
         <div class="widgetsWorkspace" id="widgetsWorkspace" aria-label="Área de widgets">
+<<<<<<< HEAD
           <article class="workspace-widget" data-widget-id="calendar" data-default-x="0" data-default-y="8">
             <div class="calendar" data-widget-visual="tema">
+=======
+          <article class="workspace-widget" data-widget-id="calendar" data-default-x="8" data-default-y="8">
+            <div class="calendar">
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
               <button class="widget-drag-handle" type="button" aria-label="Mover widget Calendário" title="Arraste para mover">
                 <i class="bi bi-grip-horizontal" aria-hidden="true"></i>
               </button>
@@ -742,11 +878,14 @@
                 <span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
               </div>
               <div class="calendar-days" id="calendarDays"></div>
+<<<<<<< HEAD
               <div class="calendar-win7-date" aria-hidden="true">
                 <span id="calendarWin7Weekday"></span>
                 <strong id="calendarWin7Day"></strong>
                 <span id="calendarWin7Month"></span>
               </div>
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
               <div class="calendar-footer">
                 <button id="todayButton" class="calendar-today-button" type="button" aria-label="Voltar para hoje" title="Voltar para hoje">Hoje</button>
               </div>
@@ -754,7 +893,11 @@
           </article>
 
           <article class="workspace-widget" data-widget-id="weather" data-default-x="8" data-default-y="370">
+<<<<<<< HEAD
             <div class="weather-card" id="weatherCard" data-widget-visual="tema">
+=======
+            <div class="weather-card" id="weatherCard">
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
               <button class="widget-drag-handle" type="button" aria-label="Mover widget Tempo" title="Arraste para mover">
                 <i class="bi bi-grip-horizontal" aria-hidden="true"></i>
               </button>
@@ -775,6 +918,7 @@
                   <div><span>Vento</span><strong id="weatherCardWind">-- m/s</strong></div>
                   <div><span>Sol</span><strong id="weatherCardSun">--:-- / --:--</strong></div>
                 </div>
+<<<<<<< HEAD
                 <div class="weather-card-forecast-header">
                   <div class="weather-card-forecast-heading">Próximos 7 dias</div>
                   <div class="weather-card-forecast-controls" aria-label="Navegar pela previsão">
@@ -790,11 +934,16 @@
                 </div>
                 <div class="weather-card-forecast" id="weatherCardForecast" role="region"
                   aria-label="Previsão do tempo para os próximos sete dias" aria-live="polite" tabindex="0">
+=======
+                <div class="weather-card-forecast-heading">Próximos 7 dias</div>
+                <div class="weather-card-forecast" id="weatherCardForecast" aria-live="polite">
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
                   <span class="weather-forecast-status">Carregando previsão...</span>
                 </div>
               </div>
             </div>
           </article>
+<<<<<<< HEAD
           <article class="workspace-widget currency-workspace-widget" data-widget-id="currency" data-default-x="278" data-default-y="920" hidden>
             <section class="currency-widget-card" aria-labelledby="currencyWidgetTitle">
               <button class="widget-drag-handle" type="button" aria-label="Mover widget de cotação de moedas" title="Arraste para mover">
@@ -852,6 +1001,8 @@
               </div>
             </form>
           </dialog>
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
           <article class="workspace-widget habit-workspace-widget" data-widget-id="habit" data-default-x="8" data-default-y="590" hidden>
             <div class="habit-workspace-card" id="widgetHabitoCard"></div>
           </article>
@@ -930,7 +1081,11 @@
                 <small id="timerRegressivoRotulo">Configure uma data</small>
               </div>
               <strong id="timerRegressivoNome" class="timer-regressivo-widget-title">Seu objetivo</strong>
+<<<<<<< HEAD
               <time id="timerRegressivoContagem" class="timer-regressivo-widget-time">Aguardando objetivo</time>
+=======
+              <time id="timerRegressivoContagem" class="timer-regressivo-widget-time">Configure uma data</time>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
               <span id="timerRegressivoDataFormatada" class="timer-regressivo-widget-date"></span>
             </div>
           </article>
@@ -971,12 +1126,20 @@
                   <button type="button" data-calculadora-digito="4">4</button>
                   <button type="button" data-calculadora-digito="5">5</button>
                   <button type="button" data-calculadora-digito="6">6</button>
+<<<<<<< HEAD
                   <button type="button" data-calculadora-operador="-" class="operador">-</button>
+=======
+                  <button type="button" data-calculadora-operador="−" class="operador">−</button>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
                   <button type="button" data-calculadora-digito="1">1</button>
                   <button type="button" data-calculadora-digito="2">2</button>
                   <button type="button" data-calculadora-digito="3">3</button>
                   <button type="button" data-calculadora-operador="+" class="operador">+</button>
+<<<<<<< HEAD
                   <button type="button" data-calculadora-acao="sinal">+/-</button>
+=======
+                  <button type="button" data-calculadora-acao="sinal">+/−</button>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
                   <button type="button" data-calculadora-digito="0">0</button>
                   <button type="button" data-calculadora-acao="decimal">.</button>
                   <button type="button" data-calculadora-acao="igual" class="igual">=</button>
@@ -1100,6 +1263,7 @@
                 </button>
               </div>
               <section class="chess-settings-section" aria-label="Nova partida">
+<<<<<<< HEAD
                 <button id="chessToggleNewGame" class="chess-toggle-section-btn" type="button" aria-expanded="false" aria-controls="chessNewGamePanel">
                   <span><i class="bi bi-plus-circle" aria-hidden="true"></i> Nova partida</span>
                   <i class="bi bi-chevron-down chess-toggle-icon" aria-hidden="true"></i>
@@ -1163,6 +1327,36 @@
                     <i class="bi bi-list-ol" aria-hidden="true"></i> Ranking global
                   </button>
                 </div>
+=======
+                <h3>Nova partida</h3>
+                <label for="chessGameMode">Modo de jogo</label>
+                <select id="chessGameMode">
+                  <option value="local">Local — duas pessoas</option>
+                  <option value="stockfish">Contra Stockfish</option>
+                  <option value="invite">Convidar usuário do Orby</option>
+                </select>
+                <div id="chessOpponentOptions" class="chess-opponent-options" hidden>
+                  <label for="chessPlayerColor">Você joga com</label>
+                  <select id="chessPlayerColor">
+                    <option value="w">Brancas</option>
+                    <option value="b">Pretas</option>
+                  </select>
+                  <label for="chessSkillLevel">Nível do Stockfish <output id="chessSkillValue" for="chessSkillLevel">10</output></label>
+                  <input id="chessSkillLevel" type="range" min="1" max="20" step="1" value="10">
+                  <small>1 é o mais fácil; 20 é o mais difícil.</small>
+                </div>
+                <div id="chessInviteOptions" class="chess-invite-options" hidden>
+                  <label for="chessInviteEmail">E-mail do usuário</label>
+                  <input id="chessInviteEmail" type="email" maxlength="254" autocomplete="email"
+                    placeholder="usuario@orby.com.br">
+                  <small>Você jogará com as brancas. O convite expira em sete dias.</small>
+                </div>
+                <p id="chessEngineStatus" class="chess-engine-status" role="status" aria-live="polite" hidden></p>
+                <button id="chessNewGame" class="chess-new-game-button" type="button">
+                  <i class="bi bi-arrow-repeat" aria-hidden="true"></i>
+                  <span id="chessNewGameLabel">Iniciar nova partida</span>
+                </button>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
               </section>
               <section class="chess-settings-section chess-resign-section" aria-label="Desistir da partida">
                 <h3>Encerrar partida</h3>
@@ -1186,8 +1380,11 @@
                   <option value="verde">Verde e branco</option>
                   <option value="classico">Preto e branco</option>
                   <option value="madeira">Madeira</option>
+<<<<<<< HEAD
                   <option value="aero">Branco e azul (Aero)</option>
                   <option value="vermelho">Branco e vermelho</option>
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
                 </select>
               </section>
               <section class="chess-settings-section chess-history-section" aria-label="Histórico de lances">
@@ -1202,6 +1399,7 @@
                 </button>
               </section>
             </dialog>
+<<<<<<< HEAD
             <dialog id="chessRankingDialog" class="chess-settings-dialog chess-ranking-dialog" aria-labelledby="chessRankingTitle">
               <div class="chess-settings-header">
                 <div>
@@ -1215,6 +1413,8 @@
               <p id="chessRankingStatus" class="chess-ranking-status" role="status" aria-live="polite">Carregando ranking...</p>
               <ol id="chessRankingList" class="chess-ranking-list" aria-label="Jogadores com maior rating"></ol>
             </dialog>
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
             <dialog id="chessMatchHistoryDialog" class="chess-settings-dialog chess-match-history-dialog"
               aria-labelledby="chessMatchHistoryTitle">
               <div class="chess-settings-header">
@@ -1226,6 +1426,7 @@
                   <i class="bi bi-x-lg" aria-hidden="true"></i>
                 </button>
               </div>
+<<<<<<< HEAD
               <div class="chess-match-history-filters" aria-label="Filtros do histórico">
                 <label for="chessHistoryPeriodFilter">Período
                   <select id="chessHistoryPeriodFilter">
@@ -1318,6 +1519,11 @@
                 </div>
               </div>
             </dialog>
+=======
+              <p id="chessMatchHistoryStatus" class="chess-match-history-status" role="status" aria-live="polite"></p>
+              <ol id="chessMatchHistoryList" class="chess-match-history-list" aria-label="Partidas anteriores"></ol>
+            </dialog>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
             <dialog id="chessPromotionDialog" class="chess-promotion-dialog" aria-labelledby="chessPromotionTitle">
               <h2 id="chessPromotionTitle">Promover peão</h2>
               <p>Escolha a peça para continuar a partida.</p>
@@ -1330,13 +1536,20 @@
             </dialog>
           </article>
           <article class="workspace-widget orb-ia-workspace-widget" data-widget-id="orb-ia" data-default-x="500" data-default-y="690" hidden>
+<<<<<<< HEAD
             <span id="orbIaCardSlot" hidden></span>
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
             <section class="orb-ia-card" aria-label="Widget Orb.IA">
               <button class="widget-drag-handle" type="button" aria-label="Mover widget Orb.IA" title="Arraste para mover">
                 <i class="bi bi-grip-horizontal" aria-hidden="true"></i>
               </button>
               <header class="orb-ia-header">
+<<<<<<< HEAD
                 <h2 id="orbIaHeaderPanelTitle"><i class="bi bi-stars" aria-hidden="true"></i> Orb.IA</h2>
+=======
+                <h2><i class="bi bi-stars" aria-hidden="true"></i> Orb.IA</h2>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
                 <div class="orb-ia-header-actions">
                   <button id="orbIaReset" class="orb-ia-reset-button" type="button"
                     aria-label="Resetar conversa" title="Resetar conversa">
@@ -1379,6 +1592,7 @@
                 title="Arraste para redimensionar; use as setas do teclado quando focado"></button>
             </section>
           </article>
+<<<<<<< HEAD
           <article class="workspace-widget farm-workspace-widget" data-widget-id="farm" data-default-x="8" data-default-y="1080" hidden>
             <section class="farm-widget-card" aria-labelledby="farmWidgetTitle">
               <button class="widget-drag-handle" type="button" aria-label="Mover widget Orby Farm" title="Arraste para mover">
@@ -1679,6 +1893,8 @@
               </button>
             </section>
           </article>
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
         </div>
 
         
@@ -1723,7 +1939,10 @@
           <input type="text" id="inputEditarTexto" maxlength="300" placeholder="Descrição da tarefa">
           <label for="inputEditarData">Data</label>
           <input type="date" id="inputEditarData">
+<<<<<<< HEAD
           <label class="opcao-tarefa-recorrente" id="opcaoRecorrenciaEdicao" hidden><input type="checkbox" id="recorrenteTarefaEdicao"><span class="interruptor-recorrencia" aria-hidden="true"></span><span>Repetir todos os dias</span></label>
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
           <label>Horário</label>
           <div class="horarioEdicao">
             <select id="inputEditarHora" aria-label="Hora"></select>
@@ -1751,7 +1970,11 @@
     <div class="tarefasContainerimportantes">
 
       <div class="tituloImportantes">
+<<<<<<< HEAD
         <i class="iconeTituloSecao bi bi-star-fill" aria-hidden="true"></i>
+=======
+        <i class="bi bi-star-fill" style="margin-right: 10px; font-size: 30px; color: gold;"></i>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
         <h2>Importantes</h2>
       </div>
 
@@ -1798,7 +2021,10 @@
     <input type="text" id="inputTarefaImportante" maxlength="300" placeholder="Descrição">
     <label for="dataTarefaImportante">Data</label>
     <input type="date" id="dataTarefaImportante">
+<<<<<<< HEAD
                 <label class="opcao-tarefa-recorrente"><input type="checkbox" id="recorrenteTarefaImportante"><span class="interruptor-recorrencia" aria-hidden="true"></span><span>Repetir todos os dias</span></label>
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     <label>Horário</label>
     <div class="horarioEdicao">
       <select id="horaTarefaImportante" aria-label="Hora"></select>
@@ -1826,7 +2052,11 @@
       <section id="containerNotas" hidden>
         <div class="cabecalhoPosts">
           <div>
+<<<<<<< HEAD
             <h2><i class="iconeTituloSecao bi bi-sticky-fill" aria-hidden="true"></i> Meus post-its</h2>
+=======
+            <h2>Meus post-its</h2>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
             <p>Arraste pelo cabeçalho para organizar suas ideias.</p>
           </div>
           <button class="BTNAddTarefa" type="button" onclick="abrirModalPost()">
@@ -1844,7 +2074,11 @@
       <section id="containerOutracoisa" hidden>
         <div class="cabecalhoCaderno">
           <div>
+<<<<<<< HEAD
             <h2><i class="iconeTituloSecao bi bi-journal-richtext" aria-hidden="true"></i> Meu caderno</h2>
+=======
+            <h2><i class="bi bi-journal-richtext" aria-hidden="true"></i> Meu caderno</h2>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
             <p>Suas anotações organizadas em folhas.</p>
           </div>
           <button id="btnNovaFolha" class="BTNAddTarefa" type="button" onclick="criarFolhaCaderno()">
@@ -1911,7 +2145,11 @@
       <section id="containerHabitos" hidden>
         <div class="cabecalhoHabitos">
           <div>
+<<<<<<< HEAD
             <h2><i class="iconeTituloSecao bi bi-fire" aria-hidden="true"></i> Meus hábitos</h2>
+=======
+            <h2><i class="bi bi-fire" aria-hidden="true"></i> Meus hábitos</h2>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
             <p>Marque o que você fez hoje e mantenha sua sequência.</p>
           </div>
           <button id="btnNovoHabito" class="BTNAddTarefa" type="button">
@@ -1925,7 +2163,11 @@
       <section id="containerListas" hidden>
         <div class="cabecalhoListas">
           <div>
+<<<<<<< HEAD
             <h2><i class="iconeTituloSecao bi bi-list-check" aria-hidden="true"></i> Minhas listas</h2>
+=======
+            <h2><i class="bi bi-list-check" aria-hidden="true"></i> Minhas listas</h2>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
             <p>Crie listas e acompanhe cada item no seu ritmo.</p>
           </div>
           <button id="btnNovaLista" class="BTNAddTarefa" type="button">
@@ -1934,6 +2176,7 @@
         </div>
         <div id="listaDeListas" class="listaDeListas" aria-live="polite"></div>
       </section>
+<<<<<<< HEAD
       <section id="containerOrbyParty" hidden>
         <div class="cabecalhoOrbyParty" style="padding: 24px; display: flex; flex-direction: column; gap: 20px; height: 100%; box-sizing: border-box; overflow-y: auto;">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
@@ -1984,12 +2227,15 @@
         </div>
       </section>
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
       <div id="modalLista" class="modal hidden">
         <div class="modal-content">
           <h3 id="tituloModalLista">Nova lista</h3>
           <label for="inputNomeLista">Nome da lista</label>
           <input id="inputNomeLista" type="text" maxlength="100" placeholder="Ex.: Compras da semana">
+<<<<<<< HEAD
           <label for="tipoLista">Tipo de lista</label>
           <select id="tipoLista">
             <option value="simples">Simples</option>
@@ -2015,6 +2261,8 @@
             </div>
             <small>Os itens voltam a pendentes no início de cada período.</small>
           </div>
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
           <div class="modal-actions">
             <button id="btnCancelarLista" type="button">Cancelar</button>
             <button id="btnSalvarLista" type="button">Salvar</button>
@@ -2031,7 +2279,10 @@
           <select id="tipoHabito">
             <option value="simples">Simples · concluir uma vez ao dia</option>
             <option value="horarios">Com horários · concluir em cada horário</option>
+<<<<<<< HEAD
             <option value="objetivo">Com objetivo · horários até uma data final</option>
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
           </select>
           <div id="configHabitoSimples">
             <label for="inputHorarioHabito">Horário do lembrete</label>
@@ -2046,11 +2297,14 @@
             <div id="listaHorariosHabito" class="listaHorariosHabito"></div>
             <small>Adicione pelo menos dois horários. Cada um pode ser concluído separadamente.</small>
           </div>
+<<<<<<< HEAD
           <div id="configHabitoObjetivo" class="configHabitoObjetivo hidden">
             <label for="inputDataFinalHabito">Data final</label>
             <input id="inputDataFinalHabito" type="date">
             <small>O hábito ficará finalizado ao terminar esta data.</small>
           </div>
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
           <div class="modal-actions">
             <button id="btnCancelarHabito" type="button">Cancelar</button>
             <button id="btnSalvarHabito" type="button">Salvar</button>
@@ -2058,6 +2312,7 @@
         </div>
       </div>
 
+<<<<<<< HEAD
       <dialog id="orbyDialog" class="orby-dialog-backdrop" hidden aria-labelledby="orbyDialogTitle" aria-describedby="orbyDialogMessage">
         <section class="orby-dialog-card">
           <h2 id="orbyDialogTitle">Confirmar ação</h2>
@@ -2070,6 +2325,8 @@
         </section>
       </dialog>
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       <div id="modalPost" class="modal hidden">
         <div class="modal-content modalPostContent">
           <h3 id="tituloModalPost">Novo post-it</h3>
@@ -2094,6 +2351,7 @@
   <div class="spinner"></div>
 </div>
 
+<<<<<<< HEAD
   <dialog id="adminAnnouncementsDialog" class="admin-announcements-dialog" aria-labelledby="adminAnnouncementTitle">
     <div id="adminAnnouncementsList" class="admin-announcements-list"></div>
     <p id="adminAnnouncementProgress" class="admin-announcement-progress"></p>
@@ -2154,6 +2412,12 @@
   <script src="script.js"></script>
   <script type="module" src="chess-widget.js"></script>
   <script type="module" src="farm-widget.js"></script>
+=======
+     <script src="/vendor/capacitor/capacitor.js"></script>
+  <script src="/vendor/local-notifications/plugin.js"></script>
+  <script src="script.js"></script>
+  <script type="module" src="chess-widget.js"></script>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 </body>
 
 </html>

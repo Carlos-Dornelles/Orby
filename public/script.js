@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 ﻿function lerCookie(nome) {
+=======
+function lerCookie(nome) {
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   const prefixo = `${encodeURIComponent(nome)}=`;
   const item = document.cookie.split(";").map(valor => valor.trim()).find(valor => valor.startsWith(prefixo));
   return item ? decodeURIComponent(item.slice(prefixo.length)) : "";
 }
 
+<<<<<<< HEAD
 let avisosAdminVisiveis = [];
 let indiceAvisoAdminAtual = 0;
 
@@ -95,6 +100,8 @@ async function carregarAvisosPublicados() {
   }
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 const userId = lerCookie("orbyUserId");
 window.orbyUserId = userId;
 if (!userId) {
@@ -102,6 +109,7 @@ if (!userId) {
 }
 
 const user = userId ? { id: userId } : null;
+<<<<<<< HEAD
 const avataresProntos = [
   { id: "icon1", nome: "Amarelo", categoria: "msn", src: "/frutigerIMG/icon1.jpg" },
   { id: "icon2", nome: "Laranja e roxo", categoria: "msn", src: "/frutigerIMG/icon2.jpg" },
@@ -198,6 +206,8 @@ function montarOpcoesAvatarPerfil(categoria = "msn") {
   sincronizarPreviaAdereco();
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 let habitos = [];
 let habitoEmEdicao = null;
 let horariosHabitoFormulario = [];
@@ -217,7 +227,10 @@ let cadernoAlterado = false;
 let cadernoSalvando = false;
 let listas = [];
 let listaEmEdicao = null;
+<<<<<<< HEAD
 let ultimaVerificacaoRecorrenciaListas = "";
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
 
 //funcao de deslogar
@@ -294,15 +307,21 @@ async function carregarPerfilUsuario() {
     if (perfil.fotoPerfilUrl) {
       foto.src = perfil.fotoPerfilUrl;
       foto.hidden = false;
+<<<<<<< HEAD
       const previa = document.getElementById("previaFotoPerfil");
       previa.src = perfil.fotoPerfilUrl;
       previa.hidden = false;
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       foto.addEventListener("error", () => {
         foto.hidden = true;
         foto.removeAttribute("src");
       }, { once: true });
     }
+<<<<<<< HEAD
     atualizarAvatarAero();
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   } catch (error) {
     console.error("Não foi possível carregar o perfil do usuário:", error);
     document.getElementById("nomeUsuario").textContent = "Perfil indisponível";
@@ -323,6 +342,10 @@ async function salvarNomePerfil(event) {
     status.textContent = "Informe um nome de até 100 caracteres.";
     return;
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   botao.disabled = true;
   try {
     const response = await fetch(`/usuarios/${encodeURIComponent(userId)}/perfil/nome`, {
@@ -379,8 +402,13 @@ async function redefinirSenhaPerfil(event) {
 
 async function enviarFotoPerfil(arquivo) {
   const seletor = document.getElementById("arquivoFotoPerfil");
+<<<<<<< HEAD
   const botoes = [document.getElementById("abrirSeletorFotoPerfil"), document.getElementById("selecionarImagemPerfil")];
   const statusConfiguracoes = document.getElementById("statusFotoPerfilMiniModal");
+=======
+  const botoes = [document.getElementById("escolherFotoPerfil")];
+  const statusConfiguracoes = document.getElementById("statusConfiguracoesPerfil");
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   statusConfiguracoes.hidden = false;
   statusConfiguracoes.textContent = "Enviando foto...";
   statusConfiguracoes.classList.remove("erro");
@@ -423,6 +451,7 @@ async function enviarFotoPerfil(arquivo) {
     if (!salvarResponse.ok) throw new Error(resultado.erro || "Não foi possível salvar a foto de perfil.");
 
     const foto = document.getElementById("fotoPerfilUsuario");
+<<<<<<< HEAD
     const previa = document.getElementById("previaFotoPerfil");
     foto.src = resultado.fotoPerfilUrl;
     foto.hidden = false;
@@ -436,6 +465,11 @@ async function enviarFotoPerfil(arquivo) {
     statusPerfil.hidden = false;
     statusPerfil.textContent = "Foto de perfil atualizada.";
     document.getElementById("dialogEscolherFotoPerfil").close();
+=======
+    foto.src = resultado.fotoPerfilUrl;
+    foto.hidden = false;
+    statusConfiguracoes.textContent = "Foto de perfil atualizada.";
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   } catch (error) {
     console.error("Não foi possível atualizar a foto de perfil:", error);
     statusConfiguracoes.classList.add("erro");
@@ -446,6 +480,7 @@ async function enviarFotoPerfil(arquivo) {
   }
 }
 
+<<<<<<< HEAD
 
 function aplicarAderecoChapeu(nomeChapeu) {
   const chapeuEl = document.getElementById("aderecoChapeuUsuario");
@@ -593,6 +628,8 @@ function selecionarChapeu(chapeuId) {
   salvarPreferenciasNoServidor();
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 carregarPerfilUsuario();
 
 // Loader do sistema
@@ -612,7 +649,10 @@ window.addEventListener("load", () => {
 
 //função para setar a seção ativa
 function setActive(button) {
+<<<<<<< HEAD
   if (!button || button.hidden) return;
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   const container = document.getElementById("containerTasks");
   const sections = Array.from(container.children).filter(element => element.tagName === "SECTION");
   const section = sections.find(element => element.id === button.dataset.section);
@@ -629,9 +669,12 @@ function setActive(button) {
     element.hidden = !isActive;
     element.classList.toggle("show", isActive);
   });
+<<<<<<< HEAD
   document.dispatchEvent(new CustomEvent("orby:party-section-change", {
     detail: { active: section.id === "containerOrbyParty" }
   }));
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
   if (section.id === "containerNotas") carregarPosts();
   if (section.id === "containerNotas") requestAnimationFrame(atualizarPosicaoLixeiraPosts);
@@ -643,6 +686,7 @@ function setActive(button) {
     aplicarLayoutWidgets();
   }
 }
+<<<<<<< HEAD
 
 const containerOptions = document.getElementById("containerOptions");
 const alternarMenuCompacto = document.getElementById("alternarMenuCompacto");
@@ -680,6 +724,8 @@ function aplicarVisibilidadeSecoes() {
   }
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 let redimensionamentoPainelTarefas = null;
 let arrasteWidget = null;
 let ordemWidgets = 1;
@@ -688,6 +734,7 @@ let layoutWidgetsEmMemoria = null;
 let layoutWidgetsCarregado = false;
 let salvamentoLayoutWidgetsEmAndamento = Promise.resolve();
 let contextoAudioPomodoro = null;
+<<<<<<< HEAD
 const moedasCotacaoDisponiveis = ["USD", "EUR", "GBP", "JPY", "CAD", "AUD", "CHF", "CNY", "ZAR", "MXN"];
 const criptomoedasCotacaoDisponiveis = ["BTC", "ETH", "USDT", "BNB", "SOL", "XRP"];
 const secoesNavegacaoDisponiveis = [
@@ -711,6 +758,14 @@ const preferenciasPadrao = {
   secoesNavegacao: { ...secoesNavegacaoPadrao },
   habitoWidget: "",
   habitosWidgets: [],
+=======
+const preferenciasPadrao = {
+  layoutWidgets: {},
+  visibilidadeWidgets: { "important-tasks": true, list: false, habit: false, clock: false, stopwatch: false, pomodoro: false, "timer-regressivo": false, utilidades: false, links: false, chess: false, "orb-ia": false },
+  postitsWidgets: [],
+  estiloRelogio: "digital",
+  habitoWidget: "",
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   listaWidget: "",
   linksWidget: [],
   modoArrasteWidgets: false,
@@ -720,14 +775,19 @@ const preferenciasPadrao = {
   pomodoro: { fase: "foco", tempoRestanteMs: 25 * 60 * 1000, rodando: false, iniciadoEm: null },
   timerRegressivo: { titulo: "", dataHora: "" },
   notificacoesLancesXadrez: true,
+<<<<<<< HEAD
   tabuleiroXadrez: "verde",
   avatarAero: "",
   aderecos: { chapeu: "" }
+=======
+  tabuleiroXadrez: "verde"
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 };
 let preferenciasUsuario = structuredClone(preferenciasPadrao);
 
 function normalizarPreferencias(preferencias) {
   const origem = preferencias && typeof preferencias === "object" && !Array.isArray(preferencias) ? preferencias : {};
+<<<<<<< HEAD
   const moedasCotacao = Array.isArray(origem.cotacaoMoedas)
     ? [...new Set(origem.cotacaoMoedas.filter(codigo => moedasCotacaoDisponiveis.includes(codigo)))].slice(0, 5)
     : [];
@@ -742,11 +802,14 @@ function normalizarPreferencias(preferencias) {
       .filter(id => typeof secoesNavegacaoSalvas[id] === "boolean")
       .map(id => [id, secoesNavegacaoSalvas[id]]))
   };
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   return {
     layoutWidgets: origem.layoutWidgets && typeof origem.layoutWidgets === "object" && !Array.isArray(origem.layoutWidgets) ? origem.layoutWidgets : {},
     visibilidadeWidgets: origem.visibilidadeWidgets && typeof origem.visibilidadeWidgets === "object" && !Array.isArray(origem.visibilidadeWidgets)
       ? { ...preferenciasPadrao.visibilidadeWidgets, ...origem.visibilidadeWidgets }
       : structuredClone(preferenciasPadrao.visibilidadeWidgets),
+<<<<<<< HEAD
     localizacaoOrbIa: ["widget", "cabecalho"].includes(origem.localizacaoOrbIa)
       ? origem.localizacaoOrbIa : preferenciasPadrao.localizacaoOrbIa,
     postitsWidgets: Array.isArray(origem.postitsWidgets) ? origem.postitsWidgets : [],
@@ -766,6 +829,12 @@ function normalizarPreferencias(preferencias) {
     habitosWidgets: Array.isArray(origem.habitosWidgets)
       ? origem.habitosWidgets.filter(item => item && typeof item.id === "string" && typeof item.habitoId === "string")
       : [],
+=======
+    postitsWidgets: Array.isArray(origem.postitsWidgets) ? origem.postitsWidgets : [],
+    estiloRelogio: ["digital", "analogico", "minimalista", "flip"].includes(origem.estiloRelogio)
+      ? origem.estiloRelogio : preferenciasPadrao.estiloRelogio,
+    habitoWidget: typeof origem.habitoWidget === "string" ? origem.habitoWidget : "",
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     listaWidget: typeof origem.listaWidget === "string" && /^[a-fA-F0-9]{24}$/.test(origem.listaWidget)
       ? origem.listaWidget : "",
     linksWidget: normalizarLinksWidget(origem.linksWidget),
@@ -799,6 +868,7 @@ function normalizarPreferencias(preferencias) {
     notificacoesLancesXadrez: typeof origem.notificacoesLancesXadrez === "boolean"
       ? origem.notificacoesLancesXadrez
       : preferenciasPadrao.notificacoesLancesXadrez,
+<<<<<<< HEAD
     tabuleiroXadrez: ["classico", "verde", "madeira", "aero", "vermelho"].includes(origem.tabuleiroXadrez)
       ? origem.tabuleiroXadrez
       : preferenciasPadrao.tabuleiroXadrez,
@@ -808,6 +878,11 @@ function normalizarPreferencias(preferencias) {
     aderecos: origem.aderecos && typeof origem.aderecos === "object" && !Array.isArray(origem.aderecos)
       ? { chapeu: typeof origem.aderecos.chapeu === "string" ? origem.aderecos.chapeu : "" }
       : structuredClone(preferenciasPadrao.aderecos)
+=======
+    tabuleiroXadrez: ["classico", "verde", "madeira"].includes(origem.tabuleiroXadrez)
+      ? origem.tabuleiroXadrez
+      : preferenciasPadrao.tabuleiroXadrez
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   };
 }
 
@@ -857,7 +932,10 @@ function salvarPreferenciasNoServidor() {
         const resultado = await response.json().catch(() => ({}));
         throw new Error(resultado.erro || "Nao foi possivel salvar as preferencias.");
       }
+<<<<<<< HEAD
       marcarLayoutWidgetsLocalComoSalvo(preferencias.layoutWidgets);
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     })
     .catch(error => console.warn("Nao foi possivel salvar as preferencias no servidor.", error));
 }
@@ -872,6 +950,7 @@ function lerLayoutWidgets() {
   }
 }
 
+<<<<<<< HEAD
 function chaveLayoutWidgetsLocal() {
   return `orbyLayoutWidgets:${userId}`;
 }
@@ -906,11 +985,16 @@ function marcarLayoutWidgetsLocalComoSalvo(layout) {
   }
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 function salvarLayoutWidgetsNoCache(layout) {
   layoutWidgetsEmMemoria = layout;
   try {
     preferenciasUsuario.layoutWidgets = layout;
+<<<<<<< HEAD
     if (layoutWidgetsCarregado) salvarLayoutWidgetsLocal(layout);
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   } catch (error) {
     console.warn("Não foi possível atualizar o cache dos widgets.", error);
   }
@@ -937,6 +1021,7 @@ function salvarLayoutWidgetsNoServidor(layout) {
     .catch(error => console.warn("Não foi possível salvar o layout dos widgets no servidor.", error));
 }
 
+<<<<<<< HEAD
 function aplicarVisualTempo(visual, carregarPrevisao = false) {
   const card = document.getElementById("weatherCard");
   const botao = document.getElementById("weatherToggle");
@@ -960,12 +1045,17 @@ async function carregarLayoutWidgets() {
   const layoutLocal = lerLayoutWidgets();
   const cacheLocal = lerLayoutWidgetsLocal();
   let sincronizarLayoutLocal = false;
+=======
+async function carregarLayoutWidgets() {
+  const layoutLocal = lerLayoutWidgets();
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   try {
     const response = await fetch(`/preferencias/${encodeURIComponent(userId)}`);
     const resultado = await response.json();
     if (!response.ok) throw new Error(resultado.erro || "Não foi possível carregar o layout dos widgets.");
 
     preferenciasUsuario = normalizarPreferencias(resultado?.preferencias);
+<<<<<<< HEAD
     if (cacheLocal?.pendente) {
       preferenciasUsuario.layoutWidgets = cacheLocal.layout;
       sincronizarLayoutLocal = true;
@@ -977,6 +1067,12 @@ async function carregarLayoutWidgets() {
       layoutWidgets: cacheLocal?.layout || layoutLocal
     });
     sincronizarLayoutLocal = cacheLocal?.pendente === true;
+=======
+    layoutWidgetsEmMemoria = preferenciasUsuario.layoutWidgets;
+  } catch (error) {
+    console.warn("Usando o layout local dos widgets porque o servidor não respondeu.", error);
+    preferenciasUsuario = normalizarPreferencias();
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     layoutWidgetsEmMemoria = preferenciasUsuario.layoutWidgets;
   } finally {
     window.orbyChessMoveNotifications = preferenciasUsuario.notificacoesLancesXadrez;
@@ -990,6 +1086,7 @@ async function carregarLayoutWidgets() {
     layoutWidgetsCarregado = true;
     const seletorRelogio = document.getElementById("widgetRelogioEstilo");
     if (seletorRelogio) seletorRelogio.value = preferenciasUsuario.estiloRelogio;
+<<<<<<< HEAD
     const seletorVisualCalendario = document.getElementById("widgetCalendarioVisual");
     if (seletorVisualCalendario) seletorVisualCalendario.value = preferenciasUsuario.visualCalendario;
     const seletorVisualTempo = document.getElementById("widgetTempoVisual");
@@ -999,11 +1096,14 @@ async function carregarLayoutWidgets() {
     aplicarVisualTempo(preferenciasUsuario.visualTempo, true);
     const seletorLocalizacaoOrbIa = document.getElementById("widgetOrbIaLocalizacao");
     if (seletorLocalizacaoOrbIa) seletorLocalizacaoOrbIa.value = preferenciasUsuario.localizacaoOrbIa;
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     const relogio = document.getElementById("widgetRelogio");
     if (relogio) relogio.dataset.clockStyle = preferenciasUsuario.estiloRelogio;
     modoArrasteWidgets = preferenciasUsuario.modoArrasteWidgets;
     document.getElementById("modoArrasteWidgets").checked = modoArrasteWidgets;
     document.getElementById("all").classList.toggle("modoWidgetsAtivo", modoArrasteWidgets);
+<<<<<<< HEAD
     aplicarVisibilidadeSecoes();
     aplicarLayoutWidgets();
     atualizarAvatarAero();
@@ -1013,6 +1113,11 @@ async function carregarLayoutWidgets() {
     if (!document.querySelector('#widgetsWorkspace [data-widget-id="currency"]')?.hidden) {
       void carregarCotacaoMoedas();
     }
+=======
+    aplicarLayoutWidgets();
+    renderizarPostitsWidget();
+    aplicarVisibilidadeWidgets();
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     atualizarWidgetCronometro();
     document.getElementById("widgetPomodoroFocoMinutos").value = preferenciasUsuario.duracoesPomodoro.focoMinutos;
     document.getElementById("widgetPomodoroPausaMinutos").value = preferenciasUsuario.duracoesPomodoro.pausaMinutos;
@@ -1026,7 +1131,10 @@ async function carregarLayoutWidgets() {
     renderizarListaWidgetsImagem();
     aplicarTamanhoSalvoPainelTarefas();
     void carregarListas();
+<<<<<<< HEAD
     if (sincronizarLayoutLocal) salvarPreferenciasNoServidor();
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   }
 }
 
@@ -1038,7 +1146,11 @@ document.addEventListener("chess-move-notifications-changed", event => {
 });
 
 document.addEventListener("chess-board-theme-changed", event => {
+<<<<<<< HEAD
   if (!["classico", "verde", "madeira", "aero", "vermelho"].includes(event.detail?.theme)) return;
+=======
+  if (!["classico", "verde", "madeira"].includes(event.detail?.theme)) return;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   preferenciasUsuario.tabuleiroXadrez = event.detail.theme;
   window.orbyChessBoardTheme = event.detail.theme;
   if (layoutWidgetsCarregado) salvarPreferenciasNoServidor();
@@ -1387,8 +1499,11 @@ function aplicarVisibilidadeWidgets() {
     utilidades: document.getElementById("widgetUtilidadesAtivo"),
     links: document.getElementById("widgetLinksAtivo"),
     chess: document.getElementById("widgetXadrezAtivo"),
+<<<<<<< HEAD
     farm: document.getElementById("widgetFazendaAtivo"),
     currency: document.getElementById("widgetCotacaoAtivo"),
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     "orb-ia": document.getElementById("widgetOrbIaAtivo")
   };
   Object.entries(controles).forEach(([id, controle]) => {
@@ -1403,6 +1518,7 @@ function aplicarVisibilidadeWidgets() {
   if (tarefasImportantesWidget) tarefasImportantesWidget.hidden = visibilidade["important-tasks"] === false;
   const habitoWidget = document.querySelector('#widgetsWorkspace [data-widget-id="habit"]');
   if (habitoWidget) habitoWidget.hidden = visibilidade.habit === false;
+<<<<<<< HEAD
   document.querySelectorAll('#widgetsWorkspace [data-widget-id^="habit-"]').forEach(widget => {
     widget.hidden = visibilidade.habit === false;
   });
@@ -1438,6 +1554,13 @@ function alterarVisibilidadeWidget(id, ativo) {
     aplicarLocalizacaoOrbIa();
     return;
   }
+=======
+  atualizarAlturaAreaWidgets();
+}
+
+function alterarVisibilidadeWidget(id, ativo) {
+  salvarVisibilidadeWidget(id, ativo);
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   if (id === "links" && !ativo) alternarPainelLinks(false);
   if (id === "message") {
     const mensagem = document.getElementById("mensagemWidget");
@@ -1457,6 +1580,7 @@ function alterarVisibilidadeWidget(id, ativo) {
   const widget = [...document.querySelectorAll("#widgetsWorkspace .workspace-widget")]
     .find(item => item.dataset.widgetId === id);
   if (widget) widget.hidden = !ativo;
+<<<<<<< HEAD
   if (id === "currency" && ativo) void carregarCotacaoMoedas();
   atualizarAlturaAreaWidgets();
 }
@@ -1976,6 +2100,11 @@ function inicializarConfiguracaoCotacao() {
   });
 }
 
+=======
+  atualizarAlturaAreaWidgets();
+}
+
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 function atualizarWidgetTimerRegressivo() {
   const nome = document.getElementById("timerRegressivoNome");
   const rotulo = document.getElementById("timerRegressivoRotulo");
@@ -2520,8 +2649,11 @@ function inicializarWidgetOrbIa() {
   const widgetOrbIa = document.querySelector('#widgetsWorkspace [data-widget-id="orb-ia"]');
   const cartaoOrbIa = widgetOrbIa?.querySelector(".orb-ia-card");
   const alcaRedimensionar = cartaoOrbIa?.querySelector(".orb-ia-resize-handle");
+<<<<<<< HEAD
   const botaoCabecalhoOrbIa = document.getElementById("orbIaHeaderButton");
   const painelCabecalhoOrbIa = document.getElementById("orbIaHeaderPanel");
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   const conversacao = [];
   let chaveConfigurada = false;
   let enviando = false;
@@ -2545,7 +2677,11 @@ function inicializarWidgetOrbIa() {
     const tamanho = limitarTamanho(largura, altura);
     cartaoOrbIa.style.width = `${tamanho.largura}px`;
     cartaoOrbIa.style.height = `${tamanho.altura}px`;
+<<<<<<< HEAD
     if (!widgetsEmTelaPequena() && preferenciasUsuario.localizacaoOrbIa !== "cabecalho") {
+=======
+    if (!widgetsEmTelaPequena()) {
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       definirPosicaoWidget(widgetOrbIa, widgetOrbIa.offsetLeft, widgetOrbIa.offsetTop);
     }
     return tamanho;
@@ -2605,6 +2741,7 @@ function inicializarWidgetOrbIa() {
   document.addEventListener("pointerup", finalizarRedimensionamento);
   document.addEventListener("pointercancel", finalizarRedimensionamento);
 
+<<<<<<< HEAD
   const posicionarPainelCabecalho = () => {
     if (painelCabecalhoOrbIa.hidden) return;
     const ancora = botaoCabecalhoOrbIa.getBoundingClientRect();
@@ -2642,6 +2779,8 @@ function inicializarWidgetOrbIa() {
   window.addEventListener("resize", posicionarPainelCabecalho);
   window.addEventListener("scroll", posicionarPainelCabecalho, true);
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   const renderizarMensagem = (papel, texto, classeExtra = "") => {
     const mensagem = document.createElement("li");
     mensagem.className = `orb-ia-message orb-ia-message-${papel} ${classeExtra}`.trim();
@@ -2766,7 +2905,11 @@ function inicializarWidgetOrbIa() {
   });
 
   botaoRemoverChave.addEventListener("click", async () => {
+<<<<<<< HEAD
     if (!await window.orbyConfirm("Remover sua chave Gemini salva?")) return;
+=======
+    if (!window.confirm("Remover sua chave Gemini salva?")) return;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     botaoRemoverChave.disabled = true;
     try {
       const response = await fetch("/orb-ia/chave", { method: "DELETE" });
@@ -3110,7 +3253,11 @@ function salvarLayoutWidgets() {
       const anterior = layoutAnterior[id];
       const xDeclarado = Number(widget.dataset.defaultX);
       const yDeclarado = Number(widget.dataset.defaultY);
+<<<<<<< HEAD
       const xPadrao = id === "weather" ? 250 : Number.isFinite(xDeclarado) ? xDeclarado : 8;
+=======
+      const xPadrao = id === "weather" ? 278 : Number.isFinite(xDeclarado) ? xDeclarado : 8;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       const yPadrao = id === "weather" ? 8 : Number.isFinite(yDeclarado) ? yDeclarado : maiorYSalvo + 360 + indice * 16;
       const xSalvo = Number(widget.dataset.layoutX);
       const ySalvo = Number(widget.dataset.layoutY);
@@ -3121,6 +3268,7 @@ function salvarLayoutWidgets() {
         ...(id === "chess" ? {
           width: Math.round(widget.querySelector(".chess-widget-card")?.getBoundingClientRect().width || 340)
         } : {}),
+<<<<<<< HEAD
         ...(id === "farm" ? {
           width: Math.round(widget.querySelector(".farm-widget-card")?.getBoundingClientRect().width || 280),
           ...(widget.querySelector(".farm-widget-card")?.style.height
@@ -3134,6 +3282,11 @@ function salvarLayoutWidgets() {
           height: preferenciasUsuario.localizacaoOrbIa === "cabecalho"
             ? Number.parseFloat((widget.querySelector(".orb-ia-card") || document.querySelector("#orbIaHeaderPanelContent .orb-ia-card"))?.style.height) || anterior?.height || 360
             : Math.round((widget.querySelector(".orb-ia-card") || document.querySelector("#orbIaHeaderPanelContent .orb-ia-card"))?.getBoundingClientRect().height || 360)
+=======
+        ...(id === "orb-ia" ? {
+          width: Math.round(widget.querySelector(".orb-ia-card")?.getBoundingClientRect().width || 290),
+          height: Math.round(widget.querySelector(".orb-ia-card")?.getBoundingClientRect().height || 360)
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
         } : {}),
         ...(widget.dataset.imageSrc ? {
           src: widget.dataset.imageSrc,
@@ -3193,11 +3346,14 @@ function aplicarLayoutWidgets() {
       const cartaoXadrez = widget.querySelector(".chess-widget-card");
       if (cartaoXadrez) cartaoXadrez.style.width = `${salvo.width}px`;
     }
+<<<<<<< HEAD
     if (widget.dataset.widgetId === "farm") {
       const cartaoFazenda = widget.querySelector(".farm-widget-card");
       if (cartaoFazenda && Number.isInteger(salvo?.width)) cartaoFazenda.style.width = `${salvo.width}px`;
       if (cartaoFazenda && Number.isInteger(salvo?.height)) cartaoFazenda.style.height = `${salvo.height}px`;
     }
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     if (widget.dataset.widgetId === "orb-ia") {
       const cartaoOrbIa = widget.querySelector(".orb-ia-card");
       if (cartaoOrbIa && Number.isInteger(salvo?.width) && Number.isInteger(salvo?.height)) {
@@ -3208,6 +3364,7 @@ function aplicarLayoutWidgets() {
     const padraoLadoALado = workspace.clientWidth >= 620;
     const xDeclarado = Number(widget.dataset.defaultX);
     const yDeclarado = Number(widget.dataset.defaultY);
+<<<<<<< HEAD
     const xPadrao = widget.dataset.widgetId === "weather" && padraoLadoALado ? 250 : Number.isFinite(xDeclarado) ? xDeclarado : 8;
     const yPadrao = widget.dataset.widgetId === "weather" && padraoLadoALado ? 8 : Number.isFinite(yDeclarado) ? yDeclarado : indice * 330;
     const xSalvo = widget.dataset.widgetId === "calendar" && Number(salvo?.x) === 8
@@ -3216,6 +3373,11 @@ function aplicarLayoutWidgets() {
         ? 250
         : salvo?.x;
     const x = Number.isFinite(xSalvo) ? xSalvo : xPadrao;
+=======
+    const xPadrao = widget.dataset.widgetId === "weather" && padraoLadoALado ? 278 : Number.isFinite(xDeclarado) ? xDeclarado : 8;
+    const yPadrao = widget.dataset.widgetId === "weather" && padraoLadoALado ? 8 : Number.isFinite(yDeclarado) ? yDeclarado : indice * 330;
+    const x = Number.isFinite(salvo?.x) ? salvo.x : xPadrao;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     const y = Number.isFinite(salvo?.y) ? salvo.y : yPadrao;
     widget.hidden = false;
     widget.dataset.layoutX = String(Math.max(0, Math.round(x)));
@@ -3232,7 +3394,10 @@ function aplicarLayoutWidgets() {
     atualizarAlturaAreaWidgets();
     widget.hidden = visibilidade[widget.dataset.widgetId] === false;
   });
+<<<<<<< HEAD
   aplicarLocalizacaoOrbIa();
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   atualizarAlturaAreaWidgets();
 }
 
@@ -3351,14 +3516,18 @@ function inicializarWidgets() {
     ["utilidades", document.getElementById("widgetUtilidadesAtivo")],
     ["links", document.getElementById("widgetLinksAtivo")],
     ["chess", document.getElementById("widgetXadrezAtivo")],
+<<<<<<< HEAD
     ["farm", document.getElementById("widgetFazendaAtivo")],
     ["currency", document.getElementById("widgetCotacaoAtivo")],
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     ["orb-ia", document.getElementById("widgetOrbIaAtivo")]
   ];
   for (const [id, controle] of opcoesEstaticas) {
     controle.checked = visibilidadeInicial[id] !== false;
     controle.addEventListener("change", () => alterarVisibilidadeWidget(id, controle.checked));
   }
+<<<<<<< HEAD
   const visuaisWidget = [
     ["widgetCalendarioVisual", "visualCalendario", document.querySelector("#widgetsWorkspace .calendar")],
     ["widgetTempoVisual", "visualTempo", document.getElementById("weatherCard")]
@@ -3384,6 +3553,8 @@ function inicializarWidgets() {
     });
   }
   inicializarConfiguracaoCotacao();
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   const widgetPomodoroAtivo = document.getElementById("widgetPomodoroAtivo");
   widgetPomodoroAtivo.checked = visibilidadeInicial.pomodoro !== false;
   widgetPomodoroAtivo.addEventListener("change", () => alterarVisibilidadeWidget("pomodoro", widgetPomodoroAtivo.checked));
@@ -3403,6 +3574,7 @@ function inicializarWidgets() {
   inputDuracaoPausa.value = preferenciasUsuario.duracoesPomodoro.pausaMinutos;
   inputDuracaoFoco.addEventListener("change", () => salvarDuracaoPomodoro(inputDuracaoFoco, "focoMinutos"));
   inputDuracaoPausa.addEventListener("change", () => salvarDuracaoPomodoro(inputDuracaoPausa, "pausaMinutos"));
+<<<<<<< HEAD
   const seletorLocalizacaoOrbIa = document.getElementById("widgetOrbIaLocalizacao");
   seletorLocalizacaoOrbIa.value = preferenciasUsuario.localizacaoOrbIa;
   seletorLocalizacaoOrbIa.addEventListener("change", () => {
@@ -3410,6 +3582,8 @@ function inicializarWidgets() {
     aplicarLocalizacaoOrbIa();
     if (layoutWidgetsCarregado) salvarPreferenciasNoServidor();
   });
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   const campoTimerTitulo = document.getElementById("timerRegressivoTitulo");
   const campoTimerDataHora = document.getElementById("timerRegressivoDataHora");
   campoTimerTitulo.value = preferenciasUsuario.timerRegressivo.titulo;
@@ -3420,7 +3594,11 @@ function inicializarWidgets() {
     ? "Edite os campos para substituir o objetivo ou remova a data atual."
     : "Configure um objetivo e uma data. Só é possível manter uma data por vez.";
   const seletorEstiloRelogio = document.getElementById("widgetRelogioEstilo");
+<<<<<<< HEAD
   const estilosRelogio = ["digital", "analogico", "minimalista", "flip", "windows7"];
+=======
+  const estilosRelogio = ["digital", "analogico", "minimalista", "flip"];
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   let estiloRelogioSalvo = "digital";
   try {
     const salvo = preferenciasUsuario.estiloRelogio;
@@ -3439,6 +3617,7 @@ function inicializarWidgets() {
     }
   });
   document.getElementById("widgetHabitoSelect").addEventListener("change", event => {
+<<<<<<< HEAD
     const habitoAnterior = preferenciasUsuario.habitoWidget;
     const habitoNovo = event.currentTarget.value;
     const widgetDuplicado = preferenciasUsuario.habitosWidgets.find(registro => registro.habitoId === habitoNovo);
@@ -3447,13 +3626,22 @@ function inicializarWidgets() {
     }
     try {
       preferenciasUsuario.habitoWidget = habitoNovo;
+=======
+    try {
+      preferenciasUsuario.habitoWidget = event.currentTarget.value;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       if (layoutWidgetsCarregado) salvarPreferenciasNoServidor();
     } catch (error) {
       console.warn("Não foi possível salvar o hábito selecionado para o widget.", error);
     }
+<<<<<<< HEAD
     atualizarWidgetHabito();
   });
   document.getElementById("adicionarWidgetHabito").addEventListener("click", adicionarWidgetHabito);
+=======
+    renderizarWidgetHabito();
+  });
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   document.getElementById("widgetListaSelect").addEventListener("change", event => {
     preferenciasUsuario.listaWidget = event.currentTarget.value;
     if (layoutWidgetsCarregado) salvarPreferenciasNoServidor();
@@ -3493,6 +3681,7 @@ function inicializarWidgets() {
   });
 
   const seletorFotoPerfil = document.getElementById("arquivoFotoPerfil");
+<<<<<<< HEAD
   montarOpcoesAvatarPerfil();
   const dialogFotoPerfil = document.getElementById("dialogEscolherFotoPerfil");
   document.getElementById("abrirSeletorFotoPerfil").addEventListener("click", () => {
@@ -3526,11 +3715,16 @@ function inicializarWidgets() {
     });
   });
   document.getElementById("selecionarImagemPerfil").addEventListener("click", () => seletorFotoPerfil.click());
+=======
+  const selecionarFotoPerfil = () => seletorFotoPerfil.click();
+  document.getElementById("escolherFotoPerfil").addEventListener("click", selecionarFotoPerfil);
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   seletorFotoPerfil.addEventListener("change", () => {
     const arquivo = seletorFotoPerfil.files?.[0];
     if (arquivo) void enviarFotoPerfil(arquivo);
   });
   const dialogoPerfil = document.getElementById("dialogConfiguracoesPerfil");
+<<<<<<< HEAD
   const atalhoFeedback = document.getElementById("dialogFeedbackAtalho");
   const abrirConfiguracoesPerfil = document.getElementById("abrirConfiguracoesPerfil");
   const dialogoSecoes = document.getElementById("dialogConfiguracoesSecoes");
@@ -3583,6 +3777,16 @@ function inicializarWidgets() {
       if (evento.target === dialogAderecos && typeof dialogAderecos.close === "function") dialogAderecos.close();
     });
   }
+=======
+  const abrirConfiguracoesPerfil = document.getElementById("abrirConfiguracoesPerfil");
+  const formularioSenhaPerfil = document.getElementById("formSenhaPerfil");
+  const alternarRedefinicaoSenha = document.getElementById("alternarRedefinicaoSenha");
+  abrirConfiguracoesPerfil.addEventListener("click", () => {
+    document.getElementById("statusConfiguracoesPerfil").hidden = true;
+    if (typeof dialogoPerfil.showModal === "function") dialogoPerfil.showModal();
+    else dialogoPerfil.setAttribute("open", "");
+  });
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   document.getElementById("fecharConfiguracoesPerfil").addEventListener("click", () => {
     if (typeof dialogoPerfil.close === "function") dialogoPerfil.close();
     else dialogoPerfil.removeAttribute("open");
@@ -3590,6 +3794,7 @@ function inicializarWidgets() {
   dialogoPerfil.addEventListener("click", evento => {
     if (evento.target === dialogoPerfil && typeof dialogoPerfil.close === "function") dialogoPerfil.close();
   });
+<<<<<<< HEAD
   document.getElementById("abrirConfiguracoesSecoes").addEventListener("click", () => {
     aplicarVisibilidadeSecoes();
     if (typeof dialogoSecoes.showModal === "function") dialogoSecoes.showModal();
@@ -3723,6 +3928,9 @@ function inicializarWidgets() {
       botaoEnviar.disabled = false;
     }
   });
+=======
+  document.getElementById("formNomePerfil").addEventListener("submit", salvarNomePerfil);
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   alternarRedefinicaoSenha.addEventListener("click", () => {
     formularioSenhaPerfil.hidden = !formularioSenhaPerfil.hidden;
     alternarRedefinicaoSenha.setAttribute("aria-expanded", String(!formularioSenhaPerfil.hidden));
@@ -3786,12 +3994,15 @@ function inicializarWidgets() {
   window.setInterval(atualizarWidgetTimerRegressivo, 1000);
 
   document.getElementById("mensagemWidget").hidden = visibilidadeInicial.message === false;
+<<<<<<< HEAD
   if (visibilidadeInicial.currency !== false) void carregarCotacaoMoedas();
   window.setInterval(() => {
     if (!document.querySelector('#widgetsWorkspace [data-widget-id="currency"]')?.hidden) {
       void carregarCotacaoMoedas();
     }
   }, 15 * 60 * 1000);
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   renderizarWidgetHabito();
   atualizarAlturaAreaWidgets();
   renderizarListaWidgetsImagem();
@@ -3856,6 +4067,7 @@ document.addEventListener("chess-widget-resized", event => {
   salvarLayoutWidgets();
 });
 
+<<<<<<< HEAD
 document.addEventListener("farm-widget-resized", event => {
   const widget = document.querySelector('#widgetsWorkspace [data-widget-id="farm"]');
   if (!widget || !Number.isInteger(event.detail?.width)) return;
@@ -3863,6 +4075,8 @@ document.addEventListener("farm-widget-resized", event => {
   salvarLayoutWidgets();
 });
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 function obterLimitesPainelTarefas() {
   const painel = document.querySelector("#containerTarefas .tarefasContainer");
   const secao = document.getElementById("containerTarefas");
@@ -4012,6 +4226,7 @@ function deslocarDataLocal(chave, dias) {
   return chaveDataLocal(data);
 }
 
+<<<<<<< HEAD
 function ehHabitoObjetivoFinalizado(habito, agora = new Date()) {
   return habito.tipo === "objetivo" && Boolean(habito.dataFinal) && chaveDataLocal(agora) > habito.dataFinal;
 }
@@ -4105,6 +4320,8 @@ function verificarViradaListasRecorrentes() {
   void carregarListas();
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 function calcularSequenciaHabito(diasConcluidos) {
   const concluidos = new Set(diasConcluidos);
   const hoje = chaveDataLocal(new Date());
@@ -4149,13 +4366,20 @@ function renderizarHabitos() {
 
   for (const habito of habitos) {
     const horarios = Array.isArray(habito.horarios) ? habito.horarios : [];
+<<<<<<< HEAD
     const finalizado = ehHabitoObjetivoFinalizado(habito);
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     const concluidoHoje = horarios.length
       ? horarios.every(horario => (habito.conclusoesHorarios || []).includes(`${hoje}@${horario}`))
       : habito.diasConcluidos.includes(hoje);
     const sequencia = calcularSequenciaHabito(habito.diasConcluidos);
     const cartao = document.createElement("article");
+<<<<<<< HEAD
     cartao.className = `cartaoHabito${concluidoHoje ? " concluido" : ""}${finalizado ? " finalizado" : ""}`;
+=======
+    cartao.className = `cartaoHabito${concluidoHoje ? " concluido" : ""}`;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     cartao.dataset.habitoId = habito._id;
 
     const informacoes = document.createElement("div");
@@ -4176,6 +4400,7 @@ function renderizarHabitos() {
     estatisticas.textContent =
       `${sequencia.atual} ${sequencia.atual === 1 ? "dia" : "dias"} seguidos · melhor: ${sequencia.melhor}`;
     informacoes.append(nome, lembrete, estatisticas);
+<<<<<<< HEAD
     if (habito.tipo === "objetivo" && habito.dataFinal) {
       const objetivo = document.createElement("p");
       objetivo.className = `objetivoHabito${finalizado ? " finalizado" : ""}`;
@@ -4183,6 +4408,8 @@ function renderizarHabitos() {
       objetivo.append(document.createTextNode(textoContagemObjetivo(habito.dataFinal)));
       informacoes.appendChild(objetivo);
     }
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
     const acoes = document.createElement("div");
     acoes.className = "acoesHabito";
@@ -4206,7 +4433,10 @@ function renderizarHabitos() {
         botaoHorario.dataset.acaoHabito = "concluir";
         botaoHorario.dataset.horario = horario;
         botaoHorario.setAttribute("aria-pressed", String(feito));
+<<<<<<< HEAD
         botaoHorario.disabled = finalizado;
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
         botaoHorario.innerHTML = `<i class="bi ${feito ? "bi-check-circle-fill" : "bi-circle"}" aria-hidden="true"></i> ${horario}`;
         listaHorarios.appendChild(botaoHorario);
       }
@@ -4216,7 +4446,10 @@ function renderizarHabitos() {
         marcarTodos.className = "btnMarcarTodosHorariosHabito";
         marcarTodos.dataset.acaoHabito = "concluirTodos";
         marcarTodos.disabled = concluidoHoje;
+<<<<<<< HEAD
         marcarTodos.disabled = concluidoHoje || finalizado;
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
         marcarTodos.setAttribute("aria-label", concluidoHoje
           ? `Todos os horários de ${habito.nome} já foram feitos`
           : `Marcar todos os horários de ${habito.nome} como feitos`);
@@ -4239,7 +4472,11 @@ function renderizarHabitos() {
     excluir.dataset.acaoHabito = "excluir";
     excluir.setAttribute("aria-label", `Excluir ${habito.nome}`);
     excluir.innerHTML = '<i class="bi bi-trash" aria-hidden="true"></i>';
+<<<<<<< HEAD
     if (!horarios.length && !finalizado) acoes.append(concluir);
+=======
+    if (!horarios.length) acoes.append(concluir);
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     acoes.append(editar, excluir);
     cartao.append(informacoes, acoes);
     lista.appendChild(cartao);
@@ -4293,9 +4530,15 @@ function criarBotaoHorarioWidgetHabito(habito, horario, feito, cartao) {
   return botao;
 }
 
+<<<<<<< HEAD
 function renderizarWidgetHabito(widgetId = "habit") {
   const widget = document.querySelector(`#widgetsWorkspace [data-widget-id="${CSS.escape(widgetId)}"]`);
   const card = widget?.querySelector(".habit-workspace-card");
+=======
+function renderizarWidgetHabito() {
+  const widget = document.querySelector('#widgetsWorkspace [data-widget-id="habit"]');
+  const card = document.getElementById("widgetHabitoCard");
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   if (!widget || !card) return;
 
   const visibilidade = lerVisibilidadeWidgets();
@@ -4313,9 +4556,13 @@ function renderizarWidgetHabito(widgetId = "habit") {
   card.appendChild(handle);
   handle.addEventListener("pointerdown", iniciarArrasteWidget);
   handle.addEventListener("keydown", moverWidgetComTeclado);
+<<<<<<< HEAD
   const habitoId = widgetId === "habit"
     ? document.getElementById("widgetHabitoSelect").value || preferenciasUsuario.habitoWidget
     : widget.dataset.habitoId;
+=======
+  const habitoId = document.getElementById("widgetHabitoSelect").value || preferenciasUsuario.habitoWidget;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   const habito = habitos.find(item => item._id === habitoId);
   if (!habito) {
     const vazio = document.createElement("p");
@@ -4329,7 +4576,10 @@ function renderizarWidgetHabito(widgetId = "habit") {
   card.dataset.habitoId = habito._id;
   const hoje = chaveDataLocal(new Date());
   const horarios = Array.isArray(habito.horarios) ? habito.horarios : [];
+<<<<<<< HEAD
   const finalizado = ehHabitoObjetivoFinalizado(habito);
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   const conclusoes = habito.conclusoesHorarios || [];
   const concluidoHoje = horarios.length
     ? horarios.every(horario => conclusoes.includes(`${hoje}@${horario}`))
@@ -4348,6 +4598,7 @@ function renderizarWidgetHabito(widgetId = "habit") {
   sequenciaTexto.textContent = `${sequencia.atual} ${sequencia.atual === 1 ? "dia" : "dias"} seguidos · melhor: ${sequencia.melhor}`;
   card.append(cabecalho, sequenciaTexto);
 
+<<<<<<< HEAD
   if (habito.tipo === "objetivo" && habito.dataFinal) {
     const objetivo = document.createElement("p");
     objetivo.className = `objetivoHabito${finalizado ? " finalizado" : ""}`;
@@ -4355,28 +4606,47 @@ function renderizarWidgetHabito(widgetId = "habit") {
     card.appendChild(objetivo);
   }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   if (horarios.length) {
     const listaHorarios = document.createElement("div");
     listaHorarios.className = "habit-widget-times";
     for (const horario of horarios) {
+<<<<<<< HEAD
       const botaoHorario = criarBotaoHorarioWidgetHabito(
         habito, horario, conclusoes.includes(`${hoje}@${horario}`), card
       );
       botaoHorario.disabled = finalizado;
       listaHorarios.appendChild(botaoHorario);
+=======
+      listaHorarios.appendChild(criarBotaoHorarioWidgetHabito(
+        habito,
+        horario,
+        conclusoes.includes(`${hoje}@${horario}`),
+        card
+      ));
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     }
     if (horarios.length > 1) {
       const marcarTodos = document.createElement("button");
       marcarTodos.type = "button";
       marcarTodos.className = "btnMarcarTodosHorariosHabito";
       marcarTodos.dataset.acaoHabito = "concluirTodos";
+<<<<<<< HEAD
       marcarTodos.disabled = concluidoHoje || finalizado;
+=======
+      marcarTodos.disabled = concluidoHoje;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       marcarTodos.textContent = concluidoHoje ? "Todos feitos" : "Marcar todos";
       marcarTodos.addEventListener("click", () => void acionarHabito(card, "concluirTodos", null, marcarTodos));
       listaHorarios.appendChild(marcarTodos);
     }
     card.appendChild(listaHorarios);
+<<<<<<< HEAD
   } else if (!finalizado) {
+=======
+  } else {
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     const concluir = document.createElement("button");
     concluir.type = "button";
     concluir.className = `btnMarcarHabito${concluidoHoje ? " concluido" : ""}`;
@@ -4457,6 +4727,7 @@ function renderizarWidgetLista() {
   }
 
   const concluidos = lista.itens.filter(item => item.concluido).length;
+<<<<<<< HEAD
   const resumoProgresso = `${concluidos}/${lista.itens.length}`;
   progresso.textContent = lista.tipo === "data" && lista.dataFinal
     ? `${resumoProgresso} · ${textoPrazoLista(lista)}`
@@ -4468,6 +4739,9 @@ function renderizarWidgetLista() {
     delete progresso.dataset.prazoLista;
     delete progresso.dataset.progressoBase;
   }
+=======
+  progresso.textContent = `${concluidos}/${lista.itens.length}`;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   vazio.textContent = lista.itens.length ? "" : "Esta lista ainda não tem itens.";
   for (const item of lista.itens) {
     const linha = document.createElement("li");
@@ -4512,6 +4786,7 @@ document.getElementById("widgetListaItens").addEventListener("click", async even
 
 function atualizarWidgetHabito() {
   preencherSelecaoWidgetHabito();
+<<<<<<< HEAD
   sincronizarWidgetsHabitos();
   renderizarWidgetHabito("habit");
   document.querySelectorAll('#widgetsWorkspace [data-widget-id^="habit-"]').forEach(widget => {
@@ -4627,6 +4902,9 @@ function adicionarWidgetHabito() {
   document.getElementById("widgetHabitoStatus").textContent = "";
   salvarLayoutWidgets();
   salvarPreferenciasNoServidor();
+=======
+  renderizarWidgetHabito();
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 }
 
 async function carregarHabitos() {
@@ -4653,19 +4931,29 @@ function abrirModalHabito(habito = null) {
   document.getElementById("inputNomeHabito").value = habito?.nome ?? "";
   document.getElementById("inputHorarioHabito").value = habito?.horario ?? "09:00";
   horariosHabitoFormulario = Array.isArray(habito?.horarios) ? [...habito.horarios] : [];
+<<<<<<< HEAD
   document.getElementById("inputDataFinalHabito").value = habito?.dataFinal ?? "";
   document.getElementById("tipoHabito").value = habito?.tipo ?? (horariosHabitoFormulario.length ? "horarios" : "simples");
+=======
+  document.getElementById("tipoHabito").value = horariosHabitoFormulario.length ? "horarios" : "simples";
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   atualizarFormularioHorariosHabito();
   document.getElementById("modalHabito").classList.remove("hidden");
   document.getElementById("inputNomeHabito").focus();
 }
 
 function atualizarFormularioHorariosHabito() {
+<<<<<<< HEAD
   const tipo = document.getElementById("tipoHabito").value;
   const multiplos = tipo === "horarios" || tipo === "objetivo";
   document.getElementById("configHabitoSimples").classList.toggle("hidden", multiplos);
   document.getElementById("configHabitoHorarios").classList.toggle("hidden", !multiplos);
   document.getElementById("configHabitoObjetivo").classList.toggle("hidden", tipo !== "objetivo");
+=======
+  const multiplos = document.getElementById("tipoHabito").value === "horarios";
+  document.getElementById("configHabitoSimples").classList.toggle("hidden", multiplos);
+  document.getElementById("configHabitoHorarios").classList.toggle("hidden", !multiplos);
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   const lista = document.getElementById("listaHorariosHabito");
   lista.replaceChildren();
   horariosHabitoFormulario.forEach((horario, indice) => {
@@ -4708,6 +4996,7 @@ async function salvarHabito() {
   const nomeInput = document.getElementById("inputNomeHabito");
   const horarioInput = document.getElementById("inputHorarioHabito");
   const nome = nomeInput.value.trim();
+<<<<<<< HEAD
   const tipo = document.getElementById("tipoHabito").value;
   const multiplos = tipo === "horarios" || tipo === "objetivo";
   const horarios = multiplos ? horariosHabitoFormulario : [];
@@ -4718,6 +5007,14 @@ async function salvarHabito() {
     alert(tipo === "objetivo"
       ? "Informe o nome, pelo menos dois horários e uma data final válida."
       : multiplos
+=======
+  const multiplos = document.getElementById("tipoHabito").value === "horarios";
+  const horarios = multiplos ? horariosHabitoFormulario : [];
+  const horario = multiplos ? horarios[0] : horarioInput.value;
+  if (!nome || nome.length > 100 || !/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(horario || "") ||
+      (multiplos && horarios.length < 2)) {
+    alert(multiplos
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       ? "Informe o nome e adicione pelo menos dois horários diferentes."
       : "Informe um nome de até 100 caracteres e um horário válido.");
     return;
@@ -4734,8 +5031,11 @@ async function salvarHabito() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           nome,
+<<<<<<< HEAD
           tipo,
           dataFinal,
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
           horario,
           horarios,
           fusoHorario: Intl.DateTimeFormat().resolvedOptions().timeZone
@@ -4764,7 +5064,11 @@ async function acionarHabito(cartao, acao, horario = null, botaoAcionado = null)
     return;
   }
   if (acao === "excluir") {
+<<<<<<< HEAD
     if (!await window.orbyConfirm(`Excluir o hábito "${habito.nome}" e sua sequência?`)) return;
+=======
+    if (!confirm(`Excluir o hábito "${habito.nome}" e sua sequência?`)) return;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     try {
       const response = await fetch(`/habitos/${userId}/${id}`, { method: "DELETE" });
       const resultado = await response.json();
@@ -4820,6 +5124,7 @@ document.getElementById("listaHabitos").addEventListener("click", event => {
 
 setInterval(() => {
   if (document.getElementById("containerHabitos").classList.contains("show")) renderizarHabitos();
+<<<<<<< HEAD
   atualizarContagensListas();
   verificarViradaListasRecorrentes();
   if (habitos.some(habito => habito.tipo === "objetivo")) {
@@ -4829,12 +5134,19 @@ setInterval(() => {
     });
   }
 }, 1000);
+=======
+}, 60000);
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
 async function carregarListas() {
   const container = document.getElementById("listaDeListas");
   try {
+<<<<<<< HEAD
     const fusoHorario = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const response = await fetch(`/listas/${userId}?fusoHorario=${encodeURIComponent(fusoHorario)}`);
+=======
+    const response = await fetch(`/listas/${userId}`);
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     const resultado = await response.json();
     if (!response.ok) throw new Error(resultado.erro || "N\u00e3o foi poss\u00edvel carregar as listas");
     listas = resultado;
@@ -4862,6 +5174,7 @@ function criarBotaoLista(classe, rotulo, icone, acao) {
 
 function renderizarListas() {
   const container = document.getElementById("listaDeListas");
+<<<<<<< HEAD
   const cartoesAnteriores = new Map(
     Array.from(container.querySelectorAll(".cartaoLista")).map(card => [
       card.dataset.listaId,
@@ -4871,6 +5184,8 @@ function renderizarListas() {
       ]))
     ])
   );
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   const progressosAnteriores = new Map(
     Array.from(container.querySelectorAll(".cartaoLista")).map(card => [
       card.dataset.listaId,
@@ -4888,9 +5203,13 @@ function renderizarListas() {
 
   listas.forEach(lista => {
     const card = document.createElement("article");
+<<<<<<< HEAD
     const listaConcluida = listaEstaConcluida(lista);
     const itensAnteriores = cartoesAnteriores.get(lista._id);
     card.className = `cartaoLista${listaConcluida ? " concluida" : ""}${cartoesAnteriores.has(lista._id) ? "" : " novo"}`;
+=======
+    card.className = "cartaoLista";
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     card.dataset.listaId = lista._id;
     const totalItens = lista.itens.length;
     const itensConcluidos = lista.itens.filter(item => item.concluido).length;
@@ -4908,6 +5227,7 @@ function renderizarListas() {
     );
     cabecalho.append(titulo, acoesLista);
 
+<<<<<<< HEAD
     const prazo = lista.tipo === "data" && lista.dataFinal ? document.createElement("p") : null;
     if (prazo) {
       prazo.className = `prazoLista${listaConcluida ? " concluida" : ""}`;
@@ -4921,6 +5241,8 @@ function renderizarListas() {
       recorrencia.append(document.createTextNode(textoRecorrenciaLista(lista)));
     }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     const progresso = document.createElement("div");
     progresso.className = "progressoLista";
     const resumo = document.createElement("span");
@@ -4953,7 +5275,11 @@ function renderizarListas() {
     input.setAttribute("aria-label", `Adicionar item em ${lista.nome}`);
     const adicionar = document.createElement("button");
     adicionar.type = "submit";
+<<<<<<< HEAD
     adicionar.innerHTML = '<i class="bi bi-plus-lg" aria-hidden="true"></i><span>H&#225;bito</span>';
+=======
+    adicionar.innerHTML = '<i class="bi bi-plus-lg" aria-hidden="true"></i><span>Adicionar</span>';
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     formulario.append(input, adicionar);
 
     const itens = document.createElement("ul");
@@ -4966,6 +5292,7 @@ function renderizarListas() {
     }
     lista.itens.forEach(item => {
       const linha = document.createElement("li");
+<<<<<<< HEAD
       const estadoAnterior = itensAnteriores?.get(item._id);
       const itemNovo = estadoAnterior === undefined;
       linha.className = `itemLista${item.concluido ? " concluido" : ""}${itemNovo ? " novo" : ""}`;
@@ -4978,11 +5305,18 @@ function renderizarListas() {
       arrastar.setAttribute("aria-label", `Arrastar ${item.texto} para outra lista`);
       arrastar.title = "Arraste para outra lista";
       arrastar.innerHTML = '<i class="bi bi-grip-vertical" aria-hidden="true"></i>';
+=======
+      linha.className = `itemLista${item.concluido ? " concluido" : ""}`;
+      linha.dataset.itemId = item._id;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       const marcador = document.createElement("button");
       marcador.type = "button";
       marcador.className = "marcadorItemLista";
       marcador.dataset.acaoLista = "alternar-item";
+<<<<<<< HEAD
       marcador.disabled = Boolean(item.atualizando);
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       marcador.setAttribute("aria-pressed", String(item.concluido));
       marcador.setAttribute("aria-label", item.concluido ? "Marcar item como pendente" : "Marcar item como conclu\u00eddo");
       marcador.innerHTML = `<i class="bi ${item.concluido ? "bi-check-circle-fill" : "bi-circle"}" aria-hidden="true"></i>`;
@@ -4995,10 +5329,17 @@ function renderizarListas() {
         criarBotaoLista("btnAcaoItemLista", "Editar item", "bi-pencil", "editar-item"),
         criarBotaoLista("btnAcaoItemLista perigo", "Excluir item", "bi-trash", "excluir-item")
       );
+<<<<<<< HEAD
       linha.append(marcador, texto, acoes, arrastar);
       itens.appendChild(linha);
     });
     card.append(cabecalho, ...(prazo ? [prazo] : []), ...(recorrencia ? [recorrencia] : []), progresso, formulario, itens);
+=======
+      linha.append(marcador, texto, acoes);
+      itens.appendChild(linha);
+    });
+    card.append(cabecalho, progresso, formulario, itens);
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     container.appendChild(card);
   });
 
@@ -5014,15 +5355,19 @@ function abrirModalLista(lista = null) {
   document.getElementById("tituloModalLista").textContent = lista ? "Editar lista" : "Nova lista";
   const input = document.getElementById("inputNomeLista");
   input.value = lista?.nome ?? "";
+<<<<<<< HEAD
   document.getElementById("tipoLista").value = lista?.tipo ?? "simples";
   document.getElementById("inputDataFinalLista").value = lista?.dataFinal ?? "";
   document.getElementById("recorrenciaLista").value = lista?.recorrencia ?? "diaria";
   document.getElementById("diaRecorrenciaLista").value = lista?.diaRecorrencia ?? 1;
   atualizarFormularioLista();
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   document.getElementById("modalLista").classList.remove("hidden");
   input.focus();
 }
 
+<<<<<<< HEAD
 function atualizarFormularioLista() {
   const tipo = document.getElementById("tipoLista").value;
   const comData = tipo === "data";
@@ -5032,6 +5377,8 @@ function atualizarFormularioLista() {
   document.getElementById("configDiaRecorrenciaLista").classList.toggle("hidden", tipo !== "recorrente" || !diaEspecifico);
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 function fecharModalLista() {
   document.getElementById("modalLista").classList.add("hidden");
   listaEmEdicao = null;
@@ -5039,6 +5386,7 @@ function fecharModalLista() {
 
 async function salvarLista() {
   const nome = document.getElementById("inputNomeLista").value.trim();
+<<<<<<< HEAD
   const tipo = document.getElementById("tipoLista").value;
   const dataFinal = tipo === "data" ? document.getElementById("inputDataFinalLista").value : "";
   const recorrencia = tipo === "recorrente" ? document.getElementById("recorrenciaLista").value : "diaria";
@@ -5047,6 +5395,9 @@ async function salvarLista() {
       (tipo === "recorrente" && recorrencia === "dia_mes" && (!Number.isInteger(diaRecorrencia) || diaRecorrencia < 1 || diaRecorrencia > 31))) {
     return alert(tipo === "data" ? "Informe o nome e uma data final válida." : "Informe o nome da lista.");
   }
+=======
+  if (!nome) return alert("Informe o nome da lista.");
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   const botao = document.getElementById("btnSalvarLista");
   botao.disabled = true;
   try {
@@ -5054,10 +5405,14 @@ async function salvarLista() {
     const response = await fetch(editando ? `/listas/${userId}/${listaEmEdicao}` : `/listas/${userId}`, {
       method: editando ? "PUT" : "POST",
       headers: { "Content-Type": "application/json" },
+<<<<<<< HEAD
       body: JSON.stringify({
         nome, tipo, dataFinal, recorrencia, diaRecorrencia,
         fusoHorario: Intl.DateTimeFormat().resolvedOptions().timeZone
       })
+=======
+      body: JSON.stringify({ nome })
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     });
     const resultado = await response.json();
     if (!response.ok) throw new Error(resultado.erro || "N\u00e3o foi poss\u00edvel salvar a lista");
@@ -5084,6 +5439,7 @@ async function atualizarItemLista(listaId, itemId, dados) {
 document.getElementById("btnNovaLista").addEventListener("click", () => abrirModalLista());
 document.getElementById("btnCancelarLista").addEventListener("click", fecharModalLista);
 document.getElementById("btnSalvarLista").addEventListener("click", () => void salvarLista());
+<<<<<<< HEAD
 document.getElementById("tipoLista").addEventListener("change", atualizarFormularioLista);
 document.getElementById("recorrenciaLista").addEventListener("change", atualizarFormularioLista);
 
@@ -6973,6 +7329,9 @@ containerListas.addEventListener("dragend", () => {
   });
 });
 containerListas.addEventListener("submit", event => {
+=======
+document.getElementById("listaDeListas").addEventListener("submit", event => {
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   const formulario = event.target.closest('form[data-acao-lista="adicionar-item"]');
   if (!formulario) return;
   event.preventDefault();
@@ -6987,14 +7346,21 @@ containerListas.addEventListener("submit", event => {
     const resultado = await response.json();
     if (!response.ok) throw new Error(resultado.erro || "N\u00e3o foi poss\u00edvel adicionar o item");
     await carregarListas();
+<<<<<<< HEAD
     const cartaoAtualizado = Array.from(document.querySelectorAll(".cartaoLista")).find(card => card.dataset.listaId === listaId);
     cartaoAtualizado?.querySelector(".adicionarItemLista input")?.focus();
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   }).catch(error => {
     console.error(error);
     alert(error.message || "N\u00e3o foi poss\u00edvel adicionar o item.");
   }).finally(() => { botao.disabled = false; });
 });
+<<<<<<< HEAD
 containerListas.addEventListener("click", event => {
+=======
+document.getElementById("listaDeListas").addEventListener("click", event => {
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   const botao = event.target.closest("[data-acao-lista]");
   if (!botao || botao.tagName === "FORM") return;
   const card = botao.closest(".cartaoLista");
@@ -7005,6 +7371,7 @@ containerListas.addEventListener("click", event => {
   const acao = botao.dataset.acaoLista;
   (async () => {
     try {
+<<<<<<< HEAD
       let recarregarListas = true;
       if (acao === "editar-lista") return abrirModalLista(lista);
       if (acao === "excluir-lista") {
@@ -7043,15 +7410,34 @@ containerListas.addEventListener("click", event => {
       }
       else if (acao === "editar-item") {
         const texto = await window.orbyPrompt("Editar item", item.texto);
+=======
+      if (acao === "editar-lista") return abrirModalLista(lista);
+      if (acao === "excluir-lista") {
+        if (!confirm(`Excluir a lista "${lista.nome}" e todos os seus itens?`)) return;
+        const response = await fetch(`/listas/${userId}/${lista._id}`, { method: "DELETE" });
+        if (!response.ok) throw new Error("N\u00e3o foi poss\u00edvel excluir a lista");
+      } else if (!item) return;
+      else if (acao === "alternar-item") await atualizarItemLista(lista._id, item._id, { concluido: !item.concluido });
+      else if (acao === "editar-item") {
+        const texto = prompt("Editar item", item.texto);
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
         if (texto === null) return;
         if (!texto.trim()) return alert("O item n\u00e3o pode ficar vazio.");
         await atualizarItemLista(lista._id, item._id, { texto: texto.trim() });
       } else if (acao === "excluir-item") {
+<<<<<<< HEAD
         if (!await window.orbyConfirm(`Excluir o item "${item.texto}"?`)) return;
         const response = await fetch(`/listas/${userId}/${lista._id}/itens/${item._id}`, { method: "DELETE" });
         if (!response.ok) throw new Error("N\u00e3o foi poss\u00edvel excluir o item");
       } else return;
       if (recarregarListas) await carregarListas();
+=======
+        if (!confirm(`Excluir o item "${item.texto}"?`)) return;
+        const response = await fetch(`/listas/${userId}/${lista._id}/itens/${item._id}`, { method: "DELETE" });
+        if (!response.ok) throw new Error("N\u00e3o foi poss\u00edvel excluir o item");
+      } else return;
+      await carregarListas();
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     } catch (error) {
       console.error(error);
       alert(error.message || "N\u00e3o foi poss\u00edvel atualizar a lista.");
@@ -7215,7 +7601,11 @@ async function navegarFolhaCaderno(direcao) {
 
 async function excluirFolhaCaderno() {
   if (indiceFolhaCaderno < 0) return;
+<<<<<<< HEAD
   if (!await window.orbyConfirm("Excluir esta folha e todas as anotações dela?")) return;
+=======
+  if (!window.confirm("Excluir esta folha e todas as anotações dela?")) return;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   const folha = folhasCaderno[indiceFolhaCaderno];
   const botao = document.getElementById("btnExcluirFolha");
   botao.disabled = true;
@@ -7424,7 +7814,11 @@ async function salvarPost() {
 }
 
 async function excluirPost(postId, confirmar = true) {
+<<<<<<< HEAD
   if (confirmar && !await window.orbyConfirm("Deseja excluir este post-it?")) return false;
+=======
+  if (confirmar && !window.confirm("Deseja excluir este post-it?")) return false;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   try {
     const response = await fetch(`/posts/${userId}/${postId}`, { method: "DELETE" });
     const result = await response.json();
@@ -7505,12 +7899,21 @@ function moverPostComPonteiro(event) {
   if (arrastePostAtivo.modo === "redimensionar") {
     const resize = arrastePostAtivo;
     const maxWidth = Math.max(180, Math.min(900, canvasPosts.clientWidth - resize.card.offsetLeft));
+<<<<<<< HEAD
     resize.largura = Math.round(Math.min(maxWidth, Math.max(180,
       resize.larguraInicial + event.clientX - resize.inicioX
     )));
     resize.altura = Math.round(Math.min(1000, Math.max(130,
       resize.alturaInicial + event.clientY - resize.inicioY
     )));
+=======
+    resize.largura = Math.min(maxWidth, Math.max(180,
+      resize.larguraInicial + event.clientX - resize.inicioX
+    ));
+    resize.altura = Math.min(1000, Math.max(130,
+      resize.alturaInicial + event.clientY - resize.inicioY
+    ));
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     resize.card.style.width = `${resize.largura}px`;
     resize.card.style.height = `${resize.altura}px`;
     ajustarAlturaQuadroPosts();
@@ -7636,6 +8039,7 @@ window.addEventListener("resize", atualizarPosicaoLixeiraPosts);
 window.addEventListener("scroll", atualizarPosicaoLixeiraPosts, true);
 
 window.addEventListener("DOMContentLoaded", () => {
+<<<<<<< HEAD
   carregarAvisosPublicados();
   document.getElementById("closeAdminAnnouncements").addEventListener("click", () => {
     avancarAvisoAdmin();
@@ -7644,11 +8048,14 @@ window.addEventListener("DOMContentLoaded", () => {
     naoMostrarNovamenteAvisoAdmin();
   });
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   const firstSection = document.getElementById("containerTarefas");
   firstSection.style.removeProperty("display");
   firstSection.classList.add("show");
 
   document.querySelector(".option").classList.add("active");
+<<<<<<< HEAD
   document.querySelectorAll("[data-section-preference]").forEach(controle => {
     controle.addEventListener("change", () => {
       preferenciasUsuario.secoesNavegacao[controle.dataset.sectionPreference] = controle.checked;
@@ -7656,12 +8063,17 @@ window.addEventListener("DOMContentLoaded", () => {
       if (layoutWidgetsCarregado) salvarPreferenciasNoServidor();
     });
   });
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
   const dialogoTemas = document.getElementById("dialogTemas");
   const statusTemas = document.getElementById("statusTemas");
   const opcoesTema = Array.from(document.querySelectorAll("[data-theme-option]"));
+<<<<<<< HEAD
   const secaoAeroWallpapers = document.getElementById("dialogAeroWallpapers");
   const opcoesAeroWallpaper = Array.from(document.querySelectorAll("[data-aero-wallpaper]"));
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   const corTemaPersonalizado = document.getElementById("corTemaPersonalizado");
   const modoTemaPersonalizado = document.getElementById("modoTemaPersonalizado");
   const amostraTemaPersonalizado = document.querySelector(".dialog-tema-amostra-personalizado");
@@ -7671,9 +8083,13 @@ window.addEventListener("DOMContentLoaded", () => {
   const tocarSomTema = tema => {
     const sonsTemas = {
       halloween: "/sons/temaHalloween.mp3",
+<<<<<<< HEAD
       natal: "/sons/temanatal.mp3",
       aero: "/sons/win-7-startup.mp3",
       wii: "/sons/wii%20start.mp3"
+=======
+      natal: "/sons/temanatal.mp3"
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     };
     const arquivo = sonsTemas[tema];
     if (!arquivo) return;
@@ -7714,6 +8130,7 @@ window.addEventListener("DOMContentLoaded", () => {
       opcao.setAttribute("aria-pressed", String(opcao.dataset.themeOption === tema));
     });
     editorTemaPersonalizado.hidden = tema !== "custom";
+<<<<<<< HEAD
     secaoAeroWallpapers.hidden = tema !== "aero";
     opcoesAeroWallpaper.forEach(opcao => {
       opcao.setAttribute("aria-pressed", String(opcao.dataset.aeroWallpaper === window.orbyAeroWallpaper));
@@ -7726,6 +8143,15 @@ window.addEventListener("DOMContentLoaded", () => {
     : document.documentElement.dataset.theme === "dark" ? "dark" : "light";
   let temaSelecionadoAtual = temaInicial;
   atualizarAvatarAero();
+=======
+  };
+
+  const temaEspecialInicial = document.documentElement.dataset.specialTheme;
+  const temaInicial = ["halloween", "natal", "orby-vannila", "custom"].includes(temaEspecialInicial)
+    ? temaEspecialInicial
+    : document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+  let temaSelecionadoAtual = temaInicial;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   const animarTrocaTema = tema => {
     if (tema === temaSelecionadoAtual) return;
     temaSelecionadoAtual = tema;
@@ -7738,10 +8164,14 @@ window.addEventListener("DOMContentLoaded", () => {
       halloween: { nome: "Halloween", icone: "bi-moon-stars", particula: "✦" },
       natal: { nome: "Natal", icone: "bi-snow2", particula: "❄" },
       "orby-vannila": { nome: "Orby Vannila", icone: "bi-stars", particula: "✿" },
+<<<<<<< HEAD
       custom: { nome: "Tema personalizado", icone: "bi-palette", particula: "✦" },
       wii: { nome: "Wii Theme", icone: "bi-stars", particula: "✦" },
       aero: { nome: "Frutiger Aero", icone: "bi-water", particula: "✧" },
       coffe: { nome: "Coffe Theme", icone: "bi-cup-hot", particula: "☕" }
+=======
+      custom: { nome: "Tema personalizado", icone: "bi-palette", particula: "✦" }
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     };
     const detalhes = detalhesTemas[tema];
     if (!detalhes) return;
@@ -7849,20 +8279,31 @@ window.addEventListener("DOMContentLoaded", () => {
           aplicarTemaPersonalizado();
           animarTrocaTema(tema);
           return;
+<<<<<<< HEAD
         } else if (["light", "dark", "halloween", "natal", "orby-vannila", "wii", "aero", "coffe"].includes(tema)) {
+=======
+        } else if (["light", "dark", "halloween", "natal", "orby-vannila"].includes(tema)) {
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
           if (typeof window.orbyClearCustomTheme !== "function") {
             throw new Error("A restauração dos temas padrão não está disponível.");
           }
           window.orbyClearCustomTheme();
           document.documentElement.dataset.theme = tema === "dark" || tema === "halloween" ? "dark" : "light";
+<<<<<<< HEAD
           if (["halloween", "natal", "orby-vannila", "wii", "aero", "coffe"].includes(tema)) {
+=======
+          if (["halloween", "natal", "orby-vannila"].includes(tema)) {
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
             document.documentElement.dataset.specialTheme = tema;
           }
         } else {
           return;
         }
         atualizarTemaSelecionado(tema);
+<<<<<<< HEAD
         atualizarAvatarAero();
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
         statusTemas.hidden = true;
         tocarSomTema(tema);
         animarTrocaTema(tema);
@@ -7874,6 +8315,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+<<<<<<< HEAD
   opcoesAeroWallpaper.forEach(opcao => {
     opcao.addEventListener("click", () => {
       try {
@@ -7895,6 +8337,8 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 });
 
 //função para trocar mensagem de saúde
@@ -8044,7 +8488,10 @@ function renderCalendar() {
     month: "long",
     year: "numeric"
   });
+<<<<<<< HEAD
   atualizarDetalheCalendarioVisual();
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
   const firstDay = new Date(year, month, 1).getDay();
   const lastDate = new Date(year, month + 1, 0).getDate();
@@ -8107,7 +8554,10 @@ function renderCalendar() {
       dataSelecionada = new Date(fullDate);
       dataSelecionada.setHours(0, 0, 0, 0);
 
+<<<<<<< HEAD
       atualizarDetalheCalendarioVisual();
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       atualizarTituloData(dataSelecionada);
       carregarTarefasPorData(userId, dataSelecionada);
     });
@@ -8116,6 +8566,7 @@ function renderCalendar() {
   }
 }
 
+<<<<<<< HEAD
 function atualizarDetalheCalendarioVisual() {
   document.getElementById("calendarWin7Weekday").textContent = dataSelecionada.toLocaleDateString("pt-BR", {
     weekday: "long"
@@ -8127,6 +8578,8 @@ function atualizarDetalheCalendarioVisual() {
   });
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
 document.getElementById("prevMonth").onclick = () => {
   currentDate.setMonth(currentDate.getMonth() - 1);
@@ -8293,9 +8746,14 @@ async function configurarPushNativo(solicitarPermissao = false) {
       document.getElementById("statusPermissaoNotificacoes").textContent =
         error.error || "O Firebase não conseguiu registrar este aparelho.";
     });
+<<<<<<< HEAD
     await pushNotifications.addListener("pushNotificationActionPerformed", ({ notification } = {}) => {
       void carregarNotificacoes();
       if (notification?.data?.type === "usuario_tremida") aplicarTremidaTela();
+=======
+    await pushNotifications.addListener("pushNotificationActionPerformed", () => {
+      void carregarNotificacoes();
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       document.getElementById("botaoNotificacoes").click();
     });
   }
@@ -8844,10 +9302,13 @@ async function editarTarefa(tarefaId, textoAtual, importante) {
   tarefaEmEdicao = { id: tarefaId, importante, data, hora, minuto };
   document.getElementById("inputEditarTexto").value = textoAtual;
   document.getElementById("inputEditarData").value = data;
+<<<<<<< HEAD
   const opcaoRecorrenciaEdicao = document.getElementById("opcaoRecorrenciaEdicao");
   opcaoRecorrenciaEdicao.hidden = !importante;
   document.getElementById("recorrenteTarefaEdicao").checked = importante && tarefa.recorrente === true;
   atualizarCamposDataEdicaoRecorrencia();
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   preencherOpcoesHorario(hora, minuto);
   document.getElementById("inputEditarCor").value = /^#[0-9a-fA-F]{6}$/.test(tarefa.cor || "")
     ? tarefa.cor
@@ -8876,6 +9337,7 @@ document.addEventListener("click", event => {
   sincronizarPaletaCor(input);
 });
 
+<<<<<<< HEAD
 document.addEventListener("keydown", event => {
   if (event.key !== "Enter" || event.isComposing || event.altKey || event.ctrlKey || event.metaKey) return;
   const campo = event.target;
@@ -8893,6 +9355,8 @@ document.addEventListener("keydown", event => {
   botao.click();
 });
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 document.addEventListener("input", event => {
   if (event.target instanceof HTMLInputElement &&
       event.target.matches('.seletor-cor-tarefa input[type="color"]')) {
@@ -8928,6 +9392,7 @@ function preencherOpcoesHorario(horaAtual, minutoAtual) {
 
 function fecharModalEdicao() {
   document.getElementById("modalEditarTarefa").classList.add("hidden");
+<<<<<<< HEAD
   document.getElementById("recorrenteTarefaEdicao").checked = false;
   atualizarCamposDataEdicaoRecorrencia();
   tarefaEmEdicao = null;
@@ -8942,6 +9407,11 @@ function atualizarCamposDataEdicaoRecorrencia() {
 
 document.getElementById("recorrenteTarefaEdicao").addEventListener("change", atualizarCamposDataEdicaoRecorrencia);
 
+=======
+  tarefaEmEdicao = null;
+}
+
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 async function salvarEdicaoTarefa() {
   if (!tarefaEmEdicao) return;
   const texto = document.getElementById("inputEditarTexto").value.trim();
@@ -8949,12 +9419,19 @@ async function salvarEdicaoTarefa() {
   const data = document.getElementById("inputEditarData").value;
   const hora = document.getElementById("inputEditarHora").value;
   const minuto = document.getElementById("inputEditarMinuto").value;
+<<<<<<< HEAD
   const recorrente = document.getElementById("recorrenteTarefaEdicao").checked;
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   if (!texto || texto.length > 300) {
     alert("A descrição deve ter entre 1 e 300 caracteres.");
     return;
   }
+<<<<<<< HEAD
   if ((!recorrente && !data) || !hora || !minuto) {
+=======
+  if (!data || !hora || !minuto) {
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     alert("Informe uma data e um horário válidos.");
     return;
   }
@@ -8964,10 +9441,14 @@ async function salvarEdicaoTarefa() {
     ? `/tarefas/importantes/${userId}/${id}`
     : `/tarefas/${userId}/${id}`;
   const atualizacoes = { texto, cor };
+<<<<<<< HEAD
   if (importante) atualizacoes.recorrente = recorrente;
   if (recorrente && (hora !== horaOriginal || minuto !== minutoOriginal)) {
     Object.assign(atualizacoes, { data: new Date().toLocaleDateString("sv-SE"), hora, minuto });
   } else if (!recorrente && (data !== dataOriginal || hora !== horaOriginal || minuto !== minutoOriginal)) {
+=======
+  if (data !== dataOriginal || hora !== horaOriginal || minuto !== minutoOriginal) {
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     Object.assign(atualizacoes, { data, hora, minuto });
   }
 
@@ -8994,7 +9475,11 @@ async function salvarEdicaoTarefa() {
 }
 
 async function excluirTarefa(tarefaId) {
+<<<<<<< HEAD
   if (!await window.orbyConfirm("Deseja excluir esta tarefa?")) return;
+=======
+  if (!window.confirm("Deseja excluir esta tarefa?")) return;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
   try {
     const response = await fetch(`/tarefas/${userId}/${tarefaId}`, {
@@ -9731,6 +10216,7 @@ function renderizarPrevisaoDiaria(dados) {
   resumoCard.replaceChildren();
   for (const registro of registros) {
     const condicao = obterDescricaoTempo(registro.weatherCode);
+<<<<<<< HEAD
     const cartao = document.createElement("div");
     cartao.className = "weather-card-forecast-day";
     cartao.setAttribute("role", "group");
@@ -9741,11 +10227,17 @@ function renderizarPrevisaoDiaria(dados) {
     );
     const dia = document.createElement("span");
     dia.className = "weather-card-forecast-label";
+=======
+    const linha = document.createElement("div");
+    linha.className = "weather-card-forecast-day";
+    const dia = document.createElement("span");
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     dia.textContent = registro.label;
     const icone = document.createElement("i");
     icone.className = `bi ${iconePrevisaoClima(condicao.principal)}`;
     icone.setAttribute("aria-hidden", "true");
     const temperatura = document.createElement("strong");
+<<<<<<< HEAD
     temperatura.textContent = `${Math.round(registro.max)}°`;
     temperatura.className = "weather-card-forecast-max";
     const minima = document.createElement("span");
@@ -9756,6 +10248,13 @@ function renderizarPrevisaoDiaria(dados) {
     chuva.textContent = `${Math.round(registro.probability)}% · ${formatarMilimetros(registro.precipitation)}`;
     cartao.append(dia, icone, temperatura, minima, chuva);
     resumoCard.appendChild(cartao);
+=======
+    temperatura.textContent = `${Math.round(registro.max)}° / ${Math.round(registro.min)}°`;
+    const chuva = document.createElement("span");
+    chuva.textContent = `${Math.round(registro.probability)}% · ${formatarMilimetros(registro.precipitation)}`;
+    linha.append(dia, icone, temperatura, chuva);
+    resumoCard.appendChild(linha);
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   }
 }
 
@@ -9816,6 +10315,7 @@ document.getElementById("weatherToggle").addEventListener("click", async () => {
   if (expandido) await carregarPrevisaoClima();
 });
 
+<<<<<<< HEAD
 document.querySelectorAll("[data-weather-forecast-scroll]").forEach(botao => {
   botao.addEventListener("click", () => {
     const previsao = document.getElementById("weatherCardForecast");
@@ -9827,6 +10327,8 @@ document.querySelectorAll("[data-weather-forecast-scroll]").forEach(botao => {
   });
 });
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 async function carregarClimaLocal() {
   const buscarClima = async (url) => {
     const response = await fetch(url, { cache: "no-store" });
@@ -10012,6 +10514,7 @@ async function carregarTarefasImportantesWidget() {
       const texto = document.createElement("span");
       texto.className = "tarefas-importantes-widget-texto";
       texto.textContent = tarefa.texto;
+<<<<<<< HEAD
       if (tarefa.recorrente) {
         const recorrencia = document.createElement("i");
         recorrencia.className = "bi bi-arrow-repeat tarefa-recorrente-icone";
@@ -10019,12 +10522,17 @@ async function carregarTarefasImportantesWidget() {
         recorrencia.title = "Tarefa recorrente";
         texto.append(" ", recorrencia);
       }
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
       const data = document.createElement("time");
       data.className = "tarefas-importantes-widget-data";
       data.dateTime = tarefa.dataCriacao;
       data.textContent = new Date(tarefa.dataCriacao).toLocaleDateString("pt-BR");
+<<<<<<< HEAD
       if (tarefa.recorrente) data.hidden = true;
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
       const hora = document.createElement("time");
       hora.className = "tarefas-importantes-widget-hora tarefa-hora";
@@ -10137,6 +10645,7 @@ function renderizarTarefasImportantes(tarefas) {
       const texto = document.createElement("span");
       texto.className = "textoTarefa";
       texto.textContent = tarefa.texto;
+<<<<<<< HEAD
       if (tarefa.recorrente) {
         const recorrencia = document.createElement("i");
         recorrencia.className = "bi bi-arrow-repeat tarefa-recorrente-icone";
@@ -10144,6 +10653,8 @@ function renderizarTarefasImportantes(tarefas) {
         recorrencia.title = "Tarefa recorrente";
         texto.append(" ", recorrencia);
       }
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       if (tarefa.concluida) texto.style.textDecoration = "line-through";
 
       const acoes = document.createElement("div");
@@ -10152,7 +10663,10 @@ function renderizarTarefasImportantes(tarefas) {
       const data = document.createElement("span");
       const dataCriacao = new Date(tarefa.dataCriacao);
       data.textContent = dataCriacao.toLocaleDateString("pt-BR");
+<<<<<<< HEAD
       if (tarefa.recorrente) data.hidden = true;
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       const hora = document.createElement("span");
       hora.className = "tarefa-hora";
       hora.dataset.horarioLimite = String(dataCriacao.getTime());
@@ -10240,10 +10754,16 @@ async function salvarTarefaImportante() {
   const hora = document.getElementById("horaTarefaImportante").value;
   const minuto = document.getElementById("minutoTarefaImportante").value;
   const cor = document.getElementById("corTarefaImportante").value;
+<<<<<<< HEAD
   const recorrente = document.getElementById("recorrenteTarefaImportante").checked;
   const button = document.getElementById("btnSalvarImportante");
 
   if (!texto || (!recorrente && !data) || !hora || !minuto) {
+=======
+  const button = document.getElementById("btnSalvarImportante");
+
+  if (!texto || !data || !hora || !minuto) {
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     alert("Informe a descrição, a data e o horário");
     return;
   }
@@ -10253,7 +10773,11 @@ async function salvarTarefaImportante() {
     const response = await fetch("/tarefas/importantes", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+<<<<<<< HEAD
       body: JSON.stringify({ userId, texto, data, hora, minuto, cor, recorrente })
+=======
+      body: JSON.stringify({ userId, texto, data, hora, minuto, cor })
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     });
     const result = await response.json();
     if (!response.ok) throw new Error(result.erro || "Erro ao salvar tarefa importante");
@@ -10317,7 +10841,11 @@ async function toggleImportanteUI(botao, id) {
 
 
 async function excluirImportante(id) {
+<<<<<<< HEAD
   if (!await window.orbyConfirm("Deseja excluir esta tarefa importante?")) return;
+=======
+  if (!window.confirm("Deseja excluir esta tarefa importante?")) return;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
   try {
     const response = await fetch(`/tarefas/importantes/${userId}/${id}`, {
@@ -10334,8 +10862,11 @@ async function excluirImportante(id) {
 function abrirModalImportante() {
   const agora = new Date();
   document.getElementById("dataTarefaImportante").value = agora.toLocaleDateString("sv-SE");
+<<<<<<< HEAD
   document.getElementById("recorrenteTarefaImportante").checked = false;
   atualizarCampoDataTarefaRecorrente();
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   preencherHorariosCriacao("horaTarefaImportante", "minutoTarefaImportante", agora);
   document.getElementById("corTarefaImportante").value = "#ffd700";
   sincronizarPaletaCor(document.getElementById("corTarefaImportante"));
@@ -10346,6 +10877,7 @@ function abrirModalImportante() {
 function fecharModalImportante() {
   document.getElementById("modalImportante").classList.add("hidden");
   document.getElementById("inputTarefaImportante").value = "";
+<<<<<<< HEAD
   document.getElementById("recorrenteTarefaImportante").checked = false;
   atualizarCampoDataTarefaRecorrente();
 }
@@ -10359,6 +10891,10 @@ function atualizarCampoDataTarefaRecorrente() {
 
 document.getElementById("recorrenteTarefaImportante").addEventListener("change", atualizarCampoDataTarefaRecorrente);
 
+=======
+}
+
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 preencherHorariosCriacao("inputHoraTarefa", "inputMinutoTarefa");
 preencherHorariosCriacao("horaTarefaImportante", "minutoTarefaImportante");
 
@@ -10484,7 +11020,10 @@ function avisarNoNavegador(notificacao) {
   });
   aviso.addEventListener("click", () => {
     window.focus();
+<<<<<<< HEAD
     if (notificacao.tipo === "usuario_tremida") aplicarTremidaTela();
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     aviso.close();
   });
 }
@@ -10510,12 +11049,19 @@ function renderizarNotificacoes(notificacoes) {
 
   for (const notificacao of notificacoes) {
     const conviteXadrez = notificacao.tipo === "xadrez_convite" && notificacao.partidaId;
+<<<<<<< HEAD
     const conviteParty = notificacao.tipo === "orby_party_convite" && notificacao.partyRoomId;
     const lanceXadrez = notificacao.tipo === "xadrez_lance";
     const notificacaoFazenda = notificacao.tipo === "fazenda";
     const item = document.createElement(conviteXadrez || conviteParty ? "article" : "button");
     if (!conviteXadrez && !conviteParty) item.type = "button";
     item.className = `itemNotificacao${notificacao.lida ? "" : " naoLida"}${conviteXadrez ? " conviteXadrez" : ""}${conviteParty ? " conviteParty" : ""}${lanceXadrez ? " lanceXadrez" : ""}${notificacaoFazenda ? " fazenda" : ""}`;
+=======
+    const lanceXadrez = notificacao.tipo === "xadrez_lance";
+    const item = document.createElement(conviteXadrez ? "article" : "button");
+    if (!conviteXadrez) item.type = "button";
+    item.className = `itemNotificacao${notificacao.lida ? "" : " naoLida"}${conviteXadrez ? " conviteXadrez" : ""}${lanceXadrez ? " lanceXadrez" : ""}`;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
     const titulo = document.createElement("strong");
     titulo.textContent = notificacao.titulo;
@@ -10546,6 +11092,7 @@ function renderizarNotificacoes(notificacoes) {
       recusar.addEventListener("click", () => responderConviteXadrez(notificacao, "recusar", recusar, aceitar));
       acoes.append(aceitar, recusar);
       item.appendChild(acoes);
+<<<<<<< HEAD
     } else if (conviteParty) {
       const acoes = document.createElement("div");
       acoes.className = "acoesConviteParty";
@@ -10572,16 +11119,22 @@ function renderizarNotificacoes(notificacoes) {
       });
       acoes.appendChild(abrir);
       item.appendChild(acoes);
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     } else if (conviteXadrez) {
       const resposta = document.createElement("small");
       resposta.className = "conviteXadrezRespondido";
       resposta.textContent = "Convite respondido";
       item.appendChild(resposta);
     } else {
+<<<<<<< HEAD
       item.addEventListener("click", () => {
         if (notificacao.tipo === "usuario_tremida") aplicarTremidaTela();
         void marcarNotificacaoLida(notificacao._id);
       });
+=======
+      item.addEventListener("click", () => marcarNotificacaoLida(notificacao._id));
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     }
     lista.appendChild(item);
   }
@@ -10658,6 +11211,7 @@ async function marcarNotificacaoLida(id) {
   }
 }
 
+<<<<<<< HEAD
 function aplicarTremidaTela() {
   const alvo = document.getElementById("all") || document.body;
   alvo.classList.remove("notificacao-tremida-tela");
@@ -10810,6 +11364,8 @@ document.getElementById("formEnviarNotificacao").addEventListener("submit", asyn
   }
 });
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 async function limparNotificacoes() {
   const botao = document.getElementById("limparNotificacoes");
   if (limpandoNotificacoes) return;

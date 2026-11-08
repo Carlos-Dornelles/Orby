@@ -17,7 +17,10 @@ Aplicativo de tarefas com servidor Express e banco MongoDB.
 6. O cartão de clima usa a Open-Meteo sem chave. Se a geolocalização for negada ou indisponível, o app consulta Porto Alegre como cidade padrão.
 7. Para adicionar imagens como widgets, informe `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY` e `CLOUDINARY_API_SECRET` no `.env`. O segredo permanece no servidor; cada imagem é enviada diretamente à Cloudinary com assinatura temporária.
 8. Para habilitar a Orb.IA, gere uma chave mestra com `node -e "console.log(require('node:crypto').randomBytes(32).toString('base64'))"` e adicione o resultado ao `.env` como `ORBY_AI_MASTER_KEY`. Use uma chave aleatória de 32 bytes, mantenha-a fora do repositório e faça backup seguro: sem ela, não será possível descriptografar as chaves Gemini guardadas no banco. A mesma chave assina as sessões exclusivas da Orb.IA; após configurá-la ou alterá-la, entre novamente no Orby. Em produção, sirva o Orby por HTTPS.
+<<<<<<< HEAD
 9. Para criar avisos globais, configure `ADMIN_LOGIN` e `ADMIN_PASSWORD` nas variáveis de ambiente do servidor, usando uma senha forte que não seja compartilhada com usuários. Acesse `/admin` para publicar e excluir avisos, com texto e link opcional do YouTube (`youtube.com` ou `youtu.be`); os vídeos são exibidos incorporados aos usuários. Os avisos aparecem um por vez: **Entendi** avança para o próximo, enquanto **Não ver novamente** oculta permanentemente aquele aviso apenas para a conta e o navegador em uso. As credenciais nunca são enviadas ao navegador; a sessão administrativa usa um cookie HTTP-only e expira após 12 horas. Os avisos publicados ficam no MongoDB e aparecem aos usuários sempre que entram no Orby.
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
 O banco e a coleção `USERS` são criados pelo MongoDB na primeira gravação. Crie sua conta pela opção **Criar conta** na tela de login. As senhas novas são armazenadas como hashes bcrypt (custo 12), não como texto simples, e o cadastro aceita até 72 bytes por senha. Contas antigas que ainda tenham a senha em texto simples são migradas automaticamente para bcrypt após um login válido.
 
@@ -35,12 +38,19 @@ Para alterar a senha, abra **Configurações do perfil**, clique em **Redefinir 
 
 Ao criar ou editar tarefas, defina a data, a hora (00 a 23), os minutos em intervalos de cinco e a cor da faixa. Escolha entre vermelho, azul, amarelo e verde, ou use o seletor para escolher outra cor. Use a alça para arrastar e salvar a prioridade, ou arraste a tarefa até um dia do calendário para alterar sua data. Durante o arraste, uma prévia acompanha o ponteiro. Clique na lupa para pesquisar no dia/período selecionado.
 
+<<<<<<< HEAD
 Na tela de tarefas, ative **Arrastar widgets** em Configurações para mover calendário, tempo, imagens e o novo widget de lista pela alça; também é possível usar as setas do teclado. Em **Configurações > Gerenciar widgets**, escolha uma lista já criada, e marque ou desmarque seus itens direto no widget. Na seção **Listas**, use o puxador discreto ao lado de um item para arrastá-lo a outra lista ou reorganizá-lo na mesma lista; o estado de conclusão é mantido e a ordem fica salva. A lista exibida e as posições ficam salvas no MongoDB por usuário e acompanham a conta em outros computadores.
 
 Em **Configurações > Gerenciar widgets**, ative ou oculte o calendário, o tempo e cada imagem, ou adicione várias imagens de até 10 MB. Com **Arrastar widgets** ativo, use o lápis para substituir a imagem do widget sem mudar sua posição. Layout, visibilidade, post-its do painel, relógio, hábito selecionado, modo de arraste e tamanho do painel ficam no MongoDB por usuário.
 
 O widget **Cotações** permite acompanhar moedas tradicionais e criptomoedas em 1D, 7D ou 30D. No período 1D, o gráfico mostra os horários locais de cada atualização; moedas tradicionais usam histórico intradiário e, quando o mercado está fechado ou a fonte intradiária não está disponível, mostram a última cotação conhecida sem inventar horários que a fonte não forneceu.
 
+=======
+Na tela de tarefas, ative **Arrastar widgets** em Configurações para mover calendário, tempo, imagens e o novo widget de lista pela alça; também é possível usar as setas do teclado. Em **Configurações > Gerenciar widgets**, escolha uma lista já criada, e marque ou desmarque seus itens direto no widget. A lista exibida e as posições ficam salvas no MongoDB por usuário e acompanham a conta em outros computadores.
+
+Em **Configurações > Gerenciar widgets**, ative ou oculte o calendário, o tempo e cada imagem, ou adicione várias imagens de até 10 MB. Com **Arrastar widgets** ativo, use o lápis para substituir a imagem do widget sem mudar sua posição. Layout, visibilidade, post-its do painel, relógio, hábito selecionado, modo de arraste e tamanho do painel ficam no MongoDB por usuário.
+
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 O widget **Links** pode ser ativado em **Configurações > Gerenciar widgets**. Clique no ícone para abrir o painel ao lado, adicione links HTTP ou HTTPS com um nome e abra-os em uma nova aba; links salvos ficam associados à conta e podem ser removidos pelo próprio painel. O limite é de 50 links por usuário.
 
 O widget **Xadrez** pode ser ativado em **Configurações > Gerenciar widgets**. Jogue localmente com as brancas e as pretas na mesma tela, contra o Stockfish (com escolha de cor e nível) ou convide outro usuário Orby pelo e-mail. Cada jogada confirmada toca o som de xadrez; capturas usam o som específico de peça capturada, inclusive em partidas por convite. O convidado recebe uma notificação verde no sino e pode aceitar ou recusar; ao aceitar, a partida começa e os lances legais são sincronizados pelo servidor. As peças capturadas aparecem em fileiras visuais acima e abaixo do tabuleiro, identificadas pelo lado que capturou. Em **Configurações do xadrez**, ative ou desative o aviso verde no sino quando o oponente fizer um lance e escolha entre os temas de tabuleiro verde e branco, preto e branco ou madeira. As preferências são salvas na conta; os lances também têm uma animação suave, respeitando a opção de movimento reduzido do dispositivo. Convites pendentes expiram em sete dias. A engrenagem abre as opções, o histórico de lances e o histórico cronológico de partidas, com adversário, cor, quantidade de lances e resultado. Arraste a alça no canto inferior direito para ajustar o tamanho do tabuleiro. Partidas locais e contra Stockfish são salvas na conta e retomadas em outros dispositivos; os resultados locais finalizados também são registrados no histórico, junto às partidas por convite salvas no MongoDB. O tabuleiro online sincroniza automaticamente enquanto aguarda o adversário e ao retornar à janela. Posição e largura do widget ficam nas preferências da conta. O motor Stockfish.js é distribuído sob GPL-3.0; sua licença está em `node_modules/stockfish.js/Copying.txt`.
@@ -57,6 +67,7 @@ No cartão de clima, clique na condição atual para expandir as métricas atuai
 
 Quando o Orby estiver aberto, tarefas pendentes e hábitos geram uma notificação no sino ao chegar o horário. O histórico fica guardado por sete dias. No APK Android, abra **Configurações > Ativar notificações** e permita notificações. Com o FCM configurado, tarefas, hábitos e eventos de xadrez chegam mesmo com o app fechado; sem ele, alarmes locais exatos e sincronização em segundo plano continuam como alternativa. **Alarmes e lembretes** do Android são necessários para os alarmes locais, mas não para o push do Firebase. No navegador, permita notificações em **Configurações > Ativar notificações**; o navegador precisa estar aberto para os avisos do site.
 
+<<<<<<< HEAD
 ## Orby Party
 
 Salas e Parties são sincronizadas pelo Socket.io. A sala permanece no MongoDB durante toda a Party; `state` acompanha `waiting`, `party_running`, `showing_game_results` e `showing_final_results`, enquanto `currentParty` guarda a fila, os resultados e o placar atual. Ao terminar, o estado da Party é arquivado em `PARTY_SESSIONS`, a sessão ativa é limpa e a sala, seus participantes e o chat voltam ao lobby; o chat também recebe e persiste uma mensagem de encerramento com o mini ranking final. Ao reconectar, o cliente reassocia o socket às salas do usuário e recupera o estado salvo. O botão de convite permite buscar usuários pelo início do nome e envia uma notificação persistida e em tempo real com acesso à sala.
@@ -75,6 +86,8 @@ O catálogo em `farmpedidos.js` contém 28 tipos de pedidos, com quantidades var
 
 A horta começa com três canteiros e pode ser expandida até nove; o primeiro espaço adicional custa 30 Orbs e cada expansão seguinte dobra o preço (30, 60, 120, 240, 480 e 960 Orbs). A fazenda começa com dois sacos de adubo: aplicar em uma cultura em crescimento reduz em 20% o tempo restante e dobra a colheita; cada saco adicional custa 15 Orbs. O progresso e o tempo restante aparecem em cada canteiro, e as fazendas antigas são migradas automaticamente preservando a plantação existente.
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 ## Executar
 
 ```bash

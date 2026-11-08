@@ -6,6 +6,7 @@ body {
   overflow: hidden;
 }
 
+<<<<<<< HEAD
 .orby-dialog-backdrop[hidden], .orby-dialog-input[hidden], .orby-dialog-actions button[hidden] { display: none !important; }
 .orby-dialog-backdrop {
   position: fixed; inset: 0; box-sizing: border-box; width: 100%; height: 100%;
@@ -40,6 +41,8 @@ body {
 @keyframes orby-dialog-in { from { opacity: 0; transform: translateY(8px) scale(.98); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .orby-dialog-card { animation: none; } }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 * {
    font-family: "Poppins", sans-serif;
 }
@@ -71,8 +74,11 @@ header {
   display: flex;
   align-items: center;
   gap: 12px;
+<<<<<<< HEAD
   color: inherit;
   text-decoration: none;
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 }
 
 
@@ -128,7 +134,11 @@ header .imgLogo {
   box-sizing: border-box;
   padding: 4px;
   border: 1px solid rgba(255, 255, 255, .8);
+<<<<<<< HEAD
   border-radius: 50%;
+=======
+  border-radius: 11px;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   background: #fff;
   object-fit: contain;
   box-shadow: 0 2px 8px rgba(96, 24, 24, .16);
@@ -314,10 +324,13 @@ html[data-special-theme="halloween"] .iconeModal[aria-label="Configurações"] >
     background-color: rgba(0, 0, 0, 0);
 }
 
+<<<<<<< HEAD
 #containerOptions > button.option[hidden] {
   display: none !important;
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .h1Container{
   font-size: 18px;
   margin-left: 10px;
@@ -361,6 +374,7 @@ html[data-special-theme="halloween"] .iconeModal[aria-label="Configurações"] >
 
 /*sections */
 
+<<<<<<< HEAD
 
 /* ============================================================
    SISTEMA DE ADEREÇOS DO USUÁRIO (CHAPÉUS)
@@ -546,6 +560,8 @@ html[data-special-theme="halloween"] .iconeModal[aria-label="Configurações"] >
   word-break: break-word;
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 #containerTasks > section {
   display: none;
   width: 100%;
@@ -896,6 +912,7 @@ html[data-special-theme="natal"] .calendar-header::after {
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+<<<<<<< HEAD
 .modal-content .opcao-tarefa-recorrente {
   display: flex;
   align-items: center;
@@ -964,6 +981,8 @@ html[data-special-theme="natal"] .calendar-header::after {
   display: none !important;
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .modal-content select {
   width: 100%;
   padding: 10px 12px;
@@ -1781,7 +1800,10 @@ html[data-special-theme="natal"] .calendar-header::after {
   flex: 0 0 auto;
   color: var(--ui-muted, #758078);
   font-size: 11px;
+<<<<<<< HEAD
   line-height: 1.2;
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 }
 
 .tarefas-importantes-widget-filtros {
@@ -1884,6 +1906,7 @@ html[data-special-theme="natal"] .calendar-header::after {
   line-height: 1.35;
 }
 
+<<<<<<< HEAD
 .tarefa-recorrente-icone {
   display: inline-block;
   margin-left: 2px;
@@ -1892,6 +1915,8 @@ html[data-special-theme="natal"] .calendar-header::after {
   vertical-align: -1px;
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .tarefas-importantes-widget-item.concluida .tarefas-importantes-widget-texto {
   color: #7a827d;
   text-decoration: line-through;
@@ -2020,6 +2045,7 @@ html[data-special-theme="natal"] .calendar-header::after {
   border-bottom: 1px solid #eee;
 }
 
+<<<<<<< HEAD
 .acoesCabecalhoNotificacoes { display: flex; align-items: center; gap: 6px; }
 .acoesCabecalhoNotificacoes button { white-space: nowrap; }
 
@@ -2068,6 +2094,8 @@ html[data-special-theme="natal"] .calendar-header::after {
 #all.notificacao-tremida-tela { animation:orbyNotificacaoTremida .58s ease-in-out; }
 @media(prefers-reduced-motion:reduce) { #all.notificacao-tremida-tela { animation-duration:.01ms; } }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .cabecalhoNotificacoes button,
 .painelConfiguracoes button {
   padding: 5px 9px;
@@ -2078,7 +2106,10 @@ html[data-special-theme="natal"] .calendar-header::after {
   cursor: pointer;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 #listaNotificacoes {
   display: grid;
   gap: 6px;
@@ -2120,10 +2151,14 @@ html[data-special-theme="natal"] .calendar-header::after {
 }
 
 .painelConfiguracoes {
+<<<<<<< HEAD
   box-sizing: border-box;
   width: 250px;
   max-height: min(560px, calc(100dvh - 76px));
   overflow-y: auto;
+=======
+  width: 250px;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 }
 
 .painelConfiguracoes-toggle {
@@ -3285,6 +3320,7 @@ header img {
   border-radius: 9px;
 }
 
+<<<<<<< HEAD
 .btn-toggle {
   box-sizing: border-box;
   padding: 0;
@@ -3297,6 +3333,8 @@ header img {
   line-height: 1;
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .btn-toggle:hover {
   background: #f0fdf4;
   transform: scale(1.04);
@@ -3632,7 +3670,11 @@ html[data-special-theme="natal"] .btnBuscaTarefas > .natal-icone-pinheiro {
 }
 
 .painelNotificacoes {
+<<<<<<< HEAD
   padding: 8px;
+=======
+  padding: 4px;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 }
 
 .cabecalhoNotificacoes {
@@ -3690,6 +3732,7 @@ html[data-special-theme="natal"] .btnBuscaTarefas > .natal-icone-pinheiro {
   box-shadow: inset 3px 0 #27a34a;
 }
 
+<<<<<<< HEAD
 .itemNotificacao.fazenda {
   border-color: #bbebc8;
   color: #17452a;
@@ -3701,6 +3744,8 @@ html[data-special-theme="natal"] .btnBuscaTarefas > .natal-icone-pinheiro {
   box-shadow: inset 3px 0 #27a34a;
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .acoesConviteXadrez {
   display: flex;
   flex-wrap: wrap;
@@ -4554,7 +4599,11 @@ html[data-special-theme="natal"] .btnBuscaTarefas > .natal-icone-pinheiro {
   height: 285px;
   min-height: 285px;
 
+<<<<<<< HEAD
   margin: 20px 0;
+=======
+  margin: 20px 10px;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   padding: 14px;
 
   align-self: start;
@@ -4700,7 +4749,11 @@ button.BTNAddTarefa:active {
   height: auto;
   min-height: 125px;
 
+<<<<<<< HEAD
   margin: 20px 0;
+=======
+  margin: 20px 20px 20px 0;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   padding: 0;
 
   align-self: start;
@@ -4761,6 +4814,7 @@ button.BTNAddTarefa:active {
   white-space: nowrap;
 }
 
+<<<<<<< HEAD
 .weather-card-forecast-header {
   display: flex;
   align-items: center;
@@ -4771,10 +4825,15 @@ button.BTNAddTarefa:active {
 
 .weather-card-forecast-heading {
   margin: 0;
+=======
+.weather-card-forecast-heading {
+  margin: 12px 0 6px;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   font-size: 11px;
   font-weight: 650;
 }
 
+<<<<<<< HEAD
 .weather-card-forecast-controls {
   display: flex;
   flex: 0 0 auto;
@@ -4864,6 +4923,25 @@ button.BTNAddTarefa:active {
   font-size: 9px;
   font-variant-numeric: tabular-nums;
   opacity: .88;
+=======
+.weather-card-forecast {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.weather-card-forecast-day {
+  display: grid;
+  grid-template-columns: minmax(35px, 1fr) 18px auto auto;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+}
+
+.weather-card-forecast-day strong,
+.weather-card-forecast-day > span:last-child {
+  font-variant-numeric: tabular-nums;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   white-space: nowrap;
 }
 
@@ -5065,11 +5143,14 @@ button.BTNAddTarefa:active {
   background: linear-gradient(110deg, #f4fbf5, #fff 72%);
 }
 
+<<<<<<< HEAD
 .cartaoHabito.finalizado {
   border-color: #d8dee7;
   background: linear-gradient(110deg, #f7f8fa, #fff 72%);
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .informacoesHabito {
   min-width: 0;
 }
@@ -5092,6 +5173,7 @@ button.BTNAddTarefa:active {
   font-weight: 600;
 }
 
+<<<<<<< HEAD
 .objetivoHabito {
   color: #2864ad !important;
   font-weight: 700;
@@ -5102,10 +5184,13 @@ button.BTNAddTarefa:active {
   color: #667085 !important;
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .configHabitoHorarios {
   margin-top: 4px;
 }
 
+<<<<<<< HEAD
 .configHabitoObjetivo {
   margin-top: 12px;
 }
@@ -5117,6 +5202,8 @@ button.BTNAddTarefa:active {
   font-size: 11px;
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .configHabitoHorarios small {
   display: block;
   margin-top: 7px;
@@ -5318,17 +5405,25 @@ button.BTNAddTarefa:active {
   border-radius: 14px;
   background: #fff;
   box-shadow: 0 8px 22px rgba(15, 23, 42, .05);
+<<<<<<< HEAD
   transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 .cartaoLista.novo { animation: revelarCartaoLista 280ms ease both; }
 
+=======
+  animation: revelarCartaoLista 280ms ease both;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .cartaoLista:hover {
   border-color: var(--ui-primary-border);
   box-shadow: 0 12px 28px color-mix(in srgb, var(--ui-primary) 10%, transparent);
   transform: translateY(-2px);
 }
 
+<<<<<<< HEAD
 .cartaoLista.concluida {
   border-color: #b9e4c6;
   background: linear-gradient(110deg, #f4fbf5, #fff 72%);
@@ -5376,6 +5471,8 @@ button.BTNAddTarefa:active {
   opacity: 1;
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 @keyframes revelarCartaoLista {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
@@ -5395,6 +5492,7 @@ button.BTNAddTarefa:active {
   font-size: 16px;
 }
 
+<<<<<<< HEAD
 .prazoLista {
   margin: 8px 0 0;
   color: #2864ad;
@@ -5414,6 +5512,8 @@ button.BTNAddTarefa:active {
   font-weight: 600;
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .acoesLista,
 .acoesItemLista { display: flex; gap: 5px; }
 
@@ -5444,6 +5544,7 @@ button.BTNAddTarefa:active {
   margin-top: 10px;
 }
 
+<<<<<<< HEAD
 .configListaData {
   margin-top: 12px;
 }
@@ -5470,6 +5571,8 @@ button.BTNAddTarefa:active {
   margin-top: 10px;
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .resumoProgressoLista {
   color: #8490a0;
   font-size: 11px;
@@ -5545,7 +5648,11 @@ button.BTNAddTarefa:active {
 
 .itemLista {
   display: grid;
+<<<<<<< HEAD
   grid-template-columns: 28px minmax(0, 1fr) auto 16px;
+=======
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   align-items: center;
   gap: 7px;
   min-height: 40px;
@@ -5559,11 +5666,22 @@ button.BTNAddTarefa:active {
   transform: translateX(2px);
 }
 
+<<<<<<< HEAD
 .itemLista.novo { animation: revelarItemLista 220ms ease both; }
 
 @keyframes revelarItemLista {
   from { opacity: 0; transform: translateY(5px); }
   to { opacity: 1; transform: translateY(0); }
+=======
+.itemLista.concluido {
+  animation: concluirItemLista 240ms ease both;
+}
+
+@keyframes concluirItemLista {
+  0% { transform: scale(.985); }
+  65% { transform: scale(1.01); }
+  100% { transform: scale(1); }
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 }
 
 .marcadorItemLista {
@@ -5576,6 +5694,7 @@ button.BTNAddTarefa:active {
   transition: color 180ms ease, transform 180ms ease;
 }
 
+<<<<<<< HEAD
 .arrastarItemLista {
   display: grid;
   width: 16px;
@@ -5599,6 +5718,12 @@ button.BTNAddTarefa:active {
 .itemLista:not(.concluido) .marcadorItemLista:hover { color: var(--ui-primary-text); transform: scale(1.12); }
 .itemLista.concluido .marcadorItemLista:hover { transform: scale(1.12); }
 .textoItemLista { overflow-wrap: anywhere; color: #3e4a5a; font-size: 13px; transition: color 180ms ease; }
+=======
+.itemLista.concluido .marcadorItemLista { color: #16a34a; }
+.itemLista:not(.concluido) .marcadorItemLista:hover { color: var(--ui-primary-text); transform: scale(1.12); }
+.itemLista.concluido .marcadorItemLista:hover { transform: scale(1.12); }
+.textoItemLista { overflow-wrap: anywhere; color: #3e4a5a; font-size: 13px; }
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .itemLista.concluido .textoItemLista { color: #8a95a1; text-decoration: line-through; }
 
 .itensListaVazios,
@@ -5761,11 +5886,18 @@ button.BTNAddTarefa:active {
 
 @media (prefers-reduced-motion: reduce) {
   .cartaoLista,
+<<<<<<< HEAD
   .itemLista.novo { animation: none; }
   .cartaoLista,
   .itemLista,
   .marcadorItemLista,
   .textoItemLista,
+=======
+  .itemLista.concluido { animation: none; }
+  .cartaoLista,
+  .itemLista,
+  .marcadorItemLista,
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   .adicionarItemLista button,
   .preenchimentoProgressoLista { transition: none; }
 }
@@ -5805,6 +5937,10 @@ button.BTNAddTarefa:active {
   .progressoLista { grid-template-columns: 1fr; gap: 5px; }
   .adicionarItemLista button span { display: none; }
 }
+<<<<<<< HEAD
+=======
+}
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
   #containerTarefas .weather-card {
     display: block;
@@ -6643,6 +6779,7 @@ button.BTNAddTarefa:active {
   font-size: 22px;
 }
 
+<<<<<<< HEAD
 .perfil-usuario-foto > img#fotoPerfilUsuario,
 .perfil-usuario-foto > span#avatarProntoPerfil,
 .perfil-usuario-foto > i {
@@ -6908,6 +7045,12 @@ button.BTNAddTarefa:active {
   display: none !important;
 }
 
+=======
+.perfil-usuario-foto img:not([hidden]) + i {
+  display: none;
+}
+
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .halloween-chapeu-bruxa {
   display: none;
   position: absolute;
@@ -7022,6 +7165,7 @@ html[data-special-theme="natal"] .natal-gorro {
   animation: perfil-fundo-entrar 220ms ease-out both;
 }
 
+<<<<<<< HEAD
 .dialog-secoes-navegacao {
   width: min(340px, calc(100vw - 32px));
 }
@@ -7058,6 +7202,8 @@ html[data-special-theme="natal"] .natal-gorro {
   accent-color: var(--ui-primary);
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 @keyframes perfil-dialogo-entrar {
   from {
     opacity: 0;
@@ -7088,7 +7234,10 @@ html[data-special-theme="natal"] .natal-gorro {
 }
 
 #fecharConfiguracoesPerfil,
+<<<<<<< HEAD
 #fecharConfiguracoesSecoes,
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .dialog-configuracoes-perfil .acao-configuracao-perfil,
 .dialog-configuracoes-perfil #formNomePerfil > button,
 .dialog-configuracoes-perfil #formSenhaPerfil > button {
@@ -7101,8 +7250,12 @@ html[data-special-theme="natal"] .natal-gorro {
   font-weight: 600;
 }
 
+<<<<<<< HEAD
 #fecharConfiguracoesPerfil,
 #fecharConfiguracoesSecoes {
+=======
+#fecharConfiguracoesPerfil {
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   width: 38px;
   min-height: 38px;
 }
@@ -7595,9 +7748,13 @@ html[data-special-theme="natal"] .natal-gorro {
   box-sizing: border-box;
   width: 100%;
   min-width: 270px;
+<<<<<<< HEAD
   margin-top: 16px;
   padding: 0;
   height: max(360px, calc(100dvh - 140px));
+=======
+  height: min(760px, calc(100dvh - 120px));
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   min-height: 360px;
   overflow: auto;
   overscroll-behavior: contain;
@@ -7625,6 +7782,7 @@ html[data-special-theme="natal"] .natal-gorro {
   touch-action: auto;
 }
 
+<<<<<<< HEAD
 .currency-workspace-widget {
   width: 336px;
 }
@@ -8038,6 +8196,8 @@ html[data-special-theme="natal"] .natal-gorro {
   }
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .widget-drag-handle {
   display: none;
   position: absolute;
@@ -8200,7 +8360,11 @@ html[data-special-theme="natal"] .natal-gorro {
 
 .clock-widget-time {
   color: inherit;
+<<<<<<< HEAD
   font-size: 33px;
+=======
+  font-size: 34px;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   font-variant-numeric: tabular-nums;
   font-weight: 650;
   letter-spacing: .025em;
@@ -8240,16 +8404,26 @@ html[data-special-theme="natal"] .natal-gorro {
   position: absolute;
   z-index: 2;
   bottom: 50%;
+<<<<<<< HEAD
   left: 50%;
+=======
+  left: calc(50% - 1.5px);
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   width: 3px;
   border-radius: 4px;
   background: #365847;
   transform-origin: center bottom;
 }
 
+<<<<<<< HEAD
 .clock-widget-hour { height: 38px; transform: translateX(-50%) rotate(var(--clock-hour-angle, 0deg)); }
 .clock-widget-minute { height: 53px; width: 2px; transform: translateX(-50%) rotate(var(--clock-minute-angle, 0deg)); }
 .clock-widget-second { height: 58px; width: 1px; background: #d45e53; transform: translateX(-50%) rotate(var(--clock-second-angle, 0deg)); }
+=======
+.clock-widget-hour { height: 38px; transform: rotate(var(--clock-hour-angle, 0deg)); }
+.clock-widget-minute { height: 53px; width: 2px; transform: rotate(var(--clock-minute-angle, 0deg)); }
+.clock-widget-second { height: 58px; width: 1px; background: #d45e53; transform: rotate(var(--clock-second-angle, 0deg)); }
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
 .clock-widget-pin {
   position: absolute;
@@ -8724,6 +8898,7 @@ html[data-special-theme="natal"] .natal-gorro {
   box-shadow: 0 12px 32px rgba(15, 23, 42, .16);
 }
 
+<<<<<<< HEAD
 .orb-ia-header-button[hidden],
 .orb-ia-header-panel[hidden] {
   display: none !important;
@@ -8752,6 +8927,8 @@ html[data-special-theme="natal"] .natal-gorro {
   display: none !important;
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .orb-ia-card > .widget-drag-handle {
   position: absolute;
   top: 5px;
@@ -9720,6 +9897,7 @@ html[data-theme="dark"] .orb-ia-status {
   padding-right: 26px;
 }
 
+<<<<<<< HEAD
 .habit-widget-add-config {
   display: inline-flex;
   align-items: center;
@@ -9782,6 +9960,8 @@ html[data-theme="dark"] .orb-ia-status {
   outline-offset: 2px;
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .habit-widget-heading {
   display: grid;
   gap: 4px;
@@ -9913,7 +10093,11 @@ html[data-theme="dark"] .orb-ia-status {
 
 .gerenciador-widgets {
   box-sizing: border-box;
+<<<<<<< HEAD
   width: min(620px, calc(100vw - 24px));
+=======
+  width: min(520px, calc(100vw - 24px));
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   max-width: none;
   max-height: min(760px, calc(100dvh - 24px));
   padding: 0;
@@ -9977,6 +10161,7 @@ html[data-theme="dark"] .orb-ia-status {
   border-bottom: 1px solid #e5ebe7;
 }
 
+<<<<<<< HEAD
 .gerenciador-extensao-secao .gerenciador-widgets-titulo-secao {
   margin-bottom: 12px;
 }
@@ -10096,6 +10281,8 @@ html[data-theme="dark"] .orb-ia-status {
   to { opacity: 1; }
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .reorganizar-widgets {
   display: flex;
   width: 100%;
@@ -10401,7 +10588,11 @@ html[data-theme="dark"] .orb-ia-status {
   max-width: 250px;
   height: 285px;
   min-height: 285px;
+<<<<<<< HEAD
   margin: 20px 0;
+=======
+  margin: 20px 10px;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   padding: 14px;
 }
 
@@ -10419,7 +10610,11 @@ html[data-theme="dark"] .orb-ia-status {
   max-width: 210px;
   height: auto;
   min-height: 125px;
+<<<<<<< HEAD
   margin: 20px 0;
+=======
+  margin: 20px 20px 20px 0;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 }
 
 @media (min-width: 801px) and (max-width: 1100px) {
@@ -10446,7 +10641,11 @@ html[data-theme="dark"] .orb-ia-status {
   }
 
   .widgetsWorkspace {
+<<<<<<< HEAD
     height: max(520px, calc(100dvh - 140px));
+=======
+    height: 650px;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     min-height: 520px;
     grid-column: 1;
     grid-row: 2;
@@ -10563,6 +10762,7 @@ html[data-theme="dark"] .orb-ia-status {
   box-shadow: 0 4px 14px rgba(34, 64, 45, .08);
 }
 
+<<<<<<< HEAD
 .farm-widget-card {
   container-type: inline-size;
   container-name: farm-widget;
@@ -11568,6 +11768,8 @@ html[data-theme="dark"] .orb-ia-status {
   outline-offset: 1px;
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .chess-widget-card > .widget-drag-handle {
   top: 8px;
   right: 6px;
@@ -11807,7 +12009,10 @@ html[data-theme="dark"] .orb-ia-status {
 
 .chess-widget-card .chess-widget-header {
   display: flex;
+<<<<<<< HEAD
   flex-wrap: wrap;
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   align-items: center;
   justify-content: space-between;
   gap: 8px;
@@ -11826,6 +12031,7 @@ html[data-theme="dark"] .orb-ia-status {
   line-height: 1.2;
 }
 
+<<<<<<< HEAD
 .chess-rating-badge {
   display: inline-flex;
   flex: 0 0 auto;
@@ -11883,6 +12089,8 @@ html[data-theme="dark"] .orb-ia-status {
 .chess-match-rating-delta.rating-loss { color: #a73737; background: #faeaea; }
 .chess-match-rating-delta.rating-neutral { color: #657269; background: #edf1ed; }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .chess-widget-resize {
   position: relative;
   display: block;
@@ -12025,6 +12233,7 @@ html[data-theme="dark"] .orb-ia-status {
 
 .chess-board[data-theme="madeira"] .chess-square-dark .chess-square-coordinate { color: rgba(255, 248, 226, .9); }
 
+<<<<<<< HEAD
 .chess-board[data-theme="aero"] {
   border-color: #258cc1;
   box-shadow: 0 4px 14px rgba(15, 93, 139, .22);
@@ -12043,6 +12252,8 @@ html[data-theme="dark"] .orb-ia-status {
 .chess-board[data-theme="vermelho"] .chess-square-light .chess-square-coordinate { color: #8c3842; }
 .chess-board[data-theme="vermelho"] .chess-square-dark .chess-square-coordinate { color: rgba(255, 255, 255, .94); }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .chess-square-selected {
   box-shadow: inset 0 0 0 3px #f0c451;
 }
@@ -12212,8 +12423,12 @@ html[data-theme="dark"] .orb-ia-status {
 }
 
 .chess-opponent-options,
+<<<<<<< HEAD
 .chess-invite-options,
 .chess-stockfish-rating-options {
+=======
+.chess-invite-options {
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   display: grid;
   gap: 8px;
   padding-top: 5px;
@@ -12221,7 +12436,10 @@ html[data-theme="dark"] .orb-ia-status {
 
 .chess-opponent-options[hidden],
 .chess-invite-options[hidden],
+<<<<<<< HEAD
 .chess-stockfish-rating-options[hidden],
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .chess-engine-status[hidden],
 .chess-history-empty[hidden] {
   display: none;
@@ -12240,7 +12458,10 @@ html[data-theme="dark"] .orb-ia-status {
 
 .chess-opponent-options small,
 .chess-invite-options small,
+<<<<<<< HEAD
 .chess-stockfish-rating-options small,
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .chess-engine-status,
 .chess-history-empty {
   margin: 0;
@@ -12261,6 +12482,7 @@ html[data-theme="dark"] .orb-ia-status {
   font-size: 12px;
 }
 
+<<<<<<< HEAD
 .chess-invite-suggestions {
   display: grid;
   max-height: 220px;
@@ -12324,6 +12546,8 @@ html[data-theme="dark"] .orb-ia-status {
 .chess-ranking-player strong { flex: 0 0 auto; color: #315f3e; }
 .chess-ranking-player.is-current-user { outline: 1px solid #7ca98a; background: #eaf4ec; }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .chess-engine-status { color: #8a6230; }
 .chess-new-game-button:disabled { cursor: wait; opacity: .7; }
 
@@ -12423,6 +12647,7 @@ html[data-theme="dark"] .orb-ia-status {
 }
 
 .chess-history {
+<<<<<<< HEAD
   display: flex;
   flex-direction: column;
   max-height: 220px;
@@ -12492,6 +12717,18 @@ html[data-theme="dark"] .orb-ia-status {
     opacity: 1;
     transform: translateY(0);
   }
+=======
+  display: grid;
+  max-height: 190px;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px 12px;
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+  color: #53675a;
+  font-size: 11px;
+  list-style: none;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 }
 
 .chess-match-history-open {
@@ -12523,6 +12760,7 @@ html[data-theme="dark"] .orb-ia-status {
   font-size: 11px;
 }
 
+<<<<<<< HEAD
 .chess-match-history-filters {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
@@ -12577,11 +12815,19 @@ html[data-theme="dark"] .orb-ia-status {
   gap: 10px;
   overflow-y: auto;
   scrollbar-width: none;
+=======
+.chess-match-history-list {
+  display: grid;
+  max-height: min(60dvh, 430px);
+  gap: 8px;
+  overflow: auto;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   margin: 0;
   padding: 12px 18px 18px;
   list-style: none;
 }
 
+<<<<<<< HEAD
 .chess-match-history-list::-webkit-scrollbar { display: none; }
 
 .chess-match-history-item {
@@ -12601,6 +12847,17 @@ html[data-theme="dark"] .orb-ia-status {
   justify-content: space-between;
   align-items: flex-start;
   gap: 8px;
+=======
+.chess-match-history-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 5px 10px;
+  padding: 10px;
+  border: 1px solid #e5ece6;
+  border-radius: 9px;
+  background: #fbfcfb;
+  font-size: 11px;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 }
 
 .chess-match-history-main {
@@ -12622,6 +12879,7 @@ html[data-theme="dark"] .orb-ia-status {
   font-size: 10px;
 }
 
+<<<<<<< HEAD
 .chess-match-pawn-indicator {
   display: inline-block;
   font-size: 14px;
@@ -13055,6 +13313,18 @@ html[data-theme="dark"] .orb-ia-status {
 .chess-analysis-move-btn .move-badge {
   font-size: 10px;
   font-weight: 700;
+=======
+.chess-match-history-result {
+  align-self: center;
+  color: #315f3e;
+  font-size: 10px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.chess-match-history-item time {
+  grid-column: 1 / -1;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 }
 
 .chess-promotion-options button {
@@ -13183,10 +13453,13 @@ html[data-theme="dark"] .orb-ia-status {
 .transicao-tema-orby-vannila {
   --transicao-cor: #d6b37a;
 }
+<<<<<<< HEAD
 .transicao-tema-aero {
   --transicao-cor: #59b7ff;
   background: radial-gradient(circle at 50% 48%,rgba(126,239,255,.42),transparent 72%),rgba(205,239,255,.42);
 }
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
 .transicao-tema-particula {
   position: absolute;
@@ -13406,6 +13679,7 @@ html[data-theme="dark"] .orb-ia-status {
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--ui-primary) 16%, transparent);
 }
 
+<<<<<<< HEAD
 .dialog-aero-wallpapers[hidden] {
   display: none;
 }
@@ -13464,6 +13738,8 @@ html[data-theme="dark"] .orb-ia-status {
   opacity: 1;
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 .dialog-tema-opcao > .bi-check-circle-fill {
   color: var(--ui-primary);
   opacity: 0;
@@ -13702,6 +13978,10 @@ html[data-theme="dark"] :is(
   .btnAcaoItemLista,
   .itensListaVazios,
   .tarefas-importantes-widget,
+<<<<<<< HEAD
+=======
+  .clock-workspace-widget,
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   .stopwatch-widget-card,
   .pomodoro-widget-card,
   .timer-regressivo-widget-card
@@ -13722,6 +14002,7 @@ html[data-theme="dark"] :is(
   background-color: #303a49;
 }
 
+<<<<<<< HEAD
 html[data-theme="dark"] .itemNotificacao.fazenda {
   border-color: #35764b;
   color: #d8f3de;
@@ -13733,6 +14014,8 @@ html[data-theme="dark"] .itemNotificacao.fazenda.naoLida {
   box-shadow: inset 3px 0 #42bb66;
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 html[data-theme="dark"] :is(
   .tarefa-texto,
   .textoTarefa,
@@ -14139,7 +14422,11 @@ html[data-theme="dark"] :is(
   background-color: #29313e;
 }
 
+<<<<<<< HEAD
 html[data-theme="dark"] :is(#fecharDialogTemas, #fecharConfiguracoesPerfil, #fecharConfiguracoesSecoes) {
+=======
+html[data-theme="dark"] :is(#fecharDialogTemas, #fecharConfiguracoesPerfil) {
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   border-color: var(--ui-border);
   color: var(--ui-text);
   background-color: #29313e;
@@ -14178,7 +14465,11 @@ html[data-theme="dark"] :is(
   background-color: #374152;
 }
 
+<<<<<<< HEAD
 html[data-theme="dark"] :is(#fecharDialogTemas, #fecharConfiguracoesPerfil, #fecharConfiguracoesSecoes):hover {
+=======
+html[data-theme="dark"] :is(#fecharDialogTemas, #fecharConfiguracoesPerfil):hover {
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   border-color: #596579;
   color: #fff;
   background-color: #374152;
@@ -14616,8 +14907,11 @@ html[data-theme="dark"] :is(
 html[data-theme="dark"] :is(
   .chess-settings-section select,
   .chess-invite-options input,
+<<<<<<< HEAD
   .chess-invite-suggestions,
   .chess-invite-suggestion,
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   .chess-chat-form input
 ) {
   border-color: var(--ui-border);
@@ -14626,11 +14920,14 @@ html[data-theme="dark"] :is(
   color-scheme: dark;
 }
 
+<<<<<<< HEAD
 html[data-theme="dark"] .chess-invite-suggestion { border-color: var(--ui-border); }
 html[data-theme="dark"] .chess-invite-suggestion:hover,
 html[data-theme="dark"] .chess-invite-suggestion:focus-visible { background: #303c48; }
 html[data-theme="dark"] .chess-invite-search-status { color: var(--ui-muted); }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 html[data-theme="dark"] :is(
   .chess-chat-panel,
   .chess-chat-message
@@ -14653,11 +14950,53 @@ html[data-theme="dark"] .chess-chat-form button:hover:not(:disabled) {
   background: #43875b;
 }
 
+<<<<<<< HEAD
+=======
+html[data-theme="dark"] .chess-board {
+  border-color: #8392a7;
+}
+
+html[data-theme="dark"] .chess-board[data-theme="verde"] .chess-square-light {
+  background: #c4c9b1;
+}
+
+html[data-theme="dark"] .chess-board[data-theme="verde"] .chess-square-dark {
+  background: #52715a;
+}
+
+html[data-theme="dark"] .chess-board[data-theme="classico"] .chess-square-light {
+  background: #d1d5db;
+}
+
+html[data-theme="dark"] .chess-board[data-theme="classico"] .chess-square-dark {
+  background: #4b5563;
+}
+
+html[data-theme="dark"] .chess-board[data-theme="madeira"] .chess-square-light {
+  background-color: #d1ad79;
+}
+
+html[data-theme="dark"] .chess-board[data-theme="madeira"] .chess-square-dark {
+  background-color: #815037;
+}
+
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 html[data-theme="dark"] .chess-piece-black {
   color: #161b22;
   text-shadow: 0 1px 1px rgba(255, 255, 255, .65);
 }
 
+<<<<<<< HEAD
+=======
+html[data-theme="dark"] .chess-square-coordinate {
+  color: rgba(18, 28, 22, .9);
+}
+
+html[data-theme="dark"] .chess-square-dark .chess-square-coordinate {
+  color: rgba(255, 255, 255, .9);
+}
+
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 html[data-theme="dark"] .weather-dialog {
   color: var(--ui-text);
   background: #222936;
@@ -14802,6 +15141,7 @@ html[data-theme="dark"] .chess-match-history-item {
   background: #293242;
 }
 
+<<<<<<< HEAD
 html[data-theme="dark"] .chess-match-history-filters label,
 html[data-theme="dark"] .chess-match-history-filters select,
 html[data-theme="dark"] .chess-match-history-filters button {
@@ -14813,6 +15153,8 @@ html[data-theme="dark"] .chess-match-history-filters button {
 html[data-theme="dark"] .chess-match-history-filters label { border: 0; background: transparent; }
 html[data-theme="dark"] .chess-match-history-filters button:hover { background: #303c48; }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 html[data-theme="dark"] .chess-match-history-result {
   color: #a8dfb5;
 }
@@ -15040,7 +15382,10 @@ html[data-theme="dark"] .weather-dialog .weather-detail-status[data-state="error
 
 html[data-theme="dark"] :is(
   .chess-settings-dialog,
+<<<<<<< HEAD
   .chess-analysis-dialog,
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   .chess-promotion-dialog
 ) {
   border-color: var(--ui-border);
@@ -15048,6 +15393,7 @@ html[data-theme="dark"] :is(
   background: #222936;
 }
 
+<<<<<<< HEAD
 html[data-theme="dark"] :is(
   .chess-match-history-item,
   .chess-analysis-summary-panel,
@@ -15146,6 +15492,8 @@ html[data-theme="dark"] .chess-analysis-progress-panel.analysis-completed .chess
   background: #10b981;
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 html[data-theme="dark"] .chess-settings-dialog .chess-settings-header {
   border-bottom-color: var(--ui-border);
   background: #222936;
@@ -15171,8 +15519,12 @@ html[data-theme="dark"] :is(
   .weather-close-button:focus-visible,
   .dialog-tema-opcao:focus-visible,
   #fecharDialogTemas:focus-visible,
+<<<<<<< HEAD
   #fecharConfiguracoesPerfil:focus-visible,
   #fecharConfiguracoesSecoes:focus-visible
+=======
+  #fecharConfiguracoesPerfil:focus-visible
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 ) {
   outline-color: #93a4bd;
 }
@@ -15493,7 +15845,12 @@ html[data-theme="dark"] .clock-widget-card:not([data-clock-style="minimalista"])
   overflow: hidden;
   border-radius: 14px;
   background: #222936;
+<<<<<<< HEAD
   background-clip: border-box;
+=======
+  background-clip: padding-box;
+  clip-path: inset(0 round 14px);
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 }
 
 html[data-theme="dark"] .clock-workspace-widget {
@@ -15569,6 +15926,7 @@ html[data-theme="dark"] #containerTarefas .calendar-days span.has-tasks.today:no
   font-weight: 600;
 }
 
+<<<<<<< HEAD
 #containerOptions .orby-party-icon {
   display: none;
 }
@@ -15740,6 +16098,8 @@ html[data-theme="dark"] #containerTarefas .calendar-days span.has-tasks.today:no
   }
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 @keyframes sem-tarefas-aparecer {
   from {
     opacity: 0;
@@ -15756,6 +16116,10 @@ html[data-theme="dark"] #containerTarefas .calendar-days span.has-tasks.today:no
   .sem-tarefas {
     animation: none;
   }
+<<<<<<< HEAD
+=======
+  border-color: var(--ui-primary-light);
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 }
 
 html[data-theme="dark"] header .imgLogo {
@@ -15783,6 +16147,7 @@ html[data-theme="dark"] #loader .spinner {
   border-top-color: #f7623d;
   box-shadow: 0 8px 25px rgba(0, 0, 0, .28);
 }
+<<<<<<< HEAD
 
 /* Wii Theme: camada visual isolada para preservar estrutura e ações do Orby. */
 .dialog-tema-amostra-wii { background: linear-gradient(145deg, #fff 0 45%, #eaf8ff 46% 100%); }
@@ -20882,3 +21247,5 @@ html[data-special-theme] #widgetsWorkspace button.farm-widget-plot:hover {
 .party-result-mini-row b { color: #6a8292; font-size: 9px; white-space: nowrap; }
 .party-result-mini-row.is-winner { color: #755d24; background: #fff0be; }
 .party-result-mini-row.is-winner b { color: #85691f; }
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000

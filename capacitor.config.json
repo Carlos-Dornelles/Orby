@@ -6,6 +6,7 @@
     "path": "mobile-android"
   },
   "server": {
+<<<<<<< HEAD
     "url": "https://orby.shardweb.app",
     "cleartext": false,
     "allowNavigation": [
@@ -13,6 +14,12 @@
       "orbyapp.discloud.dev",
       "orbyapp.discloud.app",
       "orbyfinance.discloud.dev"
+=======
+    "url": "https://orbyapp.discloud.dev",
+    "cleartext": false,
+    "allowNavigation": [
+      "orbyapp.discloud.dev"
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     ]
   },
   "plugins": {

@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orby</title>
+
+  <link rel="icon" href="circle.png" type="image/png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="/theme.js"></script>
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+
+<body>
+
+  <div id="all">
+    <header>
+      <div class="logo">
+        <img class="imgLogo" src="circle.png" alt="Orby Logo">
+        <h1>Orby</h1>
+      </div>
+
+      <div class="informacoes">
+        <div id="horaAtual">00:00</div>
+        <button id="botaoNotificacoes" class="iconeModal" type="button" aria-label="Notificações" onclick="abrirModalIcone(this, 'notificacao')">
+          <i class="bi bi-bell" aria-hidden="true"></i>
+          <span id="contadorNotificacoes" class="contadorNotificacoes hidden">0</span>
+        </button>
+        <button class="iconeModal" type="button" aria-label="Configurações" onclick="abrirModalIcone(this, 'config')">
+          <i class="bi bi-gear" aria-hidden="true"></i>
+          <svg class="halloween-icone-lua" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="9.5" />
+            <circle class="halloween-icone-lua-cratera" cx="8.5" cy="8" r="1.2" />
+            <circle class="halloween-icone-lua-cratera" cx="15.5" cy="10" r="1.6" />
+            <circle class="halloween-icone-lua-cratera" cx="10.5" cy="15.5" r="1" />
+            <circle class="halloween-icone-lua-cratera" cx="16" cy="16" r=".8" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="mini-modal painelNotificacoes" id="notificacao">
+      <div class="cabecalhoNotificacoes">
+        <strong>Notificações</strong>
+        <button id="limparNotificacoes" type="button">Limpar</button>
+      </div>
+      <div id="listaNotificacoes"></div>
+    </div>
+
+    <div class="mini-modal painelConfiguracoes" id="config">
+      <strong>Configurações</strong>
+      <p id="statusPermissaoNotificacoes"></p>
+      <button id="ativarNotificacoes" type="button">Ativar notificações</button>
+      <label class="painelConfiguracoes-toggle" for="modoArrasteWidgets">
+        <span>Arrastar widgets</span>
+        <input id="modoArrasteWidgets" type="checkbox" role="switch">
+      </label>
+      <button id="abrirGerenciadorWidgets" class="painelConfiguracoes-open-widgets" type="button">
+        <i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>
+        Gerenciar widgets
+      </button>
+      <button id="abrirTemas" class="painelConfiguracoes-temas" type="button" aria-haspopup="dialog">
+        <i class="bi bi-palette" aria-hidden="true"></i>
+        Temas
+      </button>
+    </div>
+
+    <dialog id="dialogTemas" class="dialog-temas" aria-labelledby="tituloDialogTemas">
+      <div class="dialog-temas-cabecalho">
+        <div>
+          <span>PERSONALIZAÇÃO</span>
+          <h2 id="tituloDialogTemas">Temas</h2>
+        </div>
+        <button id="fecharDialogTemas" type="button" aria-label="Fechar temas">
+          <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+      </div>
+      <p class="dialog-temas-descricao">Escolha a aparência do Orby.</p>
+      <section class="dialog-temas-secao" aria-label="Temas básicos">
+        <h3 class="dialog-temas-secao-titulo">Básicos</h3>
+        <div class="dialog-temas-opcoes" role="group" aria-label="Temas básicos">
+          <button class="dialog-tema-opcao" type="button" data-theme-option="light" aria-pressed="true">
+            <span class="dialog-tema-amostra dialog-tema-amostra-claro" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+            <span>Claro</span>
+            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+          </button>
+          <button class="dialog-tema-opcao" type="button" data-theme-option="dark" aria-pressed="false">
+            <span class="dialog-tema-amostra dialog-tema-amostra-escuro" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+            <span>Escuro</span>
+            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+          </button>
+        </div>
+      </section>
+      <section class="dialog-temas-secao" aria-label="Temas especiais">
+        <h3 class="dialog-temas-secao-titulo">Temas especiais</h3>
+        <div class="dialog-temas-opcoes" role="group" aria-label="Temas especiais">
+          <button class="dialog-tema-opcao" type="button" data-theme-option="halloween" aria-pressed="false">
+            <span class="dialog-tema-amostra dialog-tema-amostra-halloween" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+            <span>Halloween</span>
+            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+          </button>
+          <button class="dialog-tema-opcao" type="button" data-theme-option="natal" aria-pressed="false">
+            <span class="dialog-tema-amostra dialog-tema-amostra-natal" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+            <span>Natal</span>
+            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+          </button>
+          <button class="dialog-tema-opcao" type="button" data-theme-option="orby-vannila" aria-pressed="false">
+            <span class="dialog-tema-amostra dialog-tema-amostra-orby-vannila" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+            <span>Orby Vannila</span>
+            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+          </button>
+        </div>
+      </section>
+      <section class="dialog-temas-secao dialog-temas-personalizado" aria-label="Tema personalizado">
+        <h3 class="dialog-temas-secao-titulo">Tema personalizado</h3>
+        <div class="dialog-temas-opcoes" role="group" aria-label="Tema personalizado">
+          <button class="dialog-tema-opcao" type="button" data-theme-option="custom" aria-pressed="false">
+            <span class="dialog-tema-amostra dialog-tema-amostra-personalizado" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+            <span>Personalizado</span>
+            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div id="editorTemaPersonalizado" class="dialog-tema-personalizado-editor" hidden>
+          <label class="dialog-tema-controle" for="corTemaPersonalizado">
+            <span>Cor primária</span>
+            <input id="corTemaPersonalizado" type="color" value="#174c32">
+          </label>
+          <label class="dialog-tema-controle" for="modoTemaPersonalizado">
+            <span>Aparência</span>
+            <select id="modoTemaPersonalizado">
+              <option value="light">Claro</option>
+              <option value="dark">Escuro</option>
+            </select>
+          </label>
+        </div>
+      </section>
+      <p id="statusTemas" class="dialog-temas-status" role="status" aria-live="polite" hidden></p>
+    </dialog>
+
+    <dialog id="gerenciadorWidgets" class="gerenciador-widgets" aria-labelledby="tituloGerenciadorWidgets">
+      <div class="gerenciador-widgets-conteudo">
+        <div class="gerenciador-widgets-cabecalho">
+          <div>
+            <span>PERSONALIZAÇÃO</span>
+            <h2 id="tituloGerenciadorWidgets">Widgets</h2>
+          </div>
+          <button id="fecharGerenciadorWidgets" type="button" aria-label="Fechar gerenciador de widgets">
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+          </button>
+        </div>
+        <section class="gerenciador-widgets-secao" aria-label="Widgets disponíveis">
+          <label class="gerenciador-widget-opcao" for="widgetCalendarioAtivo">
+            <span><i class="bi bi-calendar3" aria-hidden="true"></i> Calendário</span>
+            <input id="widgetCalendarioAtivo" type="checkbox" checked>
+          </label>
+          <label class="gerenciador-widget-opcao" for="widgetTempoAtivo">
+            <span><i class="bi bi-cloud-sun" aria-hidden="true"></i> Tempo</span>
+            <input id="widgetTempoAtivo" type="checkbox" checked>
+          </label>
+          <label class="gerenciador-widget-opcao" for="widgetMensagemAtivo">
+            <span><i class="bi bi-chat-square-text" aria-hidden="true"></i> Mensagem</span>
+            <input id="widgetMensagemAtivo" type="checkbox" checked>
+          </label>
+          <label class="gerenciador-widget-opcao" for="widgetTarefasImportantesAtivo">
+            <span><i class="bi bi-star-fill" aria-hidden="true"></i> Tarefas importantes</span>
+            <input id="widgetTarefasImportantesAtivo" type="checkbox" checked>
+          </label>
+          <div class="gerenciador-widget-configuravel">
+            <label class="gerenciador-widget-opcao" for="widgetListaAtivo">
+              <span><i class="bi bi-list-check" aria-hidden="true"></i> Lista</span>
+              <input id="widgetListaAtivo" type="checkbox">
+            </label>
+            <details class="gerenciador-widget-submenu gerenciador-widget-submenu-inline">
+              <summary aria-label="Configurar lista exibida" title="Configurar lista"></summary>
+              <div class="gerenciador-habito-config">
+                <label for="widgetListaSelect">Lista exibida</label>
+                <select id="widgetListaSelect" aria-describedby="widgetListaStatus">
+                  <option value="">Carregando listas...</option>
+                </select>
+                <small id="widgetListaStatus" role="status" aria-live="polite"></small>
+              </div>
+            </details>
+          </div>
+          <div class="gerenciador-widget-configuravel">
+            <label class="gerenciador-widget-opcao" for="widgetHabitoAtivo">
+              <span><i class="bi bi-check2-circle" aria-hidden="true"></i> Hábito</span>
+              <input id="widgetHabitoAtivo" type="checkbox" checked>
+            </label>
+            <details class="gerenciador-widget-submenu gerenciador-widget-submenu-inline">
+              <summary aria-label="Configurar hábito exibido" title="Configurar hábito"></summary>
+              <div class="gerenciador-habito-config">
+                <label for="widgetHabitoSelect">Hábito exibido</label>
+                <select id="widgetHabitoSelect" aria-describedby="widgetHabitoStatus">
+                  <option value="">Carregando hábitos...</option>
+                </select>
+                <small id="widgetHabitoStatus" role="status" aria-live="polite"></small>
+              </div>
+            </details>
+          </div>
+          <div class="gerenciador-widget-configuravel">
+            <label class="gerenciador-widget-opcao" for="widgetRelogioAtivo">
+              <span><i class="bi bi-clock" aria-hidden="true"></i> Relógio</span>
+              <input id="widgetRelogioAtivo" type="checkbox" checked>
+            </label>
+            <details class="gerenciador-widget-submenu gerenciador-widget-submenu-inline">
+              <summary aria-label="Configurar estilo do relógio" title="Configurar estilo do relógio"></summary>
+              <div class="gerenciador-habito-config">
+                <label for="widgetRelogioEstilo">Estilo do relógio</label>
+                <select id="widgetRelogioEstilo" aria-label="Estilo do relógio">
+                  <option value="digital">Digital clássico</option>
+                  <option value="analogico">Analógico</option>
+                  <option value="minimalista">Minimalista</option>
+                  <option value="flip">Digital flip</option>
+                </select>
+              </div>
+            </details>
+          </div>
+          <label class="gerenciador-widget-opcao" for="widgetCronometroAtivo">
+            <span><i class="bi bi-stopwatch" aria-hidden="true"></i> Cronômetro</span>
+            <input id="widgetCronometroAtivo" type="checkbox">
+          </label>
+          <div class="gerenciador-widget-configuravel">
+            <label class="gerenciador-widget-opcao" for="widgetPomodoroAtivo">
+              <span><i class="bi bi-cup-hot" aria-hidden="true"></i> Pomodoro</span>
+              <input id="widgetPomodoroAtivo" type="checkbox">
+            </label>
+            <details class="gerenciador-widget-submenu gerenciador-widget-submenu-inline">
+              <summary aria-label="Configurar duração do Pomodoro" title="Configurar duração do Pomodoro"></summary>
+              <div class="gerenciador-habito-config">
+                <label for="widgetPomodoroFocoMinutos">Duração do foco (minutos)</label>
+                <input id="widgetPomodoroFocoMinutos" type="number" min="1" max="180" step="1" required>
+                <label for="widgetPomodoroPausaMinutos">Duração da pausa (minutos)</label>
+                <input id="widgetPomodoroPausaMinutos" type="number" min="1" max="180" step="1" required>
+                <small>As mudanças valem na próxima fase ou ao reiniciar o Pomodoro.</small>
+              </div>
+            </details>
+          </div>
+          <div class="gerenciador-widget-configuravel">
+            <label class="gerenciador-widget-opcao" for="widgetTimerRegressivoAtivo">
+              <span><i class="bi bi-hourglass-split" aria-hidden="true"></i> Timer regressivo</span>
+              <input id="widgetTimerRegressivoAtivo" type="checkbox">
+            </label>
+            <details class="gerenciador-widget-submenu gerenciador-widget-submenu-inline">
+              <summary aria-label="Configurar timer regressivo" title="Configurar timer regressivo"></summary>
+              <div class="gerenciador-habito-config timer-regressivo-config">
+                <label for="timerRegressivoTitulo">Objetivo ou evento</label>
+                <input id="timerRegressivoTitulo" type="text" maxlength="80" placeholder="Ex.: Show para ir" required>
+                <label for="timerRegressivoDataHora">Data e hora</label>
+                <input id="timerRegressivoDataHora" type="datetime-local" required>
+                <div class="timer-regressivo-config-acoes">
+                  <button id="salvarTimerRegressivo" type="button">Salvar data</button>
+                  <button id="removerTimerRegressivo" type="button">Remover</button>
+                </div>
+                <small id="timerRegressivoStatus" role="status" aria-live="polite">Configure um objetivo e uma data. Só é possível manter uma data por vez.</small>
+              </div>
+            </details>
+          </div>
+          <label class="gerenciador-widget-opcao" for="widgetUtilidadesAtivo">
+            <span><i class="bi bi-calculator" aria-hidden="true"></i> Utilidades</span>
+            <input id="widgetUtilidadesAtivo" type="checkbox">
+          </label>
+          <label class="gerenciador-widget-opcao" for="widgetLinksAtivo">
+            <span><i class="bi bi-link-45deg" aria-hidden="true"></i> Links</span>
+            <input id="widgetLinksAtivo" type="checkbox">
+          </label>
+          <label class="gerenciador-widget-opcao" for="widgetXadrezAtivo">
+            <span><i class="bi bi-grid-3x3" aria-hidden="true"></i> Xadrez</span>
+            <input id="widgetXadrezAtivo" type="checkbox">
+          </label>
+          <label class="gerenciador-widget-opcao" for="widgetOrbIaAtivo">
+            <span><i class="bi bi-stars" aria-hidden="true"></i> Orb.IA</span>
+            <input id="widgetOrbIaAtivo" type="checkbox">
+          </label>
+          <button id="reorganizarWidgets" class="painelConfiguracoes-add-image reorganizar-widgets" type="button">
+            <i class="bi bi-grid" aria-hidden="true"></i> Reorganizar widgets
+          </button>
+          <div class="gerenciador-widgets-titulo-secao postit-config-titulo">
+            <h3>Post-it</h3>
+            <button id="adicionarWidgetPostit" class="painelConfiguracoes-add-image" type="button">
+              <i class="bi bi-plus-lg" aria-hidden="true"></i> Adicionar
+            </button>
+          </div>
+        </section>
+        <section class="gerenciador-widgets-secao">
+          <div class="gerenciador-widgets-titulo-secao">
+            <h3>Imagens</h3>
+            <button id="adicionarWidgetImagem" class="painelConfiguracoes-add-image" type="button">
+              <i class="bi bi-plus-lg" aria-hidden="true"></i> Adicionar
+            </button>
+          </div>
+          <div id="listaWidgetsImagem" class="lista-widgets-imagem" aria-live="polite"></div>
+          <p id="statusWidgetImagem" class="statusWidgetImagem" role="status" aria-live="polite" hidden></p>
+        </section>
+      </div>
+    </dialog>
+    <input id="arquivoWidgetImagem" type="file" accept="image/*" hidden>
+
+    <div id="containerTasks">
+      <div id="containerOptions">
+        <button class="option active" data-section="containerTarefas" onclick="setActive(this)" title="Tarefas">
+          <i class="iconeSecao bi bi-calendar2-check" aria-hidden="true"></i>
+        <h1 class="h1Container">Tarefas</h1>
+        </button>
+
+        <button class="option" data-section="containerTarefasImportantes" onclick="setActive(this)" title="Importante">
+          <i class="iconeSecao bi bi-star-fill" aria-hidden="true"></i>
+        <h1 class="h1Container">Importante</h1>
+        </button>
+
+        
+        <button class="option" data-section="containerNotas" onclick="setActive(this)" title="Posts">
+          <i class="iconeSecao bi bi-sticky-fill" aria-hidden="true"></i>
+        <h1 class="h1Container">Posts</h1>
+        </button>
+        
+        <button class="option" data-section="containerOutracoisa" onclick="setActive(this)" title="Caderno">
+          <i class="iconeSecao bi bi-journal-richtext" aria-hidden="true"></i>
+        <h1 class="h1Container">Caderno</h1>
+        </button>
+
+        <button class="option" data-section="containerHabitos" onclick="setActive(this)" title="Hábitos">
+          <i class="iconeSecao bi bi-fire" aria-hidden="true"></i>
+          <h1 class="h1Container">Hábitos</h1>
+        </button>
+
+        <button class="option" data-section="containerListas" onclick="setActive(this)" title="Listas">
+          <i class="iconeSecao bi bi-list-check" aria-hidden="true"></i>
+          <h1 class="h1Container">Listas</h1>
+        </button>
+
+        <div class="perfil-usuario">
+          <div class="perfil-usuario-foto" aria-hidden="true">
+            <img id="fotoPerfilUsuario" alt="" hidden>
+            <i class="bi bi-person-fill"></i>
+            <svg class="halloween-chapeu-bruxa" viewBox="0 0 48 32" focusable="false">
+              <path class="halloween-chapeu-aba" d="M2 27c7-4 35-4 44 0-9 5-35 5-44 0Z" />
+              <path class="halloween-chapeu-cone" d="M13 24 27 2l9 22c-7-2-15-2-23 0Z" />
+              <path class="halloween-chapeu-faixa" d="m18 16 14 1 2 5-20 0Z" />
+            </svg>
+            <svg class="natal-gorro" viewBox="0 0 48 34" focusable="false">
+              <path class="natal-gorro-corpo" d="M5 27C11 13 20 4 35 4c-3 7 1 15 9 23Z" />
+              <path class="natal-gorro-pom-pom" d="M35 4c0-3 3-4 5-2 2 2 1 5-2 6-2 0-3-2-3-4Z" />
+              <path class="natal-gorro-borda" d="M4 25c12-4 30-4 42 0l-1 6c-12-4-28-4-40 1Z" />
+            </svg>
+          </div>
+          <div class="perfil-usuario-dados">
+            <span id="nomeUsuario">Carregando perfil...</span>
+            <button id="abrirConfiguracoesPerfil" class="perfil-usuario-configuracoes" type="button" aria-haspopup="dialog">
+              Configurações
+            </button>
+          </div>
+          <input id="arquivoFotoPerfil" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+        </div>
+      </div>
+
+      <dialog id="dialogConfiguracoesPerfil" class="dialog-configuracoes-perfil" aria-labelledby="tituloConfiguracoesPerfil">
+        <div class="dialog-configuracoes-perfil-cabecalho">
+          <h2 id="tituloConfiguracoesPerfil">Configurações do perfil</h2>
+          <button id="fecharConfiguracoesPerfil" type="button" aria-label="Fechar configurações">
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+          </button>
+        </div>
+        <form id="formNomePerfil">
+          <label for="inputNomePerfil">Nome</label>
+          <input id="inputNomePerfil" name="nome" type="text" maxlength="100" autocomplete="name" required>
+          <button type="submit">Salvar nome</button>
+        </form>
+        <button id="alternarRedefinicaoSenha" class="acao-configuracao-perfil" type="button" aria-expanded="false" aria-controls="formSenhaPerfil">
+          <i class="bi bi-key" aria-hidden="true"></i> Redefinir senha
+        </button>
+        <form id="formSenhaPerfil" hidden>
+          <label for="senhaAtualPerfil">Senha atual</label>
+          <input id="senhaAtualPerfil" name="senhaAtual" type="password" autocomplete="current-password" required>
+          <label for="novaSenhaPerfil">Nova senha</label>
+          <input id="novaSenhaPerfil" name="novaSenha" type="password" minlength="6" autocomplete="new-password" required>
+          <button type="submit">Salvar nova senha</button>
+        </form>
+        <button id="escolherFotoPerfil" class="acao-configuracao-perfil" type="button">
+          <i class="bi bi-camera" aria-hidden="true"></i> Trocar foto
+        </button>
+        <button id="botaoLogoutPerfil" class="acao-configuracao-perfil acao-sair-perfil" type="button">
+          <i class="bi bi-box-arrow-right" aria-hidden="true"></i> Deslogar
+        </button>
+        <p id="statusConfiguracoesPerfil" role="status" aria-live="polite" hidden></p>
+      </dialog>
+
+      <section id="containerTarefas">
+        <div class="tarefasDiv">
+          <div class="tarefasContainer">
+            <div class="tituloDiv">
+              <h2 id="tituloData">
+                <i class="bi bi-calendar" style="color: rgb(73, 199, 47); font-size: 30px; margin-right: 10px;"></i>
+                <span id="textoData">Hoje</span>
+              </h2>
+              <div class="filtros">
+                <button id="btnFiltro" class="filtro-btn pendentes" onclick="toggleFiltro()">
+                  <span class="icon"><i class="bi bi-stickies"></i></span>
+                  <span class="text">Pendentes</span>
+                </button>
+              </div>
+            </div>
+            <div id="resumoTarefasDia" class="resumoTarefasDia" aria-live="polite"></div>
+            <div class="buscaTarefas">
+              <button class="btnBuscaTarefas" type="button" aria-label="Abrir pesquisa" aria-expanded="false">
+                <i class="bi bi-search" aria-hidden="true"></i>
+                <svg class="halloween-icone-abobora" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+                  <path class="halloween-icone-abobora-talo" d="M15 8c-1-3 0-5 3-6 1 2 0 4-2 6" />
+                  <path class="halloween-icone-abobora-corpo" d="M16 10C10 5 3 9 3 17c0 7 5 12 13 12s13-5 13-12c0-8-7-12-13-7Z" />
+                  <path class="halloween-icone-abobora-gomos" d="M16 10c-3 5-3 13 0 19m0-19c3 5 3 13 0 19" />
+                </svg>
+                <svg class="natal-icone-pinheiro" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+                  <path class="natal-pinheiro-folhas" d="M16 2 9 11h4l-6 8h5l-6 8h20l-6-8h5l-6-8h4Z" />
+                  <path class="natal-pinheiro-tronco" d="M14 27h4v4h-4z" />
+                  <circle class="natal-pinheiro-estrela" cx="16" cy="3" r="1.5" />
+                </svg>
+              </button>
+              <input id="buscaTarefas" type="search" placeholder="Pesquisar..." aria-label="Pesquisar tarefas do dia">
+            </div>
+            <div id="tarefas"></div>
+            <button class="BTNAddTarefa" onclick="abrirModal()">
+              <i class="bi bi-plus-lg" style="color: red; font-size: 20px;"></i> Adicionar Tarefa
+            </button>
+            <button class="alcaRedimensionarTarefas" type="button" aria-label="Redimensionar painel de tarefas" title="Arraste para aumentar ou diminuir o painel">
+            </button>
+          </div>
+          <section id="widgetTarefasImportantes" class="tarefas-importantes-widget" aria-labelledby="tituloWidgetTarefasImportantes" hidden>
+            <div class="tarefas-importantes-widget-cabecalho">
+              <h2 id="tituloWidgetTarefasImportantes"><i class="bi bi-star-fill" aria-hidden="true"></i> Tarefas importantes</h2>
+              <div class="tarefas-importantes-widget-filtros" role="group" aria-label="Filtrar tarefas importantes por período">
+                <button type="button" data-filtro-widget-importantes="hoje" aria-pressed="true">Hoje</button>
+                <button type="button" data-filtro-widget-importantes="semana" aria-pressed="false">Semana</button>
+                <button type="button" data-filtro-widget-importantes="mes" aria-pressed="false">Mês</button>
+              </div>
+              <span id="contagemWidgetTarefasImportantes" aria-live="polite">Carregando...</span>
+            </div>
+            <ul id="listaWidgetTarefasImportantes" class="tarefas-importantes-widget-lista" aria-live="polite"></ul>
+          </section>
+          <div class="divBoxMensagem" id="mensagemWidget"></div>
+        </div>
+        <div class="widgetsWorkspace" id="widgetsWorkspace" aria-label="Área de widgets">
+          <article class="workspace-widget" data-widget-id="calendar" data-default-x="8" data-default-y="8">
+            <div class="calendar">
+              <button class="widget-drag-handle" type="button" aria-label="Mover widget Calendário" title="Arraste para mover">
+                <i class="bi bi-grip-horizontal" aria-hidden="true"></i>
+              </button>
+              <div class="calendar-header">
+                <button id="prevMonth" type="button" aria-label="Mês anterior">‹</button>
+                <h2 id="monthYear"></h2>
+                <button id="nextMonth" type="button" aria-label="Próximo mês">›</button>
+              </div>
+              <div class="calendar-weekdays">
+                <span>Dom</span><span>Seg</span><span>Ter</span>
+                <span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+              </div>
+              <div class="calendar-days" id="calendarDays"></div>
+              <div class="calendar-footer">
+                <button id="todayButton" class="calendar-today-button" type="button" aria-label="Voltar para hoje" title="Voltar para hoje">Hoje</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="workspace-widget" data-widget-id="weather" data-default-x="8" data-default-y="370">
+            <div class="weather-card" id="weatherCard">
+              <button class="widget-drag-handle" type="button" aria-label="Mover widget Tempo" title="Arraste para mover">
+                <i class="bi bi-grip-horizontal" aria-hidden="true"></i>
+              </button>
+              <button class="weather-summary" id="weatherToggle" type="button"
+                aria-expanded="false" aria-controls="weatherCardDetails">
+                <span class="weather-icon" id="weatherIcon" aria-hidden="true"></span>
+                <span class="weather-info">
+                  <span class="weather-city" id="city">---</span>
+                  <span class="weather-temp" id="temp">--°C</span>
+                  <span class="weather-desc" id="desc">Carregando...</span>
+                </span>
+                <i class="bi bi-chevron-right weather-chevron" aria-hidden="true"></i>
+              </button>
+              <div class="weather-card-details" id="weatherCardDetails" hidden>
+                <div class="weather-card-metrics" aria-label="Resumo das condições atuais">
+                  <div><span>Sensação</span><strong id="weatherCardFeelsLike">--°C</strong></div>
+                  <div><span>Umidade</span><strong id="weatherCardHumidity">--%</strong></div>
+                  <div><span>Vento</span><strong id="weatherCardWind">-- m/s</strong></div>
+                  <div><span>Sol</span><strong id="weatherCardSun">--:-- / --:--</strong></div>
+                </div>
+                <div class="weather-card-forecast-heading">Próximos 7 dias</div>
+                <div class="weather-card-forecast" id="weatherCardForecast" aria-live="polite">
+                  <span class="weather-forecast-status">Carregando previsão...</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="workspace-widget habit-workspace-widget" data-widget-id="habit" data-default-x="8" data-default-y="590" hidden>
+            <div class="habit-workspace-card" id="widgetHabitoCard"></div>
+          </article>
+          <article class="workspace-widget list-workspace-widget" data-widget-id="list" data-default-x="278" data-default-y="760" hidden>
+            <section class="list-widget-card" aria-labelledby="widgetListaTitulo">
+              <button class="widget-drag-handle" type="button" aria-label="Mover widget de lista" title="Arraste para mover">
+                <i class="bi bi-grip-horizontal" aria-hidden="true"></i>
+              </button>
+              <header class="list-widget-heading">
+                <h2 id="widgetListaTitulo"><i class="bi bi-list-check" aria-hidden="true"></i> Lista</h2>
+                <span id="widgetListaProgresso"></span>
+              </header>
+              <p id="widgetListaVazia" class="list-widget-empty" role="status"></p>
+              <ul id="widgetListaItens" class="list-widget-items" aria-live="polite"></ul>
+            </section>
+          </article>
+          <article class="workspace-widget clock-workspace-widget" data-widget-id="clock" data-default-x="278" data-default-y="370" hidden>
+            <div class="clock-widget-card" id="widgetRelogio" data-clock-style="digital">
+              <button class="widget-drag-handle" type="button" aria-label="Mover widget Relógio" title="Arraste para mover">
+                <i class="bi bi-grip-horizontal" aria-hidden="true"></i>
+              </button>
+              <div class="clock-widget-display">
+                <div class="clock-widget-face" aria-hidden="true">
+                  <span class="clock-widget-number" data-number="12">12</span>
+                  <span class="clock-widget-number" data-number="3">3</span>
+                  <span class="clock-widget-number" data-number="6">6</span>
+                  <span class="clock-widget-number" data-number="9">9</span>
+                  <span class="clock-widget-hand clock-widget-hour"></span>
+                  <span class="clock-widget-hand clock-widget-minute"></span>
+                  <span class="clock-widget-hand clock-widget-second"></span>
+                  <span class="clock-widget-pin"></span>
+                </div>
+                <time class="clock-widget-time" id="horaWidgetRelogio"></time>
+                <span class="clock-widget-date" id="dataWidgetRelogio"></span>
+              </div>
+            </div>
+          </article>
+          <article class="workspace-widget stopwatch-workspace-widget" data-widget-id="stopwatch" data-default-x="500" data-default-y="370" hidden>
+            <div class="stopwatch-widget-card" id="widgetCronometro">
+              <button class="widget-drag-handle" type="button" aria-label="Mover widget Cronômetro" title="Arraste para mover">
+                <i class="bi bi-grip-horizontal" aria-hidden="true"></i>
+              </button>
+              <span class="stopwatch-widget-label"><i class="bi bi-stopwatch" aria-hidden="true"></i> Cronômetro</span>
+              <time id="tempoWidgetCronometro" class="stopwatch-widget-time" datetime="PT0S">00:00:00</time>
+              <div class="stopwatch-widget-actions">
+                <button id="btnIniciarCronometro" type="button"><i class="bi bi-play-fill" aria-hidden="true"></i> Iniciar</button>
+                <button id="btnPararCronometro" type="button"><i class="bi bi-pause-fill" aria-hidden="true"></i> Parar</button>
+                <button id="btnReiniciarCronometro" type="button" aria-label="Reiniciar cronômetro" title="Reiniciar"><i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i></button>
+              </div>
+            </div>
+          </article>
+          <article class="workspace-widget pomodoro-workspace-widget" data-widget-id="pomodoro" data-default-x="500" data-default-y="530" hidden>
+            <div class="pomodoro-widget-card" id="widgetPomodoro">
+              <button class="widget-drag-handle" type="button" aria-label="Mover widget Pomodoro" title="Arraste para mover">
+                <i class="bi bi-grip-horizontal" aria-hidden="true"></i>
+              </button>
+              <div class="pomodoro-widget-header">
+                <span><i class="bi bi-cup-hot" aria-hidden="true"></i> Pomodoro</span>
+                <small id="faseWidgetPomodoro">Foco</small>
+              </div>
+              <time id="tempoWidgetPomodoro" class="pomodoro-widget-time" datetime="PT25M">25:00</time>
+              <div class="pomodoro-widget-actions">
+                <button id="btnIniciarPomodoro" type="button"><i class="bi bi-play-fill" aria-hidden="true"></i> Iniciar</button>
+                <button id="btnPausarPomodoro" type="button"><i class="bi bi-pause-fill" aria-hidden="true"></i> Pausar</button>
+                <button id="btnReiniciarPomodoro" type="button" aria-label="Reiniciar Pomodoro" title="Reiniciar"><i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i></button>
+              </div>
+            </div>
+          </article>
+          <article class="workspace-widget timer-regressivo-workspace-widget" data-widget-id="timer-regressivo" data-default-x="278" data-default-y="530" hidden>
+            <div class="timer-regressivo-widget-card" id="widgetTimerRegressivo">
+              <button class="widget-drag-handle" type="button" aria-label="Mover widget Timer regressivo" title="Arraste para mover">
+                <i class="bi bi-grip-horizontal" aria-hidden="true"></i>
+              </button>
+              <div class="timer-regressivo-widget-header">
+                <span><i class="bi bi-hourglass-split" aria-hidden="true"></i> Timer regressivo</span>
+                <small id="timerRegressivoRotulo">Configure uma data</small>
+              </div>
+              <strong id="timerRegressivoNome" class="timer-regressivo-widget-title">Seu objetivo</strong>
+              <time id="timerRegressivoContagem" class="timer-regressivo-widget-time">Configure uma data</time>
+              <span id="timerRegressivoDataFormatada" class="timer-regressivo-widget-date"></span>
+            </div>
+          </article>
+          <article class="workspace-widget utilidades-workspace-widget" data-widget-id="utilidades" data-default-x="8" data-default-y="690" hidden>
+            <button id="widgetUtilidadesAbrir" class="utilidades-widget-launcher" type="button"
+              aria-label="Abrir calculadora" title="Calculadora" aria-expanded="false" aria-controls="widgetCalculadora">
+              <i class="bi bi-calculator" aria-hidden="true"></i>
+            </button>
+            <section id="widgetCalculadora" class="utilidades-calculadora" aria-label="Calculadora" hidden>
+              <header class="utilidades-calculadora-header">
+                <span><i class="bi bi-grid" aria-hidden="true"></i> Utilidades</span>
+                <button id="widgetCalculadoraFechar" type="button" aria-label="Fechar calculadora" title="Fechar">
+                  <i class="bi bi-x-lg" aria-hidden="true"></i>
+                </button>
+              </header>
+              <div class="utilidades-abas" role="tablist" aria-label="Utilidades">
+                <button id="abaCalculadora" type="button" role="tab" aria-selected="true" aria-controls="painelCalculadora" data-utilidade-aba="calculadora">
+                  <i class="bi bi-calculator" aria-hidden="true"></i> Calculadora
+                </button>
+                <button id="abaNumeroAleatorio" type="button" role="tab" aria-selected="false" aria-controls="painelNumeroAleatorio" data-utilidade-aba="aleatorio" tabindex="-1">
+                  <i class="bi bi-dice-5" aria-hidden="true"></i> Aleatório
+                </button>
+              </div>
+              <div id="painelCalculadora" class="utilidades-painel" role="tabpanel" aria-labelledby="abaCalculadora" data-utilidade-painel="calculadora">
+                <div class="utilidades-calculadora-visor">
+                  <span id="calculadoraExpressao" class="utilidades-calculadora-expressao" aria-live="polite"></span>
+                  <output id="calculadoraVisor" class="utilidades-calculadora-resultado" aria-live="polite">0</output>
+                </div>
+                <div class="utilidades-calculadora-teclas">
+                  <button type="button" data-calculadora-acao="limpar">C</button>
+                  <button type="button" data-calculadora-acao="apagar" aria-label="Apagar último dígito"><i class="bi bi-backspace" aria-hidden="true"></i></button>
+                  <button type="button" data-calculadora-acao="porcentagem">%</button>
+                  <button type="button" data-calculadora-operador="÷" class="operador">÷</button>
+                  <button type="button" data-calculadora-digito="7">7</button>
+                  <button type="button" data-calculadora-digito="8">8</button>
+                  <button type="button" data-calculadora-digito="9">9</button>
+                  <button type="button" data-calculadora-operador="×" class="operador">×</button>
+                  <button type="button" data-calculadora-digito="4">4</button>
+                  <button type="button" data-calculadora-digito="5">5</button>
+                  <button type="button" data-calculadora-digito="6">6</button>
+                  <button type="button" data-calculadora-operador="−" class="operador">−</button>
+                  <button type="button" data-calculadora-digito="1">1</button>
+                  <button type="button" data-calculadora-digito="2">2</button>
+                  <button type="button" data-calculadora-digito="3">3</button>
+                  <button type="button" data-calculadora-operador="+" class="operador">+</button>
+                  <button type="button" data-calculadora-acao="sinal">+/−</button>
+                  <button type="button" data-calculadora-digito="0">0</button>
+                  <button type="button" data-calculadora-acao="decimal">.</button>
+                  <button type="button" data-calculadora-acao="igual" class="igual">=</button>
+                </div>
+              </div>
+              <div id="painelNumeroAleatorio" class="utilidades-painel" role="tabpanel" aria-labelledby="abaNumeroAleatorio" data-utilidade-painel="aleatorio" hidden>
+                <label class="utilidades-aleatorio-label" for="numeroAleatorioLimite">Sortear um número de 1 até</label>
+                <input id="numeroAleatorioLimite" class="utilidades-aleatorio-limite" type="number" min="1" max="9007199254740991" step="1" value="100" inputmode="numeric">
+                <span class="utilidades-aleatorio-ajuda">Limite máximo: 9.007.199.254.740.991</span>
+                <div class="utilidades-dados-heading"><i class="bi bi-dice-5" aria-hidden="true"></i> Dados de RPG</div>
+                <div class="utilidades-dados-rpg" aria-label="Predefinições de dados de RPG">
+                  <button type="button" data-dado-rpg="4" aria-pressed="false"><i class="bi bi-dice-4" aria-hidden="true"></i><span>d4</span></button>
+                  <button type="button" data-dado-rpg="6" aria-pressed="false"><i class="bi bi-dice-6" aria-hidden="true"></i><span>d6</span></button>
+                  <button type="button" data-dado-rpg="8" aria-pressed="false"><i class="bi bi-dice-5" aria-hidden="true"></i><span>d8</span></button>
+                  <button type="button" data-dado-rpg="10" aria-pressed="false"><i class="bi bi-dice-2" aria-hidden="true"></i><span>d10</span></button>
+                  <button type="button" data-dado-rpg="12" aria-pressed="false"><i class="bi bi-dice-3" aria-hidden="true"></i><span>d12</span></button>
+                  <button type="button" data-dado-rpg="20" aria-pressed="false"><i class="bi bi-dice-1" aria-hidden="true"></i><span>d20</span></button>
+                  <button type="button" data-dado-rpg="100" aria-pressed="false"><i class="bi bi-dice-6" aria-hidden="true"></i><span>d100</span></button>
+                </div>
+                <button id="gerarNumeroAleatorio" class="utilidades-gerar-aleatorio" type="button">
+                  <i class="bi bi-dice-5" aria-hidden="true"></i> Rolar dado
+                </button>
+                <div id="numeroAleatorioPalco" class="utilidades-aleatorio-palco">
+                  <i class="bi bi-dice-5 utilidades-aleatorio-dado" aria-hidden="true"></i>
+                  <output id="numeroAleatorioResultado" class="utilidades-aleatorio-resultado" aria-live="polite">?</output>
+                </div>
+                <span id="numeroAleatorioStatus" class="utilidades-aleatorio-status" role="status" aria-live="polite"></span>
+              </div>
+            </section>
+          </article>
+          <article class="workspace-widget links-workspace-widget" data-widget-id="links" data-default-x="68" data-default-y="690" hidden>
+            <button id="widgetLinksAbrir" class="utilidades-widget-launcher links-widget-launcher" type="button"
+              aria-label="Abrir links salvos" title="Links salvos" aria-expanded="false" aria-controls="widgetLinksPainel">
+              <i class="bi bi-link-45deg" aria-hidden="true"></i>
+            </button>
+            <section id="widgetLinksPainel" class="links-widget-panel" role="dialog" aria-labelledby="widgetLinksTitulo" hidden>
+              <header class="links-widget-header">
+                <span id="widgetLinksTitulo"><i class="bi bi-link-45deg" aria-hidden="true"></i> Links salvos</span>
+                <button id="widgetLinksAdicionar" class="links-widget-add" type="button" aria-expanded="false" aria-controls="widgetLinksForm">
+                  <i class="bi bi-plus-lg" aria-hidden="true"></i> Adicionar link
+                </button>
+                <button id="widgetLinksFechar" type="button" aria-label="Fechar links" title="Fechar">
+                  <i class="bi bi-x-lg" aria-hidden="true"></i>
+                </button>
+              </header>
+              <form id="widgetLinksForm" class="links-widget-form" hidden>
+                <label for="widgetLinksNome">Nome</label>
+                <input id="widgetLinksNome" type="text" maxlength="80" placeholder="Ex.: Meu calendário" required>
+                <label for="widgetLinksUrl">Endereço do site</label>
+                <input id="widgetLinksUrl" type="url" maxlength="2048" placeholder="https://exemplo.com" required>
+                <div class="links-widget-form-actions">
+                  <button id="widgetLinksCancelar" type="button">Cancelar</button>
+                  <button type="submit"><i class="bi bi-check-lg" aria-hidden="true"></i> Salvar link</button>
+                </div>
+              </form>
+              <p id="widgetLinksStatus" class="links-widget-status" role="status" aria-live="polite"></p>
+              <ul id="widgetLinksLista" class="links-widget-list"></ul>
+            </section>
+          </article>
+          <article class="workspace-widget chess-workspace-widget" data-widget-id="chess" data-default-x="278" data-default-y="690" hidden>
+            <section class="chess-widget-card" aria-label="Widget de xadrez">
+              <button class="widget-drag-handle" type="button" aria-label="Mover widget Xadrez" title="Arraste para mover">
+                <i class="bi bi-grip-horizontal" aria-hidden="true"></i>
+              </button>
+              <button id="chessSettingsOpen" class="chess-settings-button" type="button"
+                aria-label="Configurações e histórico da partida" title="Configurações e histórico">
+                <i class="bi bi-gear" aria-hidden="true"></i>
+              </button>
+              <button id="chessChatOpen" class="chess-chat-button" type="button"
+                aria-label="Abrir chat da partida" title="Chat da partida" aria-expanded="false" hidden>
+                <i class="bi bi-chat-dots" aria-hidden="true"></i>
+              </button>
+              <span id="chessChatAnnouncement" class="chess-chat-visually-hidden" role="status" aria-live="polite"></span>
+              <header class="chess-widget-header">
+                <h2>Xadrez</h2>
+              </header>
+              <p id="chessStatus" class="chess-widget-status" role="status" aria-live="polite">Vez das brancas.</p>
+              <section id="chessChatPanel" class="chess-chat-panel" aria-label="Chat da partida" hidden>
+                <header class="chess-chat-header">
+                  <div>
+                    <strong>Chat da partida</strong>
+                    <small id="chessChatOpponent"></small>
+                  </div>
+                  <button id="chessChatClose" class="chess-chat-close" type="button" aria-label="Fechar chat">
+                    <i class="bi bi-x-lg" aria-hidden="true"></i>
+                  </button>
+                </header>
+                <ol id="chessChatMessages" class="chess-chat-messages" role="log" aria-live="polite"
+                  aria-relevant="additions text" aria-label="Mensagens da partida"></ol>
+                <p id="chessChatEmpty" class="chess-chat-empty">Envie uma mensagem para iniciar a conversa.</p>
+                <p id="chessChatStatus" class="chess-chat-status" role="status" aria-live="polite"></p>
+                <form id="chessChatForm" class="chess-chat-form">
+                  <label class="chess-chat-visually-hidden" for="chessChatInput">Mensagem</label>
+                  <input id="chessChatInput" type="text" maxlength="500" autocomplete="off"
+                    placeholder="Escreva uma mensagem..." required>
+                  <button id="chessChatSend" type="submit" aria-label="Enviar mensagem">
+                    <i class="bi bi-send-fill" aria-hidden="true"></i>
+                  </button>
+                </form>
+              </section>
+              <div id="chessCapturedRowWhite" class="chess-captured-row" aria-label="Peças capturadas pelas brancas">
+                <span id="chessCapturedByWhite" class="chess-captured-pieces" aria-label="Nenhuma peça capturada pelas brancas"></span>
+              </div>
+              <div id="chessBoard" class="chess-board" role="group" aria-label="Tabuleiro de xadrez"></div>
+              <div id="chessCapturedRowBlack" class="chess-captured-row" aria-label="Peças capturadas pelas pretas">
+                <span id="chessCapturedByBlack" class="chess-captured-pieces" aria-label="Nenhuma peça capturada pelas pretas"></span>
+                <button id="chessResize" class="chess-widget-resize" type="button"
+                  aria-label="Redimensionar widget de xadrez" title="Arraste para aumentar ou diminuir o tabuleiro">
+                </button>
+              </div>
+              <small id="chessStorageStatus" class="chess-storage-status" role="status" aria-live="polite"></small>
+            </section>
+            <dialog id="chessSettingsDialog" class="chess-settings-dialog" aria-labelledby="chessSettingsTitle">
+              <div class="chess-settings-header">
+                <div>
+                  <span>PARTIDA</span>
+                  <h2 id="chessSettingsTitle">Xadrez</h2>
+                </div>
+                <button id="chessSettingsClose" class="chess-settings-close" type="button" aria-label="Fechar configurações">
+                  <i class="bi bi-x-lg" aria-hidden="true"></i>
+                </button>
+              </div>
+              <section class="chess-settings-section" aria-label="Nova partida">
+                <h3>Nova partida</h3>
+                <label for="chessGameMode">Modo de jogo</label>
+                <select id="chessGameMode">
+                  <option value="local">Local — duas pessoas</option>
+                  <option value="stockfish">Contra Stockfish</option>
+                  <option value="invite">Convidar usuário do Orby</option>
+                </select>
+                <div id="chessOpponentOptions" class="chess-opponent-options" hidden>
+                  <label for="chessPlayerColor">Você joga com</label>
+                  <select id="chessPlayerColor">
+                    <option value="w">Brancas</option>
+                    <option value="b">Pretas</option>
+                  </select>
+                  <label for="chessSkillLevel">Nível do Stockfish <output id="chessSkillValue" for="chessSkillLevel">10</output></label>
+                  <input id="chessSkillLevel" type="range" min="1" max="20" step="1" value="10">
+                  <small>1 é o mais fácil; 20 é o mais difícil.</small>
+                </div>
+                <div id="chessInviteOptions" class="chess-invite-options" hidden>
+                  <label for="chessInviteEmail">E-mail do usuário</label>
+                  <input id="chessInviteEmail" type="email" maxlength="254" autocomplete="email"
+                    placeholder="usuario@orby.com.br">
+                  <small>Você jogará com as brancas. O convite expira em sete dias.</small>
+                </div>
+                <p id="chessEngineStatus" class="chess-engine-status" role="status" aria-live="polite" hidden></p>
+                <button id="chessNewGame" class="chess-new-game-button" type="button">
+                  <i class="bi bi-arrow-repeat" aria-hidden="true"></i>
+                  <span id="chessNewGameLabel">Iniciar nova partida</span>
+                </button>
+              </section>
+              <section class="chess-settings-section chess-resign-section" aria-label="Desistir da partida">
+                <h3>Encerrar partida</h3>
+                <button id="chessResign" class="chess-resign-button" type="button">
+                  <i class="bi bi-flag" aria-hidden="true"></i>
+                  Desistir da partida
+                </button>
+              </section>
+              <section class="chess-settings-section chess-notification-settings" aria-label="Notificações de partida">
+                <label for="chessMoveNotifications">
+                  <span>
+                    <strong>Avisar quando o oponente jogar</strong>
+                    <small>Notificação no sino em partidas por convite.</small>
+                  </span>
+                  <input id="chessMoveNotifications" type="checkbox" checked>
+                </label>
+              </section>
+              <section class="chess-settings-section chess-board-settings" aria-label="Aparência do tabuleiro">
+                <label for="chessBoardTheme">Cores do tabuleiro</label>
+                <select id="chessBoardTheme">
+                  <option value="verde">Verde e branco</option>
+                  <option value="classico">Preto e branco</option>
+                  <option value="madeira">Madeira</option>
+                </select>
+              </section>
+              <section class="chess-settings-section chess-history-section" aria-label="Histórico de lances">
+                <h3>Histórico de lances</h3>
+                <ol id="chessHistory" class="chess-history" aria-label="Histórico de lances"></ol>
+                <p id="chessHistoryEmpty" class="chess-history-empty">Nenhum lance ainda.</p>
+              </section>
+              <section class="chess-settings-section" aria-label="Partidas anteriores">
+                <button id="chessMatchHistoryOpen" class="chess-match-history-open" type="button">
+                  <i class="bi bi-clock-history" aria-hidden="true"></i>
+                  Histórico de partidas
+                </button>
+              </section>
+            </dialog>
+            <dialog id="chessMatchHistoryDialog" class="chess-settings-dialog chess-match-history-dialog"
+              aria-labelledby="chessMatchHistoryTitle">
+              <div class="chess-settings-header">
+                <div>
+                  <span>PARTIDAS</span>
+                  <h2 id="chessMatchHistoryTitle">Histórico de partidas</h2>
+                </div>
+                <button id="chessMatchHistoryClose" class="chess-settings-close" type="button" aria-label="Fechar histórico">
+                  <i class="bi bi-x-lg" aria-hidden="true"></i>
+                </button>
+              </div>
+              <p id="chessMatchHistoryStatus" class="chess-match-history-status" role="status" aria-live="polite"></p>
+              <ol id="chessMatchHistoryList" class="chess-match-history-list" aria-label="Partidas anteriores"></ol>
+            </dialog>
+            <dialog id="chessPromotionDialog" class="chess-promotion-dialog" aria-labelledby="chessPromotionTitle">
+              <h2 id="chessPromotionTitle">Promover peão</h2>
+              <p>Escolha a peça para continuar a partida.</p>
+              <div class="chess-promotion-options">
+                <button type="button" data-chess-promotion="q">Dama</button>
+                <button type="button" data-chess-promotion="r">Torre</button>
+                <button type="button" data-chess-promotion="b">Bispo</button>
+                <button type="button" data-chess-promotion="n">Cavalo</button>
+              </div>
+            </dialog>
+          </article>
+          <article class="workspace-widget orb-ia-workspace-widget" data-widget-id="orb-ia" data-default-x="500" data-default-y="690" hidden>
+            <section class="orb-ia-card" aria-label="Widget Orb.IA">
+              <button class="widget-drag-handle" type="button" aria-label="Mover widget Orb.IA" title="Arraste para mover">
+                <i class="bi bi-grip-horizontal" aria-hidden="true"></i>
+              </button>
+              <header class="orb-ia-header">
+                <h2><i class="bi bi-stars" aria-hidden="true"></i> Orb.IA</h2>
+                <button id="orbIaConfigToggle" class="orb-ia-config-toggle" type="button"
+                  aria-label="Configurar chave Gemini" title="Configurar chave Gemini" aria-expanded="false">
+                  <i class="bi bi-gear" aria-hidden="true"></i>
+                </button>
+              </header>
+              <form id="orbIaConfig" class="orb-ia-config" hidden>
+                <label for="orbIaApiKey">Chave API do Gemini</label>
+                <input id="orbIaApiKey" type="password" maxlength="256" autocomplete="off"
+                  placeholder="Cole sua chave API" spellcheck="false">
+                <div class="orb-ia-config-actions">
+                  <button type="submit">Salvar chave</button>
+                  <button id="orbIaRemoveKey" type="button" hidden>Remover</button>
+                </div>
+                <small>A chave fica criptografada no banco do Orby. Suas perguntas e tarefas são enviadas ao Gemini para gerar respostas.</small>
+                <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">
+                  Obter chave no Google AI Studio
+                </a>
+              </form>
+              <ol id="orbIaMessages" class="orb-ia-messages" role="log" aria-live="polite"
+                aria-relevant="additions text" aria-label="Conversa com Orb.IA"></ol>
+              <p id="orbIaEmpty" class="orb-ia-empty">
+                Olá! Posso ajudar a analisar suas tarefas ou responder a perguntas gerais.
+              </p>
+              <p id="orbIaStatus" class="orb-ia-status" role="status" aria-live="polite" hidden></p>
+              <form id="orbIaChatForm" class="orb-ia-chat-form">
+                <label class="orb-ia-visually-hidden" for="orbIaChatInput">Mensagem para Orb.IA</label>
+                <textarea id="orbIaChatInput" rows="1" maxlength="2000" autocomplete="off"
+                  aria-describedby="orbIaChatHint"
+                  placeholder="Pergunte sobre suas tarefas..." required></textarea>
+                <span id="orbIaChatHint" class="orb-ia-visually-hidden">Pressione Enter para enviar. Use Shift+Enter para quebrar a linha.</span>
+              </form>
+              <button class="orb-ia-resize-handle" type="button"
+                aria-label="Redimensionar widget Orb.IA"
+                title="Arraste para redimensionar; use as setas do teclado quando focado"></button>
+            </section>
+          </article>
+        </div>
+
+        
+      </section>
+
+      <div id="modalTarefa" class="modal hidden">
+        <div class="modal-content">
+          <h3>Nova tarefa</h3>
+
+          <label>Descrição</label>
+          <input type="text" id="inputTextoTarefa" maxlength="300" placeholder="Digite a tarefa">
+
+          <label>Data</label>
+          <input type="date" id="inputDataTarefa">
+
+          <label>Horário</label>
+          <div class="horarioEdicao">
+            <select id="inputHoraTarefa" aria-label="Hora"></select>
+            <span>:</span>
+            <select id="inputMinutoTarefa" aria-label="Minutos"></select>
+          </div>
+          <label for="inputCorTarefa">Cor da faixa</label>
+          <div class="seletor-cor-tarefa" role="group" aria-label="Escolha uma cor para a faixa">
+            <button class="cor-paleta cor-paleta-vermelho" type="button" data-cor-paleta="#e73d3d" aria-label="Vermelho" aria-pressed="false"></button>
+            <button class="cor-paleta cor-paleta-azul" type="button" data-cor-paleta="#3b82f6" aria-label="Azul" aria-pressed="false"></button>
+            <button class="cor-paleta cor-paleta-amarelo" type="button" data-cor-paleta="#facc15" aria-label="Amarelo" aria-pressed="false"></button>
+            <button class="cor-paleta cor-paleta-verde" type="button" data-cor-paleta="#22c55e" aria-label="Verde" aria-pressed="false"></button>
+            <input type="color" id="inputCorTarefa" value="#e73d3d" aria-label="Escolher outra cor">
+          </div>
+
+          <div class="modal-actions">
+            <button onclick="fecharModal()">Cancelar</button>
+            <button id="btnSalvarTarefa" type="button" onclick="salvarTarefa()">Salvar</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="modalEditarTarefa" class="modal hidden">
+        <div class="modal-content">
+          <h3>Editar tarefa</h3>
+          <label for="inputEditarTexto">Descrição</label>
+          <input type="text" id="inputEditarTexto" maxlength="300" placeholder="Descrição da tarefa">
+          <label for="inputEditarData">Data</label>
+          <input type="date" id="inputEditarData">
+          <label>Horário</label>
+          <div class="horarioEdicao">
+            <select id="inputEditarHora" aria-label="Hora"></select>
+            <span>:</span>
+            <select id="inputEditarMinuto" aria-label="Minutos"></select>
+          </div>
+          <label for="inputEditarCor">Cor da faixa</label>
+          <div class="seletor-cor-tarefa" role="group" aria-label="Escolha uma cor para a faixa">
+            <button class="cor-paleta cor-paleta-vermelho" type="button" data-cor-paleta="#e73d3d" aria-label="Vermelho" aria-pressed="false"></button>
+            <button class="cor-paleta cor-paleta-azul" type="button" data-cor-paleta="#3b82f6" aria-label="Azul" aria-pressed="false"></button>
+            <button class="cor-paleta cor-paleta-amarelo" type="button" data-cor-paleta="#facc15" aria-label="Amarelo" aria-pressed="false"></button>
+            <button class="cor-paleta cor-paleta-verde" type="button" data-cor-paleta="#22c55e" aria-label="Verde" aria-pressed="false"></button>
+            <input type="color" id="inputEditarCor" value="#e73d3d" aria-label="Escolher outra cor">
+          </div>
+          <div class="modal-actions">
+            <button type="button" onclick="fecharModalEdicao()">Cancelar</button>
+            <button id="btnSalvarEdicao" type="button" onclick="salvarEdicaoTarefa()">Salvar</button>
+          </div>
+        </div>
+      </div>
+
+
+     <section id="containerTarefasImportantes" hidden>
+  <div class="tarefasDivimportantes">
+    <div class="tarefasContainerimportantes">
+
+      <div class="tituloImportantes">
+        <i class="bi bi-star-fill" style="margin-right: 10px; font-size: 30px; color: gold;"></i>
+        <h2>Importantes</h2>
+      </div>
+
+      <!-- FILTROS -->
+      <div class="filtrosImportantes">
+ <button data-filtro="hoje">Hoje</button>
+
+  <button data-filtro="semana">Semana</button>
+  <button data-filtro="mes" class="ativo">Mês</button>
+  <button data-filtro="todas">Todas</button>
+</div>
+
+      <div class="buscaTarefas buscaTarefasImportantes">
+        <button class="btnBuscaTarefas" type="button" aria-label="Abrir pesquisa" aria-expanded="false">
+          <i class="bi bi-search" aria-hidden="true"></i>
+          <svg class="halloween-icone-abobora" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <path class="halloween-icone-abobora-talo" d="M15 8c-1-3 0-5 3-6 1 2 0 4-2 6" />
+            <path class="halloween-icone-abobora-corpo" d="M16 10C10 5 3 9 3 17c0 7 5 12 13 12s13-5 13-12c0-8-7-12-13-7Z" />
+            <path class="halloween-icone-abobora-gomos" d="M16 10c-3 5-3 13 0 19m0-19c3 5 3 13 0 19" />
+          </svg>
+          <svg class="natal-icone-pinheiro" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <path class="natal-pinheiro-folhas" d="M16 2 9 11h4l-6 8h5l-6 8h20l-6-8h5l-6-8h4Z" />
+            <path class="natal-pinheiro-tronco" d="M14 27h4v4h-4z" />
+            <circle class="natal-pinheiro-estrela" cx="16" cy="3" r="1.5" />
+          </svg>
+        </button>
+        <input id="buscaTarefasImportantes" type="search" placeholder="Pesquisar..." aria-label="Pesquisar tarefas importantes">
+      </div>
+
+      <div id="tarefasImportantes"></div>
+
+      <button class="BTNAddTarefa" onclick="abrirModalImportante()">
+        <i class="bi bi-plus-lg" style="color: red; font-size: 20px;"></i> Adicionar Tarefa
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<div id="modalImportante" class="modal hidden">
+  <div class="modal-content">
+    <h3>Nova Tarefa Importante</h3>
+    <label for="inputTarefaImportante">Descrição</label>
+    <input type="text" id="inputTarefaImportante" maxlength="300" placeholder="Descrição">
+    <label for="dataTarefaImportante">Data</label>
+    <input type="date" id="dataTarefaImportante">
+    <label>Horário</label>
+    <div class="horarioEdicao">
+      <select id="horaTarefaImportante" aria-label="Hora"></select>
+      <span>:</span>
+      <select id="minutoTarefaImportante" aria-label="Minutos"></select>
+    </div>
+    <label for="corTarefaImportante">Cor da faixa</label>
+    <div class="seletor-cor-tarefa" role="group" aria-label="Escolha uma cor para a faixa">
+      <button class="cor-paleta cor-paleta-vermelho" type="button" data-cor-paleta="#e73d3d" aria-label="Vermelho" aria-pressed="false"></button>
+      <button class="cor-paleta cor-paleta-azul" type="button" data-cor-paleta="#3b82f6" aria-label="Azul" aria-pressed="false"></button>
+      <button class="cor-paleta cor-paleta-amarelo" type="button" data-cor-paleta="#facc15" aria-label="Amarelo" aria-pressed="false"></button>
+      <button class="cor-paleta cor-paleta-verde" type="button" data-cor-paleta="#22c55e" aria-label="Verde" aria-pressed="false"></button>
+      <input type="color" id="corTarefaImportante" value="#ffd700" aria-label="Escolher outra cor">
+    </div>
+    <div class="modal-actions">
+      <button type="button" onclick="fecharModalImportante()">Cancelar</button>
+      <button id="btnSalvarImportante" type="button" onclick="salvarTarefaImportante()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+      <section id="containerNotas" hidden>
+        <div class="cabecalhoPosts">
+          <div>
+            <h2>Meus post-its</h2>
+            <p>Arraste pelo cabeçalho para organizar suas ideias.</p>
+          </div>
+          <button class="BTNAddTarefa" type="button" onclick="abrirModalPost()">
+            <i class="bi bi-plus-lg" aria-hidden="true"></i> Novo post-it
+          </button>
+        </div>
+        <div id="quadroPosts" class="quadroPosts" aria-label="Quadro de post-its">
+          <div id="canvasPosts" class="canvasPosts"></div>
+          <button id="lixeiraPosts" class="lixeiraPosts" type="button" aria-label="Lixeira de post-its" title="Arraste um post-it aqui para excluir">
+            <i class="bi bi-trash3" aria-hidden="true"></i>
+          </button>
+        </div>
+      </section>
+
+      <section id="containerOutracoisa" hidden>
+        <div class="cabecalhoCaderno">
+          <div>
+            <h2><i class="bi bi-journal-richtext" aria-hidden="true"></i> Meu caderno</h2>
+            <p>Suas anotações organizadas em folhas.</p>
+          </div>
+          <button id="btnNovaFolha" class="BTNAddTarefa" type="button" onclick="criarFolhaCaderno()">
+            <i class="bi bi-plus-lg" aria-hidden="true"></i> Nova folha
+          </button>
+        </div>
+        <div class="cadernoWorkspace">
+          <div class="cadernoToolbar">
+            <button id="btnFolhaAnterior" type="button" aria-label="Folha anterior" onclick="navegarFolhaCaderno(-1)">
+              <i class="bi bi-chevron-left" aria-hidden="true"></i>
+            </button>
+            <span id="indicadorFolha">Nenhuma folha</span>
+            <button id="btnProximaFolha" type="button" aria-label="Próxima folha" onclick="navegarFolhaCaderno(1)">
+              <i class="bi bi-chevron-right" aria-hidden="true"></i>
+            </button>
+            <span class="separadorCaderno" aria-hidden="true"></span>
+            <label class="controlePauta" for="estiloPautaCaderno">Pauta
+              <select id="estiloPautaCaderno" disabled>
+                <option value="linhas">Linhas</option>
+                <option value="quadriculada">Quadriculada</option>
+                <option value="pontilhada">Pontilhada</option>
+                <option value="sem-pauta">Sem pauta</option>
+              </select>
+            </label>
+            <label class="controlePauta controleCorPauta" for="corPautaCaderno" title="Cor da pauta">
+              Cor <input id="corPautaCaderno" type="color" value="#e3e8e5" aria-label="Cor da pauta" disabled>
+            </label>
+            <label class="controlePauta" for="espacamentoPautaCaderno">Espaçamento
+              <select id="espacamentoPautaCaderno" disabled>
+                <option value="24">Compacto</option>
+                <option value="32">Normal</option>
+                <option value="40">Amplo</option>
+                <option value="48">Extra amplo</option>
+              </select>
+            </label>
+            <span class="separadorCaderno" aria-hidden="true"></span>
+            <button id="btnExcluirFolha" class="btnExcluirFolha" type="button" onclick="excluirFolhaCaderno()" disabled>
+              <i class="bi bi-trash" aria-hidden="true"></i> Excluir folha
+            </button>
+            <span id="statusCaderno" role="status" aria-live="polite"></span>
+          </div>
+          <div id="folhaCaderno" class="folhaCaderno">
+            <div id="cadernoVazio" class="cadernoVazio">
+              <i class="bi bi-journal-text" aria-hidden="true"></i>
+              <p>Seu caderno está vazio.</p>
+              <button type="button" onclick="criarFolhaCaderno()">Criar primeira folha</button>
+            </div>
+            <div id="editorFolhaCaderno" class="editorFolhaCaderno hidden">
+              <label class="sr-only" for="tituloFolhaCaderno">Título da folha</label>
+              <input id="tituloFolhaCaderno" type="text" maxlength="100" placeholder="Título da folha">
+              <label class="sr-only" for="conteudoFolhaCaderno">Anotações</label>
+              <textarea id="conteudoFolhaCaderno" maxlength="8000" placeholder="Escreva suas anotações nesta folha..."></textarea>
+            </div>
+          </div>
+          <div class="rodapeCaderno">
+            <span>As folhas são salvas na sua conta quando você clicar em Salvar.</span>
+            <button id="btnSalvarFolha" type="button" onclick="salvarFolhaCaderno()" disabled>
+              <i class="bi bi-check2" aria-hidden="true"></i> Salvar folha
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="containerHabitos" hidden>
+        <div class="cabecalhoHabitos">
+          <div>
+            <h2><i class="bi bi-fire" aria-hidden="true"></i> Meus hábitos</h2>
+            <p>Marque o que você fez hoje e mantenha sua sequência.</p>
+          </div>
+          <button id="btnNovoHabito" class="BTNAddTarefa" type="button">
+            <i class="bi bi-plus-lg" aria-hidden="true"></i> Novo hábito
+          </button>
+        </div>
+      
+        <div id="listaHabitos" class="listaHabitos" aria-live="polite"></div>
+      </section>
+
+      <section id="containerListas" hidden>
+        <div class="cabecalhoListas">
+          <div>
+            <h2><i class="bi bi-list-check" aria-hidden="true"></i> Minhas listas</h2>
+            <p>Crie listas e acompanhe cada item no seu ritmo.</p>
+          </div>
+          <button id="btnNovaLista" class="BTNAddTarefa" type="button">
+            <i class="bi bi-plus-lg" aria-hidden="true"></i> Nova lista
+          </button>
+        </div>
+        <div id="listaDeListas" class="listaDeListas" aria-live="polite"></div>
+      </section>
+
+      <div id="modalLista" class="modal hidden">
+        <div class="modal-content">
+          <h3 id="tituloModalLista">Nova lista</h3>
+          <label for="inputNomeLista">Nome da lista</label>
+          <input id="inputNomeLista" type="text" maxlength="100" placeholder="Ex.: Compras da semana">
+          <div class="modal-actions">
+            <button id="btnCancelarLista" type="button">Cancelar</button>
+            <button id="btnSalvarLista" type="button">Salvar</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="modalHabito" class="modal hidden">
+        <div class="modal-content">
+          <h3 id="tituloModalHabito">Novo hábito</h3>
+          <label for="inputNomeHabito">Hábito</label>
+          <input id="inputNomeHabito" type="text" maxlength="100" placeholder="Ex.: Beber água">
+          <label for="tipoHabito">Tipo de hábito</label>
+          <select id="tipoHabito">
+            <option value="simples">Simples · concluir uma vez ao dia</option>
+            <option value="horarios">Com horários · concluir em cada horário</option>
+          </select>
+          <div id="configHabitoSimples">
+            <label for="inputHorarioHabito">Horário do lembrete</label>
+            <input id="inputHorarioHabito" type="time" value="09:00">
+          </div>
+          <div id="configHabitoHorarios" class="configHabitoHorarios hidden">
+            <label for="inputNovoHorarioHabito">Horários para concluir</label>
+            <div class="adicionarHorarioHabito">
+              <input id="inputNovoHorarioHabito" type="time" value="09:00">
+              <button id="btnAdicionarHorarioHabito" type="button" aria-label="Adicionar horário">Adicionar</button>
+            </div>
+            <div id="listaHorariosHabito" class="listaHorariosHabito"></div>
+            <small>Adicione pelo menos dois horários. Cada um pode ser concluído separadamente.</small>
+          </div>
+          <div class="modal-actions">
+            <button id="btnCancelarHabito" type="button">Cancelar</button>
+            <button id="btnSalvarHabito" type="button">Salvar</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="modalPost" class="modal hidden">
+        <div class="modal-content modalPostContent">
+          <h3 id="tituloModalPost">Novo post-it</h3>
+          <label for="inputTituloPost">Título</label>
+          <input id="inputTituloPost" type="text" maxlength="100" placeholder="Título do post-it">
+          <label for="inputDescricaoPost">Descrição</label>
+          <textarea id="inputDescricaoPost" maxlength="2000" rows="5" placeholder="Escreva uma anotação..."></textarea>
+          <label for="inputCorPost">Cor</label>
+          <input id="inputCorPost" type="color" value="#fff2a8">
+          <div class="modal-actions">
+            <button type="button" onclick="fecharModalPost()">Cancelar</button>
+            <button id="btnSalvarPost" type="button" onclick="salvarPost()">Salvar</button>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+     <div id="loader">
+  <div class="spinner"></div>
+</div>
+
+     <script src="/vendor/capacitor/capacitor.js"></script>
+  <script src="/vendor/local-notifications/plugin.js"></script>
+  <script src="script.js"></script>
+  <script type="module" src="chess-widget.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Acessar - Orby</title>
+
+<link rel="icon" href="circle.png" type="image/png">
+
+  <!-- Fonte moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="/styles/LoginStyle.css">
+</head>
+<body>
+
+
+  <div id="loginDIV">
+  <h1 id="tituloAcesso"><img class="imgLogo" src="circle.png" alt="">Entrar no Orby</h1>
+  <hr>
+  <form onsubmit="login(event)" id="loginForm">
+    <div class="divInputArea">
+      <i class="bi bi-envelope-fill" style="color: rgb(121, 121, 121);"></i>
+      <input type="email" class="inputs" name="email" id="email" autocomplete="username" required placeholder="E-mail" aria-label="E-mail">
+    </div>
+    <div class="divInputArea">
+      <i class="bi bi-lock-fill" style="color: rgb(121, 121, 121);"></i>
+      <input type="password" class="inputs" name="senha" id="senha" autocomplete="current-password" required placeholder="Senha" aria-label="Senha">
+    </div>
+    <label class="lembrarAcesso" for="lembrarAcesso">
+      <input type="checkbox" id="lembrarAcesso" name="lembrarAcesso">
+      <span>Lembrar acesso</span>
+    </label>
+    <p id="statusAcesso" class="statusAcesso" role="status" aria-live="polite"></p>
+    <button type="submit" class="btnStyle" id="botaoAcesso">Entrar</button>
+  </form>
+  <p class="alternarAcesso"><span id="textoAlternarAcesso">Ainda não tem conta?</span> <button id="alternarAcesso" type="button">Criar conta</button></p>
+  </div>
+<script src="login.js"></script>
+
+</body>
+</html>

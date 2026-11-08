@@ -6,9 +6,12 @@ const localGamePgnUpdatedAtStorageKey = "orby-chess-pgn-updated-at-v1";
 let chess = new Chess();
 const board = document.getElementById("chessBoard");
 const status = document.getElementById("chessStatus");
+<<<<<<< HEAD
 const chessRatingValue = document.getElementById("chessRatingValue");
 const chessRankingList = document.getElementById("chessRankingList");
 const chessRankingStatus = document.getElementById("chessRankingStatus");
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 const capturedByWhite = document.getElementById("chessCapturedByWhite");
 const capturedByBlack = document.getElementById("chessCapturedByBlack");
 const capturedRowWhite = document.getElementById("chessCapturedRowWhite");
@@ -17,6 +20,7 @@ const historyList = document.getElementById("chessHistory");
 const historyEmpty = document.getElementById("chessHistoryEmpty");
 const promotionDialog = document.getElementById("chessPromotionDialog");
 const settingsDialog = document.getElementById("chessSettingsDialog");
+<<<<<<< HEAD
 const rankingDialog = document.getElementById("chessRankingDialog");
 const matchHistoryDialog = document.getElementById("chessMatchHistoryDialog");
 const matchHistoryList = document.getElementById("chessMatchHistoryList");
@@ -26,6 +30,13 @@ const matchHistoryResultFilter = document.getElementById("chessHistoryResultFilt
 const settingsOpenButton = document.getElementById("chessSettingsOpen");
 const matchHistoryOpenButton = document.getElementById("chessMatchHistoryOpen");
 const rankingOpenButton = document.getElementById("chessRankingOpen");
+=======
+const matchHistoryDialog = document.getElementById("chessMatchHistoryDialog");
+const matchHistoryList = document.getElementById("chessMatchHistoryList");
+const matchHistoryStatus = document.getElementById("chessMatchHistoryStatus");
+const settingsOpenButton = document.getElementById("chessSettingsOpen");
+const matchHistoryOpenButton = document.getElementById("chessMatchHistoryOpen");
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 const chatOpenButton = document.getElementById("chessChatOpen");
 const chatAnnouncement = document.getElementById("chessChatAnnouncement");
 const chatPanel = document.getElementById("chessChatPanel");
@@ -41,6 +52,7 @@ const gameModeSelect = document.getElementById("chessGameMode");
 const playerColorSelect = document.getElementById("chessPlayerColor");
 const skillLevelInput = document.getElementById("chessSkillLevel");
 const skillValue = document.getElementById("chessSkillValue");
+<<<<<<< HEAD
 const skillRating = document.getElementById("chessSkillRating");
 const stockfishRatingOptions = document.getElementById("chessStockfishRatingOptions");
 const stockfishRatingModeSelect = document.getElementById("chessStockfishRatingMode");
@@ -50,6 +62,11 @@ const inviteNameInput = document.getElementById("chessInviteName");
 const inviteSuggestions = document.getElementById("chessInviteSuggestions");
 const inviteSearchStatus = document.getElementById("chessInviteSearchStatus");
 const inviteRatingModeInput = document.getElementById("chessInviteRatingMode");
+=======
+const opponentOptions = document.getElementById("chessOpponentOptions");
+const inviteOptions = document.getElementById("chessInviteOptions");
+const inviteEmailInput = document.getElementById("chessInviteEmail");
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 const moveNotificationsInput = document.getElementById("chessMoveNotifications");
 const boardThemeSelect = document.getElementById("chessBoardTheme");
 const newGameButton = document.getElementById("chessNewGame");
@@ -65,7 +82,11 @@ const chessMoveSound = new Audio("/sons/chesss.mp3");
 const chessCaptureSound = new Audio("/sons/pecacapiturada.mp3");
 const minimumWidth = 180;
 const userId = window.orbyUserId || "";
+<<<<<<< HEAD
 const chessBoardThemes = ["classico", "verde", "madeira", "aero", "vermelho"];
+=======
+const chessBoardThemes = ["classico", "verde", "madeira"];
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 let chessBoardTheme = chessBoardThemes.includes(window.orbyChessBoardTheme)
   ? window.orbyChessBoardTheme
   : "verde";
@@ -73,8 +94,13 @@ let resizePointer = null;
 let pieceDrag = null;
 let ignoreBoardClickUntil = 0;
 const pieceSymbols = {
+<<<<<<< HEAD
   w: { k: "\u2654", q: "\u2655", r: "\u2656", b: "\u2657", n: "\u2658", p: "\u2659" },
   b: { k: "\u265A", q: "\u265B", r: "\u265C", b: "\u265D", n: "\u265E", p: "\u265F" }
+=======
+  w: { k: "♔", q: "♕", r: "♖", b: "♗", n: "♘", p: "♙" },
+  b: { k: "♚", q: "♛", r: "♜", b: "♝", n: "♞", p: "♟" }
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 };
 const pieceNames = {
   k: "rei",
@@ -91,6 +117,7 @@ let pendingPromotion = null;
 let gameMode = "local";
 let playerColor = "w";
 let skillLevel = 10;
+<<<<<<< HEAD
 let stockfishRated = false;
 let inviteGameId = "";
 let localGameId = "";
@@ -102,6 +129,14 @@ let onlineGameStatus = "";
 let onlineGameResult = "*";
 let onlineOpponent = "";
 let onlineRated = false;
+=======
+let inviteGameId = "";
+let localGameId = "";
+let inviteEmail = "";
+let onlineGameStatus = "";
+let onlineGameResult = "*";
+let onlineOpponent = "";
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 let onlineError = "";
 let onlineMoveBusy = false;
 let resignationBusy = false;
@@ -118,7 +153,10 @@ let chatInitializedForGame = false;
 let localGameSaveTimer = null;
 let localGameSaveBusy = false;
 let localGameSavePending = false;
+<<<<<<< HEAD
 let localGameSaveConflict = false;
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 let localHistorySubmissionBusy = false;
 let localHistorySubmittedGameId = "";
 let localGameReplaceOnlineStatePending = false;
@@ -189,11 +227,17 @@ try {
   if (Number.isInteger(savedSettings.skillLevel) && savedSettings.skillLevel >= 1 && savedSettings.skillLevel <= 20) {
     skillLevel = savedSettings.skillLevel;
   }
+<<<<<<< HEAD
   stockfishRated = savedSettings.stockfishRated === true;
   if (typeof savedSettings.gameId === "string") inviteGameId = savedSettings.gameId;
   if (typeof savedSettings.localGameId === "string") localGameId = savedSettings.localGameId;
   if (typeof savedSettings.inviteUserId === "string") inviteUserId = savedSettings.inviteUserId;
   if (typeof savedSettings.inviteUserName === "string") inviteUserName = savedSettings.inviteUserName;
+=======
+  if (typeof savedSettings.gameId === "string") inviteGameId = savedSettings.gameId;
+  if (typeof savedSettings.localGameId === "string") localGameId = savedSettings.localGameId;
+  if (typeof savedSettings.inviteEmail === "string") inviteEmail = savedSettings.inviteEmail;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 } catch (error) {
   console.warn("Não foi possível carregar as configurações da partida de xadrez.", error);
 }
@@ -210,7 +254,11 @@ function saveGame({ replaceOnlineState = false } = {}) {
       localGamePgnUpdatedAt = Math.max(Date.now(), localGamePgnUpdatedAt + 1);
       localStorage.setItem(localGamePgnUpdatedAtStorageKey, String(localGamePgnUpdatedAt));
     }
+<<<<<<< HEAD
     if (!localGameSaveConflict) document.getElementById("chessStorageStatus").textContent = "";
+=======
+    document.getElementById("chessStorageStatus").textContent = "";
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   } catch (error) {
     console.warn("Não foi possível salvar a partida de xadrez neste dispositivo.", error);
     document.getElementById("chessStorageStatus").textContent =
@@ -220,7 +268,10 @@ function saveGame({ replaceOnlineState = false } = {}) {
 }
 
 function agendarSalvamentoPartidaLocal(replaceOnlineState = false) {
+<<<<<<< HEAD
   if (localGameSaveConflict) return;
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   localGameSavePending = true;
   localGameReplaceOnlineStatePending ||= replaceOnlineState;
   if (localGameSaveTimer) window.clearTimeout(localGameSaveTimer);
@@ -236,11 +287,14 @@ function cancelarSalvamentoPartidaLocal() {
 
 async function salvarPartidaLocalNoServidor() {
   localGameSaveTimer = null;
+<<<<<<< HEAD
   if (localGameSaveConflict) {
     localGameSavePending = false;
     localGameReplaceOnlineStatePending = false;
     return;
   }
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   if (localGameSaveBusy || !localGameSavePending || gameMode === "invite") return;
   localGameSaveBusy = true;
   try {
@@ -260,11 +314,17 @@ async function salvarPartidaLocalNoServidor() {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+<<<<<<< HEAD
           gameId: localGameId,
           mode: gameMode,
           playerColor,
           skillLevel,
           rated: gameMode === "stockfish" && stockfishRated && skillLevel >= 8,
+=======
+          mode: gameMode,
+          playerColor,
+          skillLevel,
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
           pgn: chess.pgn(),
           updatedAt,
           replaceOnlineState
@@ -272,6 +332,7 @@ async function salvarPartidaLocalNoServidor() {
       });
       const resultado = await response.json();
       if (response.status === 409) {
+<<<<<<< HEAD
         localGameSaveConflict = true;
         localGameSavePending = false;
         localGameReplaceOnlineStatePending = false;
@@ -280,6 +341,10 @@ async function salvarPartidaLocalNoServidor() {
         document.getElementById("chessStorageStatus").textContent =
           "O servidor tem um estado de xadrez mais recente. Recarregue para sincronizar; sua partida continua salva neste dispositivo.";
         break;
+=======
+        document.getElementById("chessStorageStatus").textContent = "";
+        continue;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       }
       if (!response.ok) throw new Error(resultado.erro || "Não foi possível salvar a partida na conta.");
       localGameUpdatedAt = Math.max(localGameUpdatedAt, resultado.partida.updatedAt);
@@ -307,11 +372,17 @@ function saveGameSettings() {
       mode: gameMode,
       playerColor,
       skillLevel,
+<<<<<<< HEAD
       stockfishRated,
       gameId: inviteGameId,
       localGameId,
       inviteUserId,
       inviteUserName
+=======
+      gameId: inviteGameId,
+      localGameId,
+      inviteEmail
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     }));
   } catch (error) {
     console.warn("Não foi possível salvar as configurações da partida de xadrez.", error);
@@ -345,6 +416,7 @@ async function registrarPartidaLocalFinalizada() {
         : null;
   if (!resultado) return;
 
+<<<<<<< HEAD
   const ratingValendo = gameMode === "stockfish" && stockfishRated && skillLevel >= 8;
   if (ratingValendo) {
     if (localGameSaveTimer) window.clearTimeout(localGameSaveTimer);
@@ -361,6 +433,11 @@ async function registrarPartidaLocalFinalizada() {
     mode: gameMode,
     skillLevel,
     rated: ratingValendo,
+=======
+  const partida = {
+    gameId: localGameId,
+    mode: gameMode,
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     playerColor: gameMode === "local" ? "both" : playerColor,
     opponent: gameMode === "local" ? "Partida local" : "Stockfish",
     pgn: chess.pgn()
@@ -375,10 +452,13 @@ async function registrarPartidaLocalFinalizada() {
     const resultadoResposta = await response.json();
     if (!response.ok) throw new Error(resultadoResposta.erro || "Não foi possível salvar o histórico da partida.");
     localHistorySubmittedGameId = localGameId;
+<<<<<<< HEAD
     if (partida.rated) {
       void carregarRatingXadrez();
       void carregarRankingXadrez();
     }
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   } catch (error) {
     console.error("Não foi possível salvar o histórico da partida de xadrez.", error);
     document.getElementById("chessStorageStatus").textContent =
@@ -398,6 +478,7 @@ function rotuloResultadoHistorico(partida) {
   return venceu ? "Vitória" : "Derrota";
 }
 
+<<<<<<< HEAD
 async function carregarRatingXadrez() {
   if (!userId || !chessRatingValue) return;
   try {
@@ -438,6 +519,8 @@ async function carregarRankingXadrez() {
   }
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 async function carregarHistoricoPartidas() {
   matchHistoryList.replaceChildren();
   if (!userId) {
@@ -457,6 +540,7 @@ async function carregarHistoricoPartidas() {
     }
     for (const partida of resultado.partidas) {
       const item = document.createElement("li");
+<<<<<<< HEAD
       item.className = "chess-match-history-item";
       const dataHistorico = new Date(partida.playedAt);
       item.dataset.playedAt = Number.isFinite(dataHistorico.getTime()) ? dataHistorico.toISOString() : "";
@@ -525,10 +609,27 @@ async function carregarHistoricoPartidas() {
 
       const data = document.createElement("time");
       const dataPartida = new Date(partida.playedAt);
+=======
+      const principal = document.createElement("div");
+      const nome = document.createElement("strong");
+      const detalhes = document.createElement("span");
+      const resultadoPartida = document.createElement("span");
+      const data = document.createElement("time");
+      const dataPartida = new Date(partida.playedAt);
+      const cor = partida.playerColor === "w" ? "Brancas"
+        : partida.playerColor === "b" ? "Pretas" : "Brancas e pretas";
+      item.className = "chess-match-history-item";
+      principal.className = "chess-match-history-main";
+      nome.textContent = partida.opponent || "Adversário desconhecido";
+      detalhes.textContent = `${cor} · ${partida.moveCount} ${partida.moveCount === 1 ? "lance" : "lances"}`;
+      resultadoPartida.className = "chess-match-history-result";
+      resultadoPartida.textContent = rotuloResultadoHistorico(partida);
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       if (Number.isFinite(dataPartida.getTime())) {
         data.dateTime = dataPartida.toISOString();
         data.textContent = dataPartida.toLocaleString();
       }
+<<<<<<< HEAD
 
       const analyzeBtn = document.createElement("button");
       analyzeBtn.type = "button";
@@ -561,12 +662,20 @@ async function carregarHistoricoPartidas() {
       matchHistoryList.appendChild(item);
     }
     aplicarFiltrosHistoricoPartidas();
+=======
+      principal.append(nome, detalhes);
+      item.append(principal, resultadoPartida, data);
+      matchHistoryList.appendChild(item);
+    }
+    matchHistoryStatus.textContent = "";
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   } catch (error) {
     console.error("Não foi possível carregar o histórico de partidas de xadrez.", error);
     matchHistoryStatus.textContent = error.message || "Não foi possível carregar o histórico.";
   }
 }
 
+<<<<<<< HEAD
 function aplicarFiltrosHistoricoPartidas() {
   const periodo = matchHistoryPeriodFilter.value;
   const resultado = matchHistoryResultFilter.value;
@@ -591,6 +700,8 @@ function aplicarFiltrosHistoricoPartidas() {
     : "Nenhuma partida corresponde aos filtros selecionados.";
 }
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 function isHumanTurn() {
   return gameMode === "local" ||
     ((gameMode === "stockfish" || (gameMode === "invite" && onlineGameStatus === "ativa")) &&
@@ -606,7 +717,10 @@ function aplicarTemaTabuleiro(tema) {
   if (!chessBoardThemes.includes(tema)) return;
   chessBoardTheme = tema;
   board.dataset.theme = tema;
+<<<<<<< HEAD
   document.getElementById("chessAnalysisBoard").dataset.theme = tema;
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   boardThemeSelect.value = tema;
 }
 
@@ -632,7 +746,11 @@ function failStockfish(error) {
 function receiveStockfishMessage(event) {
   const line = String(event.data || "").trim();
   if (line === "uciok") {
+<<<<<<< HEAD
     stockfishWorker.postMessage(`setoption name Skill Level value ${getStockfishLevelConfig().engineSkill}`);
+=======
+    stockfishWorker.postMessage(`setoption name Skill Level value ${skillLevel}`);
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     stockfishWorker.postMessage("isready");
     return;
   }
@@ -653,7 +771,11 @@ function receiveStockfishMessage(event) {
     failStockfish(new Error(`Resposta inválida do motor: ${line}`));
     return;
   }
+<<<<<<< HEAD
   let move = chess.moves({ verbose: true }).find(candidate =>
+=======
+  const move = chess.moves({ verbose: true }).find(candidate =>
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     candidate.from === match[1] && candidate.to === match[2] &&
     (candidate.promotion || undefined) === (match[3] || undefined)
   );
@@ -661,6 +783,7 @@ function receiveStockfishMessage(event) {
     failStockfish(new Error(`O motor sugeriu um lance ilegal: ${line}`));
     return;
   }
+<<<<<<< HEAD
   const levelConfig = getStockfishLevelConfig();
   const legalMoves = chess.moves({ verbose: true });
   if (!chess.isCheck() && legalMoves.length > 1 && Math.random() < levelConfig.randomMoveChance) {
@@ -692,6 +815,11 @@ function atualizarDisponibilidadeRatingStockfish() {
   stockfishRated = disponivel && stockfishRatingModeSelect.value === "rated";
 }
 
+=======
+  applyMove({ from: move.from, to: move.to, promotion: move.promotion });
+}
+
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 function iniciarStockfish() {
   stopStockfish();
   stockfishError = "";
@@ -715,9 +843,15 @@ function requestComputerMove() {
   if (!stockfishReady) return;
   stockfishThinking = true;
   stockfishSearchFen = chess.fen();
+<<<<<<< HEAD
   setEngineStatus(`Stockfish pensando \u2014 nível ${skillLevel}...`);
   stockfishWorker.postMessage(`position fen ${stockfishSearchFen}`);
   stockfishWorker.postMessage(`go depth ${getStockfishLevelConfig().depth}`);
+=======
+  setEngineStatus(`Stockfish pensando — nível ${skillLevel}...`);
+  stockfishWorker.postMessage(`position fen ${stockfishSearchFen}`);
+  stockfishWorker.postMessage(`go depth ${Math.round(4 + (skillLevel - 1) * 0.4)}`);
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 }
 
 function currentTurnName() {
@@ -744,7 +878,11 @@ function getGameStatus() {
   if (gameMode === "invite") {
     if (onlineError) return onlineError;
     if (onlineGameStatus === "aguardando") {
+<<<<<<< HEAD
       return `Convite enviado para ${inviteUserName || onlineOpponent}. Aguardando resposta.`;
+=======
+      return `Convite enviado para ${inviteEmail || onlineOpponent}. Aguardando resposta.`;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     }
     if (onlineGameStatus === "recusada") return "O convite para esta partida foi recusado.";
     if (onlineGameStatus === "expirada") return "O convite para esta partida expirou.";
@@ -764,7 +902,11 @@ function getGameStatus() {
     return `As ${resignedColor === "w" ? "brancas" : "pretas"} desistiram. As ${vencedor} venceram.`;
   }
   if (chess.isCheckmate()) {
+<<<<<<< HEAD
     return `🏆 Xeque-mate! As ${chess.turn() === "w" ? "pretas" : "brancas"} venceram.`;
+=======
+    return `Xeque-mate! As ${chess.turn() === "w" ? "pretas" : "brancas"} venceram.`;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   }
   if (chess.isStalemate()) return "Empate por afogamento.";
   if (chess.isInsufficientMaterial()) return "Empate por material insuficiente.";
@@ -991,15 +1133,22 @@ async function sincronizarPartidaConvidada() {
     if (pieceDrag) return;
     const mudouEstado = onlineGameStatus !== partida.status ||
       onlineGameResult !== partida.resultado ||
+<<<<<<< HEAD
       onlineRated !== (partida.rated === true) ||
       playerColor !== partida.cor || onlineOpponent !== (partida.adversario || "oponente");
     const novoResultadoRated = onlineGameStatus !== "finalizada" &&
       partida.status === "finalizada" && partida.rated === true;
+=======
+      playerColor !== partida.cor || onlineOpponent !== (partida.adversario || "oponente");
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     const mudouTabuleiro = partida.pgn !== chess.pgn();
     onlineError = "";
     onlineGameStatus = partida.status;
     onlineGameResult = partida.resultado || "*";
+<<<<<<< HEAD
     onlineRated = partida.rated === true;
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     playerColor = partida.cor;
     onlineOpponent = partida.adversario || "oponente";
     let lanceNovo = null;
@@ -1021,10 +1170,13 @@ async function sincronizarPartidaConvidada() {
     }
     const sincronizadoAntes = onlineSyncedGameId === inviteGameId;
     onlineSyncedGameId = inviteGameId;
+<<<<<<< HEAD
     if (novoResultadoRated) {
       void carregarRatingXadrez();
       void carregarRankingXadrez();
     }
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     if (sincronizadoAntes && lanceNovo) tocarSomLanceXadrez(lanceNovo);
     if (!mudouEstado && !mudouTabuleiro) return;
     saveGameSettings();
@@ -1170,7 +1322,10 @@ function renderHistory() {
     item.append(number, whiteMove, blackMove);
     historyList.appendChild(item);
   }
+<<<<<<< HEAD
   historyList.scrollTop = historyList.scrollHeight;
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 }
 
 function renderCapturedPieces() {
@@ -1206,8 +1361,11 @@ function renderCapturedPieces() {
 
 function render(lastMove = null) {
   status.textContent = getGameStatus();
+<<<<<<< HEAD
   if (gameMode === "invite") status.textContent += onlineRated ? " · valendo rating" : " · sem rating";
   if (gameMode === "stockfish") status.textContent += stockfishRated ? " · valendo rating" : " · sem rating";
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   renderBoard(lastMove);
   renderCapturedPieces();
   renderHistory();
@@ -1234,11 +1392,14 @@ async function applyMove(move) {
       if (!response.ok) throw new Error(resultado.erro || "Não foi possível enviar o lance.");
       onlineGameStatus = resultado.status;
       onlineGameResult = resultado.resultado || "*";
+<<<<<<< HEAD
       onlineRated = resultado.rated === true;
       if (onlineGameStatus === "finalizada" && onlineRated) {
         void carregarRatingXadrez();
         void carregarRankingXadrez();
       }
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       const jogoAtualizado = new Chess();
       if (resultado.pgn) jogoAtualizado.loadPgn(resultado.pgn);
       if (jogoAtualizado.fen() !== resultado.fen) {
@@ -1420,22 +1581,35 @@ promotionDialog.addEventListener("cancel", () => {
 });
 
 async function enviarConviteXadrez() {
+<<<<<<< HEAD
   if (!inviteUserId) {
     inviteSearchStatus.textContent = "Escolha uma pessoa na lista de sugestões.";
+=======
+  const email = inviteEmailInput.value.trim();
+  if (!inviteEmailInput.checkValidity()) {
+    inviteEmailInput.reportValidity();
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     return;
   }
   if (!userId) {
     setEngineStatus("Entre na sua conta para convidar um usuário.");
     return;
   }
+<<<<<<< HEAD
   if (!await encerrarPartidaAnteriorParaNova()) return;
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   newGameButton.disabled = true;
   setEngineStatus("Enviando convite...");
   try {
     const response = await fetch(`/xadrez/convites/${encodeURIComponent(userId)}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+<<<<<<< HEAD
       body: JSON.stringify({ convidadoId: inviteUserId, rated: inviteRatingModeInput.value === "rated" })
+=======
+      body: JSON.stringify({ email })
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     });
     const resultado = await response.json();
     if (!response.ok && !(response.status === 409 && resultado.partidaId && resultado.status === "aguardando")) {
@@ -1445,6 +1619,7 @@ async function enviarConviteXadrez() {
     pararSincronizacaoConvidada();
     stopStockfish();
     gameMode = "invite";
+<<<<<<< HEAD
     playerColor = resultado.cor || "w";
     inviteGameId = resultado.partidaId;
     inviteUserName = inviteNameInput.value.trim();
@@ -1452,6 +1627,14 @@ async function enviarConviteXadrez() {
     onlineGameResult = "*";
     onlineRated = resultado.rated === true;
     onlineOpponent = inviteUserName;
+=======
+    playerColor = "w";
+    inviteGameId = resultado.partidaId;
+    inviteEmail = email;
+    onlineGameStatus = resultado.status;
+    onlineGameResult = "*";
+    onlineOpponent = email;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
     onlineError = "";
     chess.reset();
     selectedSquare = null;
@@ -1473,6 +1656,7 @@ async function enviarConviteXadrez() {
   }
 }
 
+<<<<<<< HEAD
 async function encerrarPartidaAnteriorParaNova() {
   if (isGameFinished() || (!chess.history().length && !inviteGameId)) return true;
 
@@ -1605,17 +1789,26 @@ inviteSuggestions.addEventListener("keydown", event => {
 newGameButton.addEventListener("click", async () => {
   if ((chess.history().length || inviteGameId) &&
       !await window.orbyConfirm("Iniciar outra partida neste dispositivo? A partida online atual continuará para o outro usuário.")) return;
+=======
+newGameButton.addEventListener("click", async () => {
+  if ((chess.history().length || inviteGameId) &&
+      !window.confirm("Iniciar outra partida neste dispositivo? A partida online atual continuará para o outro usuário.")) return;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   if (gameModeSelect.value === "invite") {
     await enviarConviteXadrez();
     return;
   }
+<<<<<<< HEAD
   if (!await encerrarPartidaAnteriorParaNova()) return;
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
   const replaceOnlineState = gameMode === "invite";
   pararSincronizacaoConvidada();
   gameMode = gameModeSelect.value;
   playerColor = playerColorSelect.value;
   localGameId = crypto.randomUUID();
+<<<<<<< HEAD
   localGameSaveConflict = false;
   localHistorySubmittedGameId = "";
   skillLevel = Number(skillLevelInput.value);
@@ -1626,6 +1819,13 @@ newGameButton.addEventListener("click", async () => {
   onlineGameStatus = "";
   onlineGameResult = "*";
   onlineRated = false;
+=======
+  skillLevel = Number(skillLevelInput.value);
+  inviteGameId = "";
+  inviteEmail = "";
+  onlineGameStatus = "";
+  onlineGameResult = "*";
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   onlineOpponent = "";
   onlineError = "";
   onlineMoveBusy = false;
@@ -1653,7 +1853,11 @@ async function desistirDaPartida() {
     : gameMode === "stockfish"
       ? "Desistir da partida? O Stockfish vencerá."
       : `Desistir da partida? As ${winner} vencerão.`;
+<<<<<<< HEAD
   if (!await window.orbyConfirm(confirmation)) return;
+=======
+  if (!window.confirm(confirmation)) return;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 
   const result = resignedColor === "w" ? "0-1" : "1-0";
   if (gameMode === "invite") {
@@ -1676,11 +1880,14 @@ async function desistirDaPartida() {
       chess = jogoAtualizado;
       onlineGameStatus = resultado.status;
       onlineGameResult = resultado.resultado;
+<<<<<<< HEAD
       onlineRated = resultado.rated === true;
       if (onlineRated) {
         void carregarRatingXadrez();
         void carregarRankingXadrez();
       }
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
       selectedSquare = null;
       legalMoves = [];
       pendingPromotion = null;
@@ -1712,6 +1919,7 @@ function syncGameSettings() {
   gameModeSelect.value = gameMode;
   playerColorSelect.value = playerColor;
   skillLevelInput.value = String(skillLevel);
+<<<<<<< HEAD
   stockfishRatingModeSelect.value = stockfishRated ? "rated" : "unrated";
   skillValue.value = String(skillLevel);
   atualizarRatingEstimado();
@@ -1719,16 +1927,26 @@ function syncGameSettings() {
   opponentOptions.hidden = gameModeSelect.value !== "stockfish";
   inviteOptions.hidden = gameModeSelect.value !== "invite";
   inviteNameInput.value = inviteUserName;
+=======
+  skillValue.value = String(skillLevel);
+  opponentOptions.hidden = gameModeSelect.value !== "stockfish";
+  inviteOptions.hidden = gameModeSelect.value !== "invite";
+  inviteEmailInput.value = inviteEmail;
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   newGameLabel.textContent = gameModeSelect.value === "invite" ? "Enviar convite" : "Iniciar nova partida";
 }
 
 settingsOpenButton.addEventListener("click", () => {
   syncGameSettings();
+<<<<<<< HEAD
   void carregarRatingXadrez();
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   if (typeof settingsDialog.showModal === "function") settingsDialog.showModal();
   else settingsDialog.setAttribute("open", "");
 });
 
+<<<<<<< HEAD
 rankingOpenButton.addEventListener("click", () => {
   void carregarRankingXadrez();
   if (typeof rankingDialog.showModal === "function") rankingDialog.showModal();
@@ -1739,6 +1957,8 @@ rankingDialog.addEventListener("click", event => {
   if (event.target === rankingDialog) rankingDialog.close();
 });
 
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 matchHistoryOpenButton.addEventListener("click", async () => {
   await registrarPartidaLocalFinalizada();
   settingsDialog.close();
@@ -1746,6 +1966,7 @@ matchHistoryOpenButton.addEventListener("click", async () => {
   else matchHistoryDialog.setAttribute("open", "");
   void carregarHistoricoPartidas();
 });
+<<<<<<< HEAD
 matchHistoryPeriodFilter.addEventListener("change", aplicarFiltrosHistoricoPartidas);
 matchHistoryResultFilter.addEventListener("change", aplicarFiltrosHistoricoPartidas);
 document.getElementById("chessHistoryFiltersClear").addEventListener("click", () => {
@@ -1769,6 +1990,11 @@ matchHistoryDialog.addEventListener("click", event => {
 matchHistoryDialog.addEventListener("cancel", event => {
   event.preventDefault();
   fecharHistoricoVoltarConfiguracao();
+=======
+document.getElementById("chessMatchHistoryClose").addEventListener("click", () => matchHistoryDialog.close());
+matchHistoryDialog.addEventListener("click", event => {
+  if (event.target === matchHistoryDialog) matchHistoryDialog.close();
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 });
 
 chatOpenButton.addEventListener("click", () => {
@@ -1785,6 +2011,7 @@ document.getElementById("chessSettingsClose").addEventListener("click", () => se
 settingsDialog.addEventListener("click", event => {
   if (event.target === settingsDialog) settingsDialog.close();
 });
+<<<<<<< HEAD
 
 const toggleNewGameBtn = document.getElementById("chessToggleNewGame");
 const newGamePanel = document.getElementById("chessNewGamePanel");
@@ -1800,15 +2027,23 @@ gameModeSelect.addEventListener("change", () => {
   opponentOptions.hidden = gameModeSelect.value !== "stockfish";
   inviteOptions.hidden = gameModeSelect.value !== "invite";
   atualizarDisponibilidadeRatingStockfish();
+=======
+gameModeSelect.addEventListener("change", () => {
+  opponentOptions.hidden = gameModeSelect.value !== "stockfish";
+  inviteOptions.hidden = gameModeSelect.value !== "invite";
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   newGameLabel.textContent = gameModeSelect.value === "invite" ? "Enviar convite" : "Iniciar nova partida";
 });
 skillLevelInput.addEventListener("input", () => {
   skillValue.value = skillLevelInput.value;
+<<<<<<< HEAD
   atualizarRatingEstimado();
   atualizarDisponibilidadeRatingStockfish();
 });
 stockfishRatingModeSelect.addEventListener("change", () => {
   stockfishRated = Number(skillLevelInput.value) >= 8 && stockfishRatingModeSelect.value === "rated";
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 });
 
 document.addEventListener("chess-invitation-accepted", event => {
@@ -1820,11 +2055,17 @@ document.addEventListener("chess-invitation-accepted", event => {
   gameMode = "invite";
   playerColor = partida.cor || "b";
   inviteGameId = partida.partidaId;
+<<<<<<< HEAD
   inviteUserId = "";
   inviteUserName = "";
   onlineGameStatus = partida.status || "ativa";
   onlineGameResult = partida.resultado || "*";
   onlineRated = partida.rated === true;
+=======
+  inviteEmail = "";
+  onlineGameStatus = partida.status || "ativa";
+  onlineGameResult = partida.resultado || "*";
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
   onlineOpponent = partida.adversario || "oponente";
   onlineError = "";
   chess.reset();
@@ -1943,6 +2184,7 @@ async function carregarPartidaAtual() {
         if (Number.isInteger(partida.skillLevel) && partida.skillLevel >= 1 && partida.skillLevel <= 20) {
           skillLevel = partida.skillLevel;
         }
+<<<<<<< HEAD
         if (typeof partida.gameId === "string" && /^[0-9a-f-]{36}$/i.test(partida.gameId)) {
           localGameId = partida.gameId;
         }
@@ -1951,14 +2193,23 @@ async function carregarPartidaAtual() {
         inviteGameId = "";
         inviteUserId = "";
         inviteUserName = "";
+=======
+        localGameUpdatedAt = Number(partida.updatedAt) || 0;
+        inviteGameId = "";
+        inviteEmail = "";
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
         onlineGameStatus = "";
         onlineOpponent = "";
       } else if (atual.mode === "none") {
         if (gameMode === "invite") {
           gameMode = "local";
           inviteGameId = "";
+<<<<<<< HEAD
           inviteUserId = "";
           inviteUserName = "";
+=======
+          inviteEmail = "";
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
           onlineGameStatus = "";
           onlineOpponent = "";
           chess.reset();
@@ -1983,6 +2234,7 @@ async function carregarPartidaAtual() {
   }
 }
 
+<<<<<<< HEAD
 // ==================== STOCKFISH GAME ANALYZER ====================
 let analysisWorker = null;
 let analysisCancelled = false;
@@ -2770,4 +3022,6 @@ document.addEventListener("keydown", event => {
 });
 
 void carregarRatingXadrez();
+=======
+>>>>>>> fef49ee23362ba7987d2ad46206edcbb93751000
 void carregarPartidaAtual();

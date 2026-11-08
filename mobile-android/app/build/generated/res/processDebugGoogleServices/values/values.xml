@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">866469993978-annlped88dr0au5h58r0npoepgithl5l.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://orby-47574-default-rtdb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">866469993978</string>
+    <string name="google_api_key" translatable="false">AIzaSyCoSaOBDiqH7TlNWR9_tJEF9nfRHe3V450</string>
+    <string name="google_app_id" translatable="false">1:866469993978:android:d9c7e6327c91c208f6d843</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCoSaOBDiqH7TlNWR9_tJEF9nfRHe3V450</string>
+    <string name="google_storage_bucket" translatable="false">orby-47574.firebasestorage.app</string>
+    <string name="project_id" translatable="false">orby-47574</string>
+</resources>
